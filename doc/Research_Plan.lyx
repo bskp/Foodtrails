@@ -1,0 +1,346 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+%für hübsch
+\usepackage{microtype, ellipsis}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman ae
+\font_sans helvet
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0 0 0 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+MATLAB FS11 – Research Plan
+\end_layout
+
+\begin_layout Subtitle
+Group Name: foodtrail
+\end_layout
+
+\begin_layout Author
+Michael Aebli, Matthias Roggo, Moritz Vifian
+\end_layout
+
+\begin_layout Subsection*
+General Introduction
+\end_layout
+
+\begin_layout Standard
+It has been noted by many people that the architectural design of the Polymensa
+ is sub-par.
+ The queue formation seems chaotic in nature and not predetermined.
+ For example, people are forced to cross each others paths.
+ The question arises if there is room for improvement or if the current
+ system is already optimal as it is.
+ More broadly speaking, this is a problem concerning pedestrian/crowd dynamics.
+ How do pedestrians chose their paths and how do they interact.
+ Pedestrian dynamics has many fields of application (such as evacuation)
+ and is becoming more important as cities and buildings are more densely
+ populated.
+ There have been many proposed models for pedestrian dynamics.
+ A well known example is the Social Force Model of 1995 (Helbing Dirk et.
+ al).
+ 
+\end_layout
+
+\begin_layout Subsection*
+Fundamental Questions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename models.png
+	lyxscale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Different models
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+How do pedestrian groups with different destinations interact with one another?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How does one group of pedestrians with one destination behave? 
+\end_layout
+
+\begin_layout Itemize
+How do two groups of pedestrians with separate destinations interact? (Fig
+ 1, top)
+\end_layout
+
+\begin_layout Itemize
+How do two groups of pedestrians with separate destinations interact on
+ a there are obstacles? 
+\end_layout
+
+\begin_layout Itemize
+How do two groups of pedestrians with separate destinations interact closely
+ in a room 2D room resembling a birds-eye-view of the Polymensa?
+\end_layout
+
+\begin_layout Itemize
+What happens when there are three groups or more? (Fig 1, middle)
+\end_layout
+
+\begin_layout Itemize
+Is queue formation accurately modeled? (Fig 1, bottom) What changes/additions
+ need to be made if this is not the case?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+How do pedestrian groups with different destinations interact when all pedestria
+ns return to the same checkout point (cash register) once they have reached
+ their respective destination?
+\end_layout
+
+\begin_layout Enumerate
+How accurately are pedestrian-dynamics models able to depict the empirically
+ collected crowd behavior of the Mensa queue area? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Are queues formed at the same locations? 
+\end_layout
+
+\begin_layout Itemize
+Are similar distributions observed? 
+\end_layout
+
+\begin_layout Itemize
+Are densely occupied areas in the same location? 
+\end_layout
+
+\begin_layout Itemize
+Are certain areas never occupied? 
+\end_layout
+
+\begin_layout Itemize
+What geometrical changes could be made to the Mensa to increase the flow
+ of pedestrians per unit time?
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Variables of Interest
+\end_layout
+
+\begin_layout Itemize
+The time it takes for all pedestrians to reach their destinations -- measured
+ by logging simulation
+\end_layout
+
+\begin_layout Itemize
+The number of times pedestrians cannot move because their path is blocked
+ by another pedestrian -- measured by logging simulation
+\end_layout
+
+\begin_layout Itemize
+The location of the queues (are they realistic?) -- measured by analyzing
+ simulation snapshots
+\end_layout
+
+\begin_layout Subsection*
+Expected Results
+\end_layout
+
+\begin_layout Standard
+Results which resemble the crowd behavior observed at the Polymensa are
+ expected.
+ This means queue formation at similar localities and similar flow of pedestrian
+s per unit of time.
+ We expect that the flow of pedestrians per unit of time can be influenced
+ by the number of different destinations.
+ The more destinations the slower the whole process.
+\end_layout
+
+\begin_layout Subsection*
+References
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Social Force Model for Pedestrian dynamics (1995) -- Dirk Helbing et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Describes model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Self-organized Pedestrian Crowd Dynamics (2005) -- Helbing et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Uses model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Pedestrian Dynamics Airplane Evacuation Simulation -- Author(s): P.
+ Heer, L.
+ Bühler 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Response to intrusion into waiting lines.
+ (2010) By Milgram, Stanley et al.
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://psycnet.apa.org/index.cfm?fa=buy.optionToBuy&id=1987-04011-001 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+A possible extension to queue modeling.
+ This extension would include intruders which are more aggressive and attempt
+ to intrude into waiting lines.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Approach to Collective Phenomena in Pedestrian Dynamics (2002) Andreas Schadschn
+eider et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+In case we attempt to use Cellular Automata this paper would be useful.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Research Methods
+\end_layout
+
+\begin_layout Standard
+An Agent-Based Model will most likely be implemented for the simulation.
+ We are also considering Cellular Automata although we are of the opinion
+ this approach would require too many adjustments and tweaks.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Other
+\end_layout
+
+\begin_layout Standard
+In order to set model parameters realistically and see if the model accurately
+ depicts the behavior of people waiting for their meals we will collect
+ empirical data ourselves.
+\end_layout
+
+\end_body
+\end_document
