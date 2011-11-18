@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 %%%%%%%%%%%%%%%%%%%%
 % GLOBAL PARAMETERS
 %%%%%%%%%%%%%%%%%%%%
@@ -19,7 +18,6 @@ agent_number=50;
 =======
 % Parameters
 global meter hue_goal hue_init map_file R;
->>>>>>> 574e159eafe95b14b183fe81a2cb964ed0243966
 
 
 % Map
