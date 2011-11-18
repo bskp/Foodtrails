@@ -15,7 +15,7 @@ global ...
 %General
 dt=1;
 agent_number=50;
-=======
+
 % Parameters
 global meter hue_goal hue_init map_file R;
 
