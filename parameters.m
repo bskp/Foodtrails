@@ -1,13 +1,14 @@
 % Parameters
-global meter hue_goal map_file R;
+global meter hue_goal hue_init map_file R;
 
 
 % Map
-meter = 40; % * pixel, according to:
-map_file = 'testmap.png';
+meter = 40; % * pixels, according to:
+map_file = 'testmap.png'; % Bitmap file for goals and walls
 
 % Map colors
 hue_goal = [0.3 0.1]; % Value / Tolerance
+hue_init = [0.0 0.1]; % Value / Tolerance
 
 
 % Boundary potential
