@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 %%%%%%%%%%%%%%%%%%%%
 % GLOBAL PARAMETERS
 %%%%%%%%%%%%%%%%%%%%
@@ -15,14 +16,19 @@ global ...
 %General
 dt=1;
 agent_number=50;
+=======
+% Parameters
+global meter hue_goal hue_init map_file R;
+>>>>>>> 574e159eafe95b14b183fe81a2cb964ed0243966
 
 
 % Map
-meter = 40; % * pixel, according to:
-map_file = 'testmap.png';
+meter = 40; % * pixels, according to:
+map_file = 'testmap.png'; % Bitmap file for goals and walls
 
 % Map colors
 hue_goal = [0.3 0.1]; % Value / Tolerance
+hue_init = [0.0 0.1]; % Value / Tolerance
 
 
 % Boundary potential
