@@ -16,9 +16,6 @@ global ...
 dt=1;
 agent_number=50;
 
-% Parameters
-global meter hue_goal hue_init map_file R;
-
 
 % Map
 meter = 40; % * pixels, according to:
