@@ -1,0 +1,409 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Description of Model
+\end_layout
+
+\begin_layout Standard
+This section aims to describe the social force model.
+ The social force model aims to reduce pedestrian dynamics to force fields.
+ Force fields act upon agents.
+ Agents are an abstraction of pedestrians.
+ The nomenclature used is consistent with the paper 
+\begin_inset Quotes eld
+\end_inset
+
+Social Force model for pedestrian dynamics
+\begin_inset Quotes erd
+\end_inset
+
+ by Dirk Helbing et al.
+ 
+\end_layout
+
+\begin_layout Subsection
+Agents 
+\end_layout
+
+\begin_layout Standard
+Agents are objects with the local parameters
+\series bold
+ :
+\end_layout
+
+\begin_layout Itemize
+actual velocity 
+\begin_inset Formula $\vec{v}_{\alpha}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+current actual position
+\series bold
+ 
+\series default
+
+\begin_inset Formula $\vec{r}_{\alpha}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the global parameters :
+\end_layout
+
+\begin_layout Itemize
+desired speed 
+\begin_inset Formula $v_{\alpha}^{0}(t)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+relaxation time: 
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+step size: 
+\begin_inset Formula $\Delta s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Force Fields 
+\end_layout
+
+\begin_layout Standard
+All objects recognizable by an agent have a potential field.
+ Using the potential field of a repulsive or attractive object the force
+ at a certain location and time may be determined.
+ The final force acting on an agent is the superposition of all forces.
+ These forces are: (1) Destination, (2) other agents, (3) boarders/buildings/wal
+ls, (4) objects of attraction.
+ These will be described more closely in the following section.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Destination 
+\end_layout
+
+\begin_layout Standard
+The destination attracts an agent.
+ More specifically, the closest point, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\vec{r}_{\alpha}^{k}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, of the destination polygon to the agent at position 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\vec{r}_{\alpha}(t)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ attracts an agent.
+ An agent will attempt to take the most direct route to reach his destination.
+ The vector from an agent to the closest destination point forms the desired
+ direction.
+ The force caused by the destination is referred to as accleration term.
+ It is indipendendent of distance and time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+   
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+vec{e}_{
+\backslash
+alpha}(t):=
+\backslash
+frac{
+\backslash
+vec{r}_{
+\backslash
+alpha}^{k}-
+\backslash
+vec{r}_{
+\backslash
+alpha}(t)}{||
+\backslash
+vec{r}_{
+\backslash
+alpha}^{k}-
+\backslash
+vec{r}_{
+\backslash
+alpha}(t)||} 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+vec{F}_{
+\backslash
+alpha}^{0}(
+\backslash
+vec{v}_{
+\backslash
+alpha},
+\backslash
+vec{v}_{
+\backslash
+alpha}^{0},
+\backslash
+vec{e}_{
+\backslash
+alpha}(t)) =
+\backslash
+frac{1}{
+\backslash
+tau_{
+\backslash
+alpha}}(v_{
+\backslash
+alpha}^{0}
+\backslash
+vec{e}_{
+\backslash
+alpha}-
+\backslash
+vec{v}_{
+\backslash
+alpha})
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Other Pedestrians/Agents
+\end_layout
+
+\begin_layout Standard
+An agent attempts to avoid other agents.
+ Therefore other agents have a repuslive nature.
+ This repuslive nature is described by a monotonically decreasing potential
+ field 
+\begin_inset Formula $V_{\alpha\beta}[b(\vec{r}_{\alpha\beta})]$
+\end_inset
+
+.
+ This potentail field has elliptic equipotential lines.
+ The agent is at the center of the ellipses.
+ The semi major axis is alined parallel to the desired direction of the
+ agent.
+ The potential is calculated as a function of the semi minor axis of the
+ ellipse which is in turn dependent on the agent to agent distance.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+	V_{
+\backslash
+alpha
+\backslash
+beta}
+\backslash
+left[ b 
+\backslash
+vec{r}_{
+\backslash
+alpha
+\backslash
+beta} 
+\backslash
+right] = V_{
+\backslash
+alpha
+\backslash
+beta}^0 e^{-b/
+\backslash
+sigma} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
