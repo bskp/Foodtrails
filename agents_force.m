@@ -29,13 +29,14 @@ function F_tot=agents_force(A,alpha)
     %
     % Structure of Matrix A:
     %
-    %            | Agent 1  | Agent 2 | Agent 3
+    %                 | Agent 1  | Agent 2 | Agent 3
     %-----------------------------------------------
-    % position x |
-    % position y |
-    % speed    x |
-    % speed    y |
-    % type       |
+    % position x      |
+    % position y      |
+    % speed    x      |
+    % speed    y      |
+    % desired speed v0|
+    % type            |
 
     
     global dt v0_alphabeta sigma; % global constants defined in parameters.m
