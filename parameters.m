@@ -16,10 +16,6 @@ global ...
 % General
 dt=1;
 agent_number=50;
-<<<<<<< HEAD
-=======
-
->>>>>>> 15d393f4da9bc2b86a1a76062bf9483c3a1869bf
 
 % Map
 meter = 40; % * pixels, according to:
