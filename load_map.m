@@ -7,7 +7,8 @@ function [ map, map_init ] = load_map( )
 % Furthermore, a valid-start-positions layer will be created.
 %
 
-global hue_goal hue_init map_file R;
+global hue_goal hue_init map_file R v0_mean tau_alpha U_alphaB_0;
+
 
 %% Read image
 
@@ -16,19 +17,25 @@ X = imread(['maps/' map_file ]);
 m = size(X, 1);
 n = size(X, 2);
 
+
 %% Create layers
 
 % Color transformations
 X_hsv = rgb2hsv(X);
 X_gs = sum(X, 3)/size(X,3); % Greyscale
 
-% Goals
+% Detect goals
 X_goal  = X_hsv(:,:,2) > 0.9 ... % sat
         & X_hsv(:,:,1) < hue_goal(1)+hue_goal(2) ... % hue max
         & X_hsv(:,:,1) > hue_goal(1)-hue_goal(2); % hue min
 
-    
-    
+CC = bwconncomp( X_goal );
+clear X_goals;
+for i = 1:CC.NumObjects % for every found component in the goal-layer
+    layer = X_goal*0;
+    layer(CC.PixelIdxList{i}) = 1;
+    X_goals(:,:,i) = layer; % add a layer with it to X_goals
+end
     
 % Init areas
 X_init  = X_hsv(:,:,2) > 0.9 ... % sat
@@ -37,8 +44,8 @@ X_init  = X_hsv(:,:,2) > 0.9 ... % sat
     
 
 % Wall potential: treat init- and goal-areas as free space
-X_walls = X_gs;
-X_walls(X_init | X_goal ) = 255 ; 
+X_walls = X_gs/255;
+X_walls(X_init | X_goal ) = 1 ; 
 
 if ( max(max( X_init )) == 0) % if there are no init spots
     X_init = X_hsv(:,:,3) < 1; % use free space as x_init
@@ -55,26 +62,36 @@ F_walls = fftshift(fft2(X_walls));
 l_0 = m/2;
 k_0 = n/2;
 
-g_walls = exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
+g_walls = U_alphaB_0 * exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
 % Filter for goal attraction
 r = ceil( sqrt(m^2 + n^2) ); % Calculate minimal filter radius
 
 [l,k] = meshgrid(1:(2*r),1:(2*r));
 
-m_goal = 1000;
+m_goal = 1;
 g_goal = 1/m_goal * sqrt( (k-r).^2+(l-r).^2 ); % create cone
 g_goal = g_goal(r, 1) - g_goal; % shift cone
 g_goal(g_goal<0) = 0; % saturate negative values
 
 % Convolution
-X_walls_conv = real(ifft2(ifftshift(F_walls .* g_walls))); % cyclic
+X_walls_conv = real(ifft2(ifftshift(F_walls .* g_walls))); % cyclic conv.
 
-X_goal_conv = conv2(double(X_goal), g_goal, 'same'); % zero-padded
+for i = 1:CC.NumObjects % do this for every target
+    px_count = size(CC.PixelIdxList{i},1); % target size for normalization
+    f = v0_mean / tau_alpha; % see formula (2) in paper
+    
+    X_goals_conv(:,:,i) = f * 1/px_count * ... 
+        conv2(double(X_goals(:,:,i)), g_goal, 'same'); % zero-padded conv.
+end
+
 
 %% Arrange output 
 
-map = [ X_goal_conv + X_walls_conv ];
+for i = 1:CC.NumObjects
+    map(:,:,i) = X_goals_conv(:,:,i) + X_walls_conv(:,:,1);
+end
+
 map_init = X_init;
 
 end
