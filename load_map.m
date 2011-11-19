@@ -69,8 +69,7 @@ r = ceil( sqrt(m^2 + n^2) ); % Calculate minimal filter radius
 
 [l,k] = meshgrid(1:(2*r),1:(2*r));
 
-m_goal = 1;
-g_goal = 1/m_goal * sqrt( (k-r).^2+(l-r).^2 ); % create cone
+g_goal = sqrt( (k-r).^2+(l-r).^2 ); % create cone
 g_goal = g_goal(r, 1) - g_goal; % shift cone
 g_goal(g_goal<0) = 0; % saturate negative values
 
