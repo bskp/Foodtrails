@@ -1,4 +1,4 @@
-function [ map, map_init ] = load_map( )
+function load_map()
 
 % Generates a potential field, which represents the 
 % boundary and goal forces.
@@ -6,9 +6,20 @@ function [ map, map_init ] = load_map( )
 %
 % Furthermore, a valid-start-positions layer will be created.
 %
+%
+% fields_x, fields_y:   m*n*number_of_goals, contains the force-fields
+% maps:                 m*n*number_of_goals, potential-fields
+% map_init:             m*n, boolean map with valid start positions
+%
+
+% The Force field depends on the following globals:
 
 global hue_goal hue_init map_file R v0_mean tau_alpha U_alphaB_0;
 
+
+% New globals are created:
+
+global fields_x fields_y maps map_init;
 
 %% Read image
 
@@ -88,7 +99,8 @@ end
 %% Arrange output 
 
 for i = 1:CC.NumObjects
-    map(:,:,i) = X_goals_conv(:,:,i) + X_walls_conv(:,:,1);
+    maps(:,:,i) = X_goals_conv(:,:,i) + X_walls_conv(:,:,1);
+    [fields_x(:,:,i), fields_y(:,:,i)] = gradient( maps(:,:,i) );
 end
 
 map_init = X_init;
