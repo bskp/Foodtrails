@@ -100,7 +100,7 @@ end
 
 for i = 1:CC.NumObjects
     maps(:,:,i) = X_goals_conv(:,:,i) + X_walls_conv(:,:,1);
-    [fields_x(:,:,i), fields_y(:,:,i)] = gradient( maps(:,:,i) );
+    [fields_x(:,:,i), fields_y(:,:,i)] = gradient( -maps(:,:,i) );
 end
 
 map_init = X_init;

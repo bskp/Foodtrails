@@ -3,17 +3,17 @@ parameters;
 
 load_map();
 
-global fields_x fields_y map;
+global fields_x fields_y maps;
 
 %subplot(1,2,1);
 %image(X_gs); axis equal; colormap('bone');
 
-n_goals = size(map, 3);
+n_goals = size(maps, 3);
 
 for i = 1:n_goals
     subplot(1,n_goals,i);
     hold on;
-    mesh( -map(:,:,i) ); colormap('bone');
+    mesh( -maps(:,:,i) ); colormap('bone');
     quiver(1:10:300, 1:10:300, -fields_x(1:10:300,1:10:300), ...
                                -fields_y(1:10:300,1:10:300));
     
