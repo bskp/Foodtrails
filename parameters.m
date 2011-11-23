@@ -18,7 +18,7 @@ global ...
     sqrt_theta;
 
 % General
-dt = 1;
+dt = 0.3;
 agent_number = 100;
 
 % Map

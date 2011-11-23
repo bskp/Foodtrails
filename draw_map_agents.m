@@ -1,17 +1,18 @@
 %% Primitive Zeichenfunktion
 
+figure(my_figure);
 clf()
-karte = imread('maps/testmap.png');
 
-
-steptime=0.05;
-
-    imagesc([0 100], [0 100],karte);        %Hintergrundbild laden
-
-      
+global karte;
+% 
+% 
+% 
+    imagesc(karte);        %Hintergrundbild laden
+% 
+    hold on;  
     
-    quiver(A(1,:),A(2,:),A(3,:),A(4,:));    %Pfeile zeichnen
+    %quiver(A(1,:),A(2,:),A(3,:),A(4,:));    %Pfeile zeichnen
     
-    plot(A(1,:),A(2,:),'o','MarkerSize',5); %Punkte zeichnen
+    plot(A(1,:),A(2,:),'o','MarkerSize',10); %Punkte zeichnen
     
    

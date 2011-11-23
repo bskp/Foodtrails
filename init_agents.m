@@ -22,10 +22,11 @@ function A=init_agents()
 
     parameters; % load global parameters
 
-    global agent_number v0_mean sqrt_theta;
+    global agent_number v0_mean sqrt_theta map_init;
 
-    map=[ones(100,100) zeros(100,100)]; % NEEDS TO BE REPLACED BY LOADED MAP !
-
+    map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
+    map(200:250,220:240)=ones(51,21);
+    %map=map_init;
 
     % find legal x and y positions on map
     %[row,col,v] = find(X, ...) returns a column or row vector v of the nonzero 
@@ -60,6 +61,7 @@ function A=init_agents()
 
     A(3:4,:)=agent_speeds;
     A(5,:)=v0;
+    A(6,:)=randi(2,1,agent_number);
 
 end
 
