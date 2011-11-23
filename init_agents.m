@@ -1,5 +1,5 @@
 function A=init_agents()
-    % DISCRIPTION:
+    % DESCRIPTION:
     % This is a function which initializes the Agentsmatrix. The agentmatrix
     % holds all required agent information. The structure of the matrix is as
     % follows:
