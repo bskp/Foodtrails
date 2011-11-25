@@ -16,10 +16,10 @@ toc;
 'agent forces'
 tic;
 for i=1:n_agents
-    %test_agents_force;
+    test_agents_force;
 end;
 toc;
-%%
+
 'matrix operations'
 tic;
 for i=1:n_agents
@@ -31,6 +31,5 @@ for i=1:n_agents
     
     dv = A(5,:) - sqrt( A(3,:).^2 + A(4,:).^2 );
 
-    
 end;
 toc;

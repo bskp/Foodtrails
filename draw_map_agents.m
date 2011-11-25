@@ -3,11 +3,12 @@
 figure(my_figure);
 clf()
 
-global karte;
+global map_pretty;
 % 
 % 
 % 
-    imagesc(karte);        %Hintergrundbild laden
+    imagesc(map_pretty);        %Hintergrundbild laden
+    colormap('bone');
 % 
     hold on;  
     
