@@ -3,14 +3,14 @@ function A=init_agents()
     % This is a function which initializes the Agentsmatrix. The agentmatrix
     % holds all required agent information. The structure of the matrix is as
     % follows:
-    %                 | Agent 1  | Agent 2 | Agent 3
+    %                   | Agent 1  | Agent 2 | Agent 3
     %-----------------------------------------------
-    % position x      |
-    % position y      |
-    % speed    x      |
-    % speed    y      |
-    % desired speed v0|
-    % type            |
+    % 1 position x      |
+    % 2 position y      |
+    % 3 speed    x      |
+    % 4 speed    y      |
+    % 5 desired speed v0|
+    % 6 type            |
     %
     % PARAMETERS:
     % A                 = agent Matrix
@@ -24,9 +24,10 @@ function A=init_agents()
 
     global agent_number v0_mean sqrt_theta map_init;
 
-    map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
-    map(200:250,220:240)=ones(51,21);
-    %map=map_init;
+    %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
+    %map(200:250,220:240)=ones(51,21);
+    
+    map = map_init;
 
     % find legal x and y positions on map
     %[row,col,v] = find(X, ...) returns a column or row vector v of the nonzero 

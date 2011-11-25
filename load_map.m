@@ -19,7 +19,7 @@ global hue_goal hue_init map_file R v0_mean tau_alpha U_alphaB_0;
 
 % New globals are created:
 
-global fields_x fields_y maps map_init;
+global fields_x fields_y maps map_init map_pretty;
 
 %% Read image
 
@@ -34,6 +34,7 @@ n = size(X, 2);
 % Color transformations
 X_hsv = rgb2hsv(X);
 X_gs = sum(X, 3)/size(X,3); % Greyscale
+map_pretty = X_gs;
 
 % Detect goals
 X_goal  = X_hsv(:,:,2) > 0.9 ... % sat
@@ -100,7 +101,7 @@ end
 
 for i = 1:CC.NumObjects
     maps(:,:,i) = X_goals_conv(:,:,i) + X_walls_conv(:,:,1);
-    [fields_x(:,:,i), fields_y(:,:,i)] = gradient( -maps(:,:,i) );
+    [fields_x(:,:,i), fields_y(:,:,i)] = gradient( maps(:,:,i) );
 end
 
 map_init = X_init;
