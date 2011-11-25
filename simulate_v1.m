@@ -4,7 +4,7 @@
 parameters();
 load_map();
 A=init_agents();
-global dt;
+global dt karte;
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
@@ -21,13 +21,17 @@ end
 
 
 
-% Find Agents that exceed their max velocity
-too_fast_x=find(abs(A(3,:))>A(5,:));
-too_fast_y=find(abs(A(4,:))>A(5,:));
+%Find Agents that exceed their max velocity
+too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
+%too_fast_x=find(abs(A(3,:))>A(5,:));
+%too_fast_y=find(abs(A(4,:))>A(5,:));
 
 % Throttle them to their desired velocity
-A(3,too_fast_x) = A(5,too_fast_x).*sign(A(3,too_fast_x));
-A(4,too_fast_y) = A(5,too_fast_y).*sign(A(4,too_fast_y));
+A(3:4,too_fast)= A(3:4,too_fast)./([1 1]'*sqrt(A(3,too_fast).^2+A(4,too_fast).^2))...
+    .*[A(5,too_fast); A(5,too_fast)];
+
+%A(3,too_fast_x) = A(5,too_fast_x).*sign(A(3,too_fast_x));
+%A(4,too_fast_y) = A(5,too_fast_y).*sign(A(4,too_fast_y));
 
 % Calculate the new positions (X+V*t)
 deltaPos=A(3:4,:)*timestep;
