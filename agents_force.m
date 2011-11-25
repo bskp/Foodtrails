@@ -39,7 +39,7 @@ function F_tot=agents_force(A,alpha)
     % type            |
 
     
-    global dt v0_alphabeta sigma; % global constants defined in parameters.m
+    global dt v0_alphabeta sigma meter; % global constants defined in parameters.m
         
     agent_number=size(A,2);
     
@@ -48,30 +48,32 @@ function F_tot=agents_force(A,alpha)
     agent_alpha=A(:,alpha);
     
     % calculate all r_alphabeta vectors and store in matrix
-    r_alphabeta_matrix=agent_others(1:2,:)-agent_alpha(1:2,:)*ones(1,agent_number-1);
+    r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:))*meter;
     
     % get all v_betas
     v_beta_matrix=agent_others(3:4,:);
     
     % calculate Force Unit vector
-    e_beta_matrix=v_beta_matrix./(ones(2,1)*sum(v_beta_matrix.^2));    
+    e_beta_matrix=r_alphabeta_matrix./(ones(2,1)*sum(r_alphabeta_matrix.^2));    
    
     % calculate smaller semi axis of ellipse 
-    b=(1/2)*sqrt(...
+    b=(1/2)*sqrt(...  
         (...
         sqrt(sum(r_alphabeta_matrix.^2))+...
         sqrt(sum((r_alphabeta_matrix-v_beta_matrix*dt).^2))...
         ).^2-...
-        (sum((v_beta_matrix*dt).^2)));
+        (sqrt(sum(v_beta_matrix.^2))*dt).^2);
     
+    %b=sqrt(sum(r_alphabeta_matrix.^2)); circular potential..
     % absolute value of forces
+    
     F_abs=v0_alphabeta*(-b/sigma).*exp(-b/sigma);
     
     % vector value of forces
     F=e_beta_matrix.*(ones(2,1)*F_abs);
     
     % sum / superposition over all forces -> one vector force
-    F_tot=sum(F,2);
+    F_tot=10000*sum(F,2);
     
 end
 
