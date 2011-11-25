@@ -76,9 +76,3 @@ function F_tot=agents_force(A,alpha)
     F_tot=10000*sum(F,2);
     
 end
-
-
-
-
-
-

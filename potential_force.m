@@ -4,8 +4,8 @@ function f = potential_force( x, y, goal_layer )
 
     global fields_x fields_y;
 
-    f = [fields_x(x,y,goal_layer);
-         fields_y(x,y,goal_layer)];
+    f = [fields_x(y,x,goal_layer);
+         fields_y(y,x,goal_layer)];
 
 end
 

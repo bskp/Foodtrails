@@ -12,13 +12,10 @@ my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Win
 for stepnumber=1:10000
 % Calculate the Forces
 % Calculate the resulting velocities ?
-for agentID=1:size(A,2)
+for agentID = 1:size(A,2)
     A(3:4,agentID) = ( potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
         )*timestep;
 end
-
-
-
 
 %Find Agents that exceed their max velocity
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
