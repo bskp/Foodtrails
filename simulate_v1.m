@@ -8,7 +8,7 @@ global dt karte;
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
-karte = imread('maps/testmap.png');
+
 for stepnumber=1:10000
 % Calculate the Forces
 % Calculate the resulting velocities ?
