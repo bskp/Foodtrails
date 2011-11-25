@@ -4,7 +4,7 @@
 parameters();
 load_map();
 A=init_agents();
-global dt karte;
+global dt karte ;
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
@@ -13,7 +13,7 @@ for stepnumber=1:10000
 % Calculate the Forces
 % Calculate the resulting velocities ?
 for agentID=1:size(A,2)
-    A(3:4,agentID) = (-potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
+    A(3:4,agentID) = (potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
         +agents_force(A,agentID))...
         *timestep;
 end
@@ -44,7 +44,7 @@ outside_y=find(A(2,:)>=300 | A(2,:)<=1);
 A(:,outside_y) = [];
 
 % Draw the the agents
-draw_map_agents();
-pause(0.01);
+draw_map_agents(my_figure,A,1,1,1,5);
+pause(0.1);
 
 end
