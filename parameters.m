@@ -18,7 +18,7 @@ global ...
     sqrt_theta;
 
 % General
-dt = 0.3;
+dt = .1;
 agent_number = 100;
 
 % Map
@@ -35,11 +35,10 @@ R = 0.2 * meter; % px, according to paper
 U_alphaB_0 = 10 * meter^2; % m^2/s^2, max. boundary potatial
 
 % Agents
-v0_alphabeta = 2.1;
-sigma = 0.3;
+v0_alphabeta = 2.1*meter^2;
+sigma = 0.3*meter; % m 
 v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
               % m/s equals v_alpha_0 in formula (2)
 tau_alpha = 0.5; % s, "relaxation time"
-
-sqrt_theta = 0.26; % standard deviation of gaussian distributed v0_mean
+sqrt_theta = 0.26*meter; % m/s standard deviation of gaussian distributed v0_mean
 
