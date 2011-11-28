@@ -24,19 +24,10 @@ function A=init_agents()
 
     global agent_number v0_mean sqrt_theta map_init;
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 1a904e8c404535f6632671cf346aca3dc7561bd5
     %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
     %map(200:250,220:240)=ones(51,21);
     
     map = map_init;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1a904e8c404535f6632671cf346aca3dc7561bd5
 
     % find legal x and y positions on map
     %[row,col,v] = find(X, ...) returns a column or row vector v of the nonzero 
