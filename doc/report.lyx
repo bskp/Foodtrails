@@ -110,16 +110,24 @@ current actual position
 
 \end_layout
 
-\begin_layout Standard
-And the global parameters :
-\end_layout
-
 \begin_layout Itemize
 desired speed 
 \begin_inset Formula $v_{\alpha}^{0}(t)$
 \end_inset
 
  
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is a speed which is initiated at the beginning of the simulation and
+ remains constant throughout the simulation.
+ Individual agents
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+And the global parameters :
 \end_layout
 
 \begin_layout Itemize
@@ -219,8 +227,8 @@ The destination attracts an agent.
  An agent will attempt to take the most direct route to reach his destination.
  The vector from an agent to the closest destination point forms the desired
  direction.
- The force caused by the destination is referred to as accleration term.
- It is indipendendent of distance and time.
+ The force caused by the destination is referred to as acceleration term.
+ It is independent of distance and time.
 \end_layout
 
 \begin_layout Standard
@@ -330,16 +338,16 @@ Other Pedestrians/Agents
 
 \begin_layout Standard
 An agent attempts to avoid other agents.
- Therefore other agents have a repuslive nature.
- This repuslive nature is described by a monotonically decreasing potential
+ Therefore other agents have a repulsive nature.
+ This repulsive nature is described by a monotonically decreasing potential
  field 
 \begin_inset Formula $V_{\alpha\beta}[b(\vec{r}_{\alpha\beta})]$
 \end_inset
 
 .
- This potentail field has elliptic equipotential lines.
+ This potential field has elliptic equipotent lines.
  The agent is at the center of the ellipses.
- The semi major axis is alined parallel to the desired direction of the
+ The semi major axis is aligned parallel to the desired direction of the
  agent.
  The potential is calculated as a function of the semi minor axis of the
  ellipse which is in turn dependent on the agent to agent distance.
