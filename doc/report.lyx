@@ -59,6 +59,289 @@
 
 \begin_body
 
+\begin_layout Title
+Lecture with Computer Exercises: Modelling and Simulating Social Systems
+ with MATLAB
+\end_layout
+
+\begin_layout Title
+Simulating Crowd Behaviour of the Polymensa
+\end_layout
+
+\begin_layout Author
+Matthias Roggo, Moritz Vifian, Michael Aebli
+\end_layout
+
+\begin_layout Address
+Zürich
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Declaration of originality
+\end_layout
+
+\begin_layout Standard
+http://www.ethz.ch/faculty/exams/plagiarism/index_EN
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Agreement for free-download
+\end_layout
+
+\begin_layout Standard
+We hereby agree to make our source code of this project freely available
+ for download from the web pages of the SOMS chair.
+ Furthermore, we assure that all source code is written by ourselves and
+ is not violating any copyright restrictions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Abstract goes here..
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Individual contributions
+\end_layout
+
+\begin_layout Section
+Introduction and Motivation
+\end_layout
+
+\begin_layout Subsection
+General Introduction
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+It has been noted by many people that the architectural design of the Polymensa
+ is sub-par.
+ The queue formation seems chaotic in nature and not predetermined.
+ For example, people are forced to cross each others paths.
+ The question arises if there is room for improvement or if the current
+ system is already optimal as it is.
+ More broadly speaking, this is a problem concerning pedestrian/crowd dynamics.
+ How do pedestrians chose their paths and how do they interact.
+ Pedestrian dynamics has many fields of application (such as evacuation)
+ and is becoming more important as cities and buildings are more densely
+ populated.
+ There have been many proposed models for pedestrian dynamics.
+ A well known example is the Social Force Model of 1995 (Helbing Dirk et.
+ al).
+ 
+\end_layout
+
+\begin_layout Subsection*
+
+\lang british
+Fundamental Questions
+\end_layout
+
+\begin_layout Enumerate
+
+\lang british
+How do pedestrian groups with different destinations interact with one another?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang british
+How does one group of pedestrians with one destination behave? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+How do two groups of pedestrians with separate destinations interact? (Fig
+ 1, top)
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+How do two groups of pedestrians with separate destinations interact on
+ a there are obstacles? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+How do two groups of pedestrians with separate destinations interact closely
+ in a room 2D room resembling a birds-eye-view of the Polymensa?
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+What happens when there are three groups or more? (Fig 1, middle)
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Is queue formation accurately modelled? (Fig 1, bottom) What changes/additions
+ need to be made if this is not the case?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang british
+How do pedestrian groups with different destinations interact when all pedestria
+ns return to the same checkout point (cash register) once they have reached
+ their respective destination?
+\end_layout
+
+\begin_layout Enumerate
+
+\lang british
+How accurately are pedestrian-dynamics models able to depict the empirically
+ collected crowd behaviour of the Mensa queue area? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang british
+Are queues formed at the same locations? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Are similar distributions observed? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Are densely occupied areas in the same location? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Are certain areas never occupied? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+What geometrical changes could be made to the Mensa to increase the flow
+ of pedestrians per unit time?
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+
+\lang british
+Variables of Interest
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+The time it takes for all pedestrians to reach their destinations -- measured
+ by logging simulation
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+The number of times pedestrians cannot move because their path is blocked
+ by another pedestrian -- measured by logging simulation
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+The location of the queues (are they realistic?) -- measured by analysing
+ simulation snapshots
+\end_layout
+
+\begin_layout Subsection*
+
+\lang british
+Expected Results
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+Results which resemble the crowd behaviour observed at the Polymensa are
+ expected.
+ This means queue formation at similar localities and similar flow of pedestrian
+s per unit of time.
+ We expect that the flow of pedestrians per unit of time can be influenced
+ by the number of different destinations.
+ The more destinations the slower the whole process.
+\end_layout
+
 \begin_layout Section
 Description of Model
 \end_layout
@@ -122,7 +405,7 @@ desired speed
 \begin_layout Itemize
 This is a speed which is initiated at the beginning of the simulation and
  remains constant throughout the simulation.
- The speeds are randomly gaussian distributed 
+ The speeds are randomly Gaussian distributed 
 \begin_inset Formula $\mathscr{N}(v^{0},\sqrt{\theta})$
 \end_inset
 
@@ -316,7 +599,7 @@ status collapsed
 \begin_layout Standard
 Lastly one must take into consideration that the field of vision of an agent
  has an influence on the forces.
- An other agent which is standing behind agent alpha will have a considerablly
+ An other agent which is standing behind agent alpha will have a considerably
  smaller influence than one which agent alpha is facing.
 \end_layout
 
@@ -410,12 +693,117 @@ The total force is the superposition of the above mentioned forces.
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\vec{F}_{\alpha}(t)=\vec{F_{\alpha}^{0}(\vec{v}_{\alpha}\vec{v}_{\alpha}^{0}\vec{e}_{\alpha})+\sum_{\beta}\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta})+\sum_{B}\vec{F}_{\alpha B}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{B}^{\alpha})+\sum_{i}\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{i},t)}
+\vec{F}_{\alpha}(t)=\vec{F_{\alpha}^{0}}(\vec{v}_{\alpha}\vec{v}_{\alpha}^{0}\vec{e}_{\alpha})+\sum_{\beta}\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta})+\sum_{B}\vec{F}_{\alpha B}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{B}^{\alpha})+\sum_{i}\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{i},t)
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Implementation
+\end_layout
+
+\begin_layout Section
+Simulation and Discussion
+\end_layout
+
+\begin_layout Section
+Summary and Outlook
+\end_layout
+
+\begin_layout Subsection
+
+\lang british
+References
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Social Force Model for Pedestrian dynamics (1995) -- Dirk Helbing et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Describes model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Self-organized Pedestrian Crowd Dynamics (2005) -- Helbing et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Uses model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Pedestrian Dynamics Airplane Evacuation Simulation -- Author(s): P.
+ Heer, L.
+ Bühler 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Response to intrusion into waiting lines.
+ (2010) By Milgram, Stanley et al.
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang british
+http://psycnet.apa.org/index.cfm?fa=buy.optionToBuy&id=1987-04011-001 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+A possible extension to queue modeling.
+ This extension would include intruders which are more aggressive and attempt
+ to intrude into waiting lines.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Approach to Collective Phenomena in Pedestrian Dynamics (2002) Andreas Schadschn
+eider et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+In case we attempt to use Cellular Automata this paper would be useful.
+ 
 \end_layout
 
 \end_body
