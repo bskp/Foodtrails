@@ -195,7 +195,7 @@ It has been noted by many people that the architectural design of the Polymensa
  
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsubsection
 
 \lang british
 Fundamental Questions
@@ -297,7 +297,7 @@ What geometrical changes could be made to the Mensa to increase the flow
 \end_layout
 
 \end_deeper
-\begin_layout Subsection*
+\begin_layout Subsection
 
 \lang british
 Variables of Interest
@@ -324,7 +324,7 @@ The location of the queues (are they realistic?) -- measured by analysing
  simulation snapshots
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 
 \lang british
 Expected Results
@@ -701,8 +701,301 @@ The total force is the superposition of the above mentioned forces.
 
 \end_layout
 
+\begin_layout Subsection
+Social Force Model
+\end_layout
+
+\begin_layout Standard
+The movement of the agents must now be derived from the total force acting
+ on them at a specific time.
+ This can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d\vec{w_{\alpha}}}{dt}:= & \vec{F}_{\alpha}(t)+fluctuations
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The actual velocity must not be greater then the agent's desired velocity
+ 
+\begin_inset Formula $v_{0}^{\alpha}$
+\end_inset
+
+defined during the initialization of an agent.
+ The velocity is thus given as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{Actual velocity }\vec{v}_{\alpha} & =\vec{w}_{\alpha}\cdot g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right)\\
+g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right) & =\begin{cases}
+1 & ,\text{ if }||\vec{w}_{\alpha}||<v_{0}^{\alpha}\\
+\frac{v_{o}^{\alpha}}{||\vec{w}_{\alpha}||} & ,\text{ otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Implementation
+\end_layout
+
+\begin_layout Standard
+The social force model, as described in the previous section, was implimented
+ as described in this section.
+ The simulation input consists of a .png image file and a list of global
+ parameters.
+ On the input image information concerning destinations, starting positions
+ and boundaries are stored.
+ The social force model is then applied to this environment.
+ The output two dimensional animation from a birds eye view simulating the
+ movement of pedestrians according to the social force model.
+ 
+\end_layout
+
+\begin_layout Subsection
+Initialization
+\end_layout
+
+\begin_layout Subsubsection
+Global Parameter values
+\end_layout
+
+\begin_layout Standard
+The values for global parameters suggested by Dirk Helbing et al.
+ were used.
+ These are listed bellow:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter Value [
+\begin_inset Formula $Units$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter discription
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 [
+\begin_inset Formula $s$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+time unit step
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40 [
+\begin_inset Formula $px/m$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pixel to meter conversion factor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2 [
+\begin_inset Formula $m$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+U_alphaB_0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 [
+\begin_inset Formula $m^{2}/s^{2}$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Image input / map of environment
+\end_layout
+
+\begin_layout Subsection
+Social Force model algorithm
+\end_layout
+
+\begin_layout Subsection
+Visualization / Plotting birds eye view
 \end_layout
 
 \begin_layout Section
