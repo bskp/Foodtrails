@@ -1,4 +1,5 @@
 %% Primitive Zeichenfunktion
+%function draw_map_agents(my_figure,A,zkarte,zpfeile,zpunkte,psize)
 
 figure(my_figure);
 clf()
