@@ -4,13 +4,7 @@
 parameters();
 load_map();
 A=init_agents();
-<<<<<<< HEAD
-<<<<<<< HEAD
 global dt karte ;
->>>>>>> 195ce9a5f66fed45331d93f690ee7a7e03887080
-=======
-global dt;
->>>>>>> 195ce9a5f66fed45331d93f690ee7a7e03887080
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
@@ -18,19 +12,10 @@ my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Win
 for stepnumber=1:10000
 % Calculate the Forces
 % Calculate the resulting velocities ?
-<<<<<<< HEAD
-<<<<<<< HEAD
 for agentID=1:size(A,2)
     A(3:4,agentID) = (potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
         +agents_force(A,agentID))...
         *timestep;
-=======
->>>>>>> 195ce9a5f66fed45331d93f690ee7a7e03887080
-=======
-for agentID = 1:size(A,2)
-    A(3:4,agentID) = ( potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
-        )*timestep;
->>>>>>> 195ce9a5f66fed45331d93f690ee7a7e03887080
 end
 
 %Find Agents that exceed their max velocity
