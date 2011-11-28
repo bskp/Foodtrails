@@ -19,4 +19,6 @@ global karte;
     if zpunkte
     plot(A(1,:),A(2,:),'o','MarkerSize',psize); %Punkte zeichnen
     end
+=======
+>>>>>>> 195ce9a5f66fed45331d93f690ee7a7e03887080
    
