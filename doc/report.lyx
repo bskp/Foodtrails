@@ -122,7 +122,11 @@ desired speed
 \begin_layout Itemize
 This is a speed which is initiated at the beginning of the simulation and
  remains constant throughout the simulation.
- Individual agents
+ The speeds are randomly gaussian distributed 
+\begin_inset Formula $\mathscr{N}(v^{0},\sqrt{\theta})$
+\end_inset
+
+ .
 \end_layout
 
 \end_deeper
@@ -232,100 +236,11 @@ The destination attracts an agent.
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-   
-\backslash
-[
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-vec{e}_{
-\backslash
-alpha}(t):=
-\backslash
-frac{
-\backslash
-vec{r}_{
-\backslash
-alpha}^{k}-
-\backslash
-vec{r}_{
-\backslash
-alpha}(t)}{||
-\backslash
-vec{r}_{
-\backslash
-alpha}^{k}-
-\backslash
-vec{r}_{
-\backslash
-alpha}(t)||} 	
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-]
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-[
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-vec{F}_{
-\backslash
-alpha}^{0}(
-\backslash
-vec{v}_{
-\backslash
-alpha},
-\backslash
-vec{v}_{
-\backslash
-alpha}^{0},
-\backslash
-vec{e}_{
-\backslash
-alpha}(t)) =
-\backslash
-frac{1}{
-\backslash
-tau_{
-\backslash
-alpha}}(v_{
-\backslash
-alpha}^{0}
-\backslash
-vec{e}_{
-\backslash
-alpha}-
-\backslash
-vec{v}_{
-\backslash
-alpha})
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-]
-\end_layout
+\begin_inset Formula 
+\begin{align*}
+\vec{e}_{\alpha}(t):= & \frac{\vec{r}_{\alpha}^{k}-\vec{r}_{\alpha}(t)}{||\vec{r}_{\alpha}^{k}-\vec{r}_{\alpha}(t)||}\\
+\vec{F}_{\alpha}^{0}(\vec{v}_{\alpha},\vec{v}_{\alpha}^{0},\vec{e}_{\alpha}(t)):= & \frac{1}{\tau_{\alpha}}(v_{\alpha}^{0}\vec{e}_{\alpha}-\vec{v}_{\alpha})
+\end{align*}
 
 \end_inset
 
@@ -345,7 +260,7 @@ An agent attempts to avoid other agents.
 \end_inset
 
 .
- This potential field has elliptic equipotent lines.
+ This potential field has elliptic equipotent lines (See Figure 1).
  The agent is at the center of the ellipses.
  The semi major axis is aligned parallel to the desired direction of the
  agent.
@@ -354,59 +269,149 @@ An agent attempts to avoid other agents.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{Potential :}V_{\alpha\beta}\left[b\vec{r}_{\alpha\beta}\right]= & V_{\alpha\beta}^{0}e^{-b/\sigma}\\
+\textrm{ semi Axis: }b= & \frac{1}{2}\sqrt{||\vec{r}_{\alpha\beta}||+||\vec{r}_{\alpha\beta}-v_{\beta}\Delta te_{\beta}||^{2}-(v_{\beta}\Delta t)||}\\
+\text{Force Field: }\vec{f}_{\alpha\beta}(\vec{r}_{\alpha\beta})= & -\nabla_{\vec{r}_{\alpha\beta}}V_{\alpha\beta}\left[b(\vec{r}_{\alpha\beta})\right]
+\end{align*}
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
 
 \begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/drawing-1.svg
+
+\end_inset
 
 
-\backslash
-[
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	V_{
-\backslash
-alpha
-\backslash
-beta}
-\backslash
-left[ b 
-\backslash
-vec{r}_{
-\backslash
-alpha
-\backslash
-beta} 
-\backslash
-right] = V_{
-\backslash
-alpha
-\backslash
-beta}^0 e^{-b/
-\backslash
-sigma} 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
 
-\backslash
-]
 \end_layout
+
+\begin_layout Standard
+Lastly one must take into consideration that the field of vision of an agent
+ has an influence on the forces.
+ An other agent which is standing behind agent alpha will have a considerablly
+ smaller influence than one which agent alpha is facing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
+w(\vec{e},\vec{f}):= & \begin{cases}
+1 & \text{if }\vec{e}\cdot\vec{f}\geq||\vec{f}||cos\varphi\\
+c & \text{otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Boarders/ Buildings/ Walls
+\end_layout
+
+\begin_layout Standard
+Boarders, buildings and walls repulse agents.
+ They induce monotonically decreasing potential fields.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{boundry Repulsion Force }\vec{F}_{\alpha B}= & -\nabla_{\vec{r_{\alpha B}}}U_{\alpha B}(||\vec{r}_{\alpha B}||)\\
+U_{\alpha B}(||\vec{r}_{\alpha B}||)= & U_{^{0}\alpha B}e^{-||\vec{r}_{\alpha B}||/R}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Objects of Attraction
+\end_layout
+
+\begin_layout Standard
+Objects of attraction draw agents towards themselves.
+ They are similar to destination forces.
+ This force is a function of time as it decays over time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{attractive Force }\vec{f_{\alpha i}}(||\vec{r}_{\alpha i}||,t)= & -\nabla_{\vec{r}_{\alpha i}}\cdot W_{\alpha i}(||\vec{r}_{\alpha i}||,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As with other agents attractive objects must be weighed according to the
+ field of vision of the agent.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha i}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
+w(\vec{e},\vec{f}):= & \begin{cases}
+1 & \text{if }\vec{e}\cdot\vec{f}\geq||\vec{f}||cos\varphi\\
+c & \text{otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Total Force
+\end_layout
+
+\begin_layout Standard
+The total force is the superposition of the above mentioned forces.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\vec{F}_{\alpha}(t)=\vec{F_{\alpha}^{0}(\vec{v}_{\alpha}\vec{v}_{\alpha}^{0}\vec{e}_{\alpha})+\sum_{\beta}\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta})+\sum_{B}\vec{F}_{\alpha B}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{B}^{\alpha})+\sum_{i}\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{i},t)}
+\]
 
 \end_inset
 
