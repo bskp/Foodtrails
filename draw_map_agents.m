@@ -4,7 +4,7 @@
 figure(my_figure);
 clf()
 
-global map_pretty;
+global map_pretty fields_x fields_y;
 % 
 % 
 % 

@@ -41,7 +41,7 @@ outside_y=find(A(2,:)>=300 | A(2,:)<=1);
 A(:,outside_y) = [];
 
 % Draw the the agents
-draw_map_agents(my_figure,A,1,1,1,5);
+draw_map_agents();
 pause(0.1);
 
 end
