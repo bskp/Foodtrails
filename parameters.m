@@ -31,7 +31,7 @@ hue_init = [0.0 0.1]; % Value / Tolerance
 
 
 % Boundary potential
-R = 0.2 * meter; % px, according to paper
+R = 0.2 * meter; % m, according to paper
 U_alphaB_0 = 10 * meter^2; % m^2/s^2, max. boundary potatial
 
 % Agents
