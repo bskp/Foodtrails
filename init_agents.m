@@ -1,4 +1,7 @@
 function A=init_agents()
+% es wär toll wenn man dieser fkt ein paar agenten angeben könnte, die ihr
+% ziel erreicht haben und neu plaziert werden müssen!
+
     % DESCRIPTION:
     % This is a function which initializes the Agentsmatrix. The agentmatrix
     % holds all required agent information. The structure of the matrix is as
@@ -22,12 +25,12 @@ function A=init_agents()
 
     parameters; % load global parameters
 
-    global agent_number v0_mean sqrt_theta map_init;
+    global agent_number v0_mean sqrt_theta map_init X_goals;
 
     %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
     %map(200:250,220:240)=ones(51,21);
     
-    map = map_init;
+    map = map_init';
 
     % find legal x and y positions on map
     %[row,col,v] = find(X, ...) returns a column or row vector v of the nonzero 
@@ -62,7 +65,7 @@ function A=init_agents()
 
     A(3:4,:)=agent_speeds;
     A(5,:)=v0;
-    A(6,:)=randi(2,1,agent_number);
+    A(6,:)=randi(3,1,agent_number);
 
 end
 

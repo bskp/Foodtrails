@@ -1,4 +1,4 @@
-function load_map()
+%function load_map()
 
 % Generates a potential field, which represents the 
 % boundary and goal forces.
@@ -9,6 +9,7 @@ function load_map()
 %
 % fields_x, fields_y:   m*n*number_of_goals, contains the force-fields
 % maps:                 m*n*number_of_goals, potential-fields
+% X_goals:              m*n*number_of_goals, target areas
 % map_init:             m*n, boolean map with valid start positions
 %
 
@@ -19,7 +20,7 @@ global hue_goal hue_init map_file R v0_mean tau_alpha U_alphaB_0;
 
 % New globals are created:
 
-global fields_x fields_y maps map_init map_pretty;
+global fields_x fields_y maps map_init map_pretty X_goals;
 
 %% Read image
 
@@ -106,4 +107,4 @@ end
 
 map_init = X_init;
 
-end
+%end

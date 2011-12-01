@@ -4,7 +4,8 @@
 parameters();
 load_map();
 A=init_agents();
-global dt karte ;
+global dt; %X_goals;
+
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
@@ -36,13 +37,26 @@ deltaPos=A(3:4,:)*timestep;
 A(1:2,:)=A(1:2,:)+deltaPos;
 
 % Find Agents that exceed the boundries
-outside_x=find(A(1,:)>=300 | A(1,:)<=1);
-A(:,outside_x) = [];
-outside_y=find(A(2,:)>=300 | A(2,:)<=1);
-A(:,outside_y) = [];
+A( A(1,:)<1 ) = 1;
+A( A(1,:)>299 ) = 299;
+
+A( A(2,:)<1 ) = 1;
+A( A(2,:)>299 ) = 299;
+
+% Find Agents on target areas
+
+for agentID = 1:size(A,2)
+    
+   %           (X,             Y,            Target layer);
+   if ( X_goals(ceil(A(2, agentID)), ceil(A(1,agentID)), A(6, agentID) ) )
+       % agent reached his target
+       A(1, agentID) = randi(300,1,1);
+       A(2, agentID) = randi(300,1,1);
+       A(6, agentID)
+   end
+end
 
 % Draw the the agents
-draw_map_agents();
-pause(0.1);
+draw_map_agents;
 
 end
