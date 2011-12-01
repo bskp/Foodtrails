@@ -31,11 +31,11 @@ hue_init = [0.0 0.1]; % Value / Tolerance
 
 
 % Boundary potential
-R = 0.2 * meter; % px, according to paper
+R = 0.2 * meter; % m, according to paper
 U_alphaB_0 = 10 * meter^2; % m^2/s^2, max. boundary potatial
 
 % Agents
-v0_alphabeta = 2.1*meter^2;
+v0_alphabeta = 2.1*meter^2; % which unit?
 sigma = 0.3*meter; % m 
 v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
               % m/s equals v_alpha_0 in formula (2)
