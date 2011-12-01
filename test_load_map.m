@@ -11,20 +11,16 @@ global fields_x fields_y maps;
 n_goals = size(maps, 3);
 
 for i = 1:n_goals
-    field_x = fields_x(:,:,i);
-    field_y = fields_y(:,:,i);
-    
     subplot(1,n_goals,i);
     hold on;
+    mesh( -maps(:,:,i) ); colormap('bone');
     
-    r = sqrt( field_x.^2 + field_y.^2 );
-    field_x = field_x./r;
-    field_y = field_y./r;
+    r = sqrt( fields_x.^2 + fields_y.^2 );
+    fields_x = fields_x./r;
+    fields_y = fields_y./r;
     
-    surf( -maps(:,:,i), r,'LineStyle','none'); colormap('bone');
-    
-    quiver(1:10:300, 1:10:300, field_x(1:10:300,1:10:300), ...
-                               field_y(1:10:300,1:10:300));
+    quiver(1:10:300, 1:10:300, fields_x(1:10:300,1:10:300), ...
+                               fields_y(1:10:300,1:10:300));
     
     % sqrt( px.^2 + py.^2 ) % to validate inclination != v0_mean/tau_alpha
 end
