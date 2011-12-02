@@ -405,11 +405,7 @@ desired speed
 \begin_layout Itemize
 This is a speed which is initiated at the beginning of the simulation and
  remains constant throughout the simulation.
-<<<<<<< HEAD
- The speeds are randomly gaussian distributed 
-=======
  The speeds are randomly Gaussian distributed 
->>>>>>> 0fcf13b70ce14b86a0ecbfb935050d5193be8f67
 \begin_inset Formula $\mathscr{N}(v^{0},\sqrt{\theta})$
 \end_inset
 
@@ -574,17 +570,10 @@ wide true
 sideways false
 status collapsed
 
-<<<<<<< HEAD
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-=======
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
->>>>>>> 0fcf13b70ce14b86a0ecbfb935050d5193be8f67
 \begin_inset Graphics
 	filename imgs/drawing-1.svg
 
@@ -610,20 +599,6 @@ status collapsed
 \begin_layout Standard
 Lastly one must take into consideration that the field of vision of an agent
  has an influence on the forces.
-<<<<<<< HEAD
- An other agent which is standing behind agent alpha will have a considerablly
- smaller influence than one which agent alpha is facing.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
-w(\vec{e},\vec{f}):= & \begin{cases}
-1 & \text{if }\vec{e}\cdot\vec{f}\geq||\vec{f}||cos\varphi\\
-c & \text{otherwise}
-\end{cases}
-=======
  An other agent which is standing behind agent alpha will have a considerably
  smaller influence than one which agent alpha is facing.
 \end_layout
@@ -658,7 +633,6 @@ Boarders, buildings and walls repulse agents.
 \begin{align*}
 \text{boundry Repulsion Force }\vec{F}_{\alpha B}= & -\nabla_{\vec{r_{\alpha B}}}U_{\alpha B}(||\vec{r}_{\alpha B}||)\\
 U_{\alpha B}(||\vec{r}_{\alpha B}||)= & U_{^{0}\alpha B}e^{-||\vec{r}_{\alpha B}||/R}
->>>>>>> 0fcf13b70ce14b86a0ecbfb935050d5193be8f67
 \end{align*}
 
 \end_inset
@@ -666,43 +640,6 @@ U_{\alpha B}(||\vec{r}_{\alpha B}||)= & U_{^{0}\alpha B}e^{-||\vec{r}_{\alpha B}
 
 \end_layout
 
-\begin_layout Subsubsection
-<<<<<<< HEAD
-Boarders/ Buildings/ Walls
-\end_layout
-
-\begin_layout Standard
-Boarders, buildings and walls repulse agents.
- They induce monotonically decreasing potential fields.
- 
-=======
-Objects of Attraction
-\end_layout
-
-\begin_layout Standard
-Objects of attraction draw agents towards themselves.
- They are similar to destination forces.
- This force is a function of time as it decays over time.
->>>>>>> 0fcf13b70ce14b86a0ecbfb935050d5193be8f67
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-<<<<<<< HEAD
-\text{boundry Repulsion Force }\vec{F}_{\alpha B}= & -\nabla_{\vec{r_{\alpha B}}}U_{\alpha B}(||\vec{r}_{\alpha B}||)\\
-U_{\alpha B}(||\vec{r}_{\alpha B}||)= & U_{^{0}\alpha B}e^{-||\vec{r}_{\alpha B}||/R}
-=======
-\text{attractive Force }\vec{f_{\alpha i}}(||\vec{r}_{\alpha i}||,t)= & -\nabla_{\vec{r}_{\alpha i}}\cdot W_{\alpha i}(||\vec{r}_{\alpha i}||,t)
->>>>>>> 0fcf13b70ce14b86a0ecbfb935050d5193be8f67
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-<<<<<<< HEAD
 \begin_layout Subsubsection
 Objects of Attraction
 \end_layout
@@ -724,23 +661,6 @@ Objects of attraction draw agents towards themselves.
 
 \end_layout
 
-\begin_layout Standard
-As with other agents attractive objects must be weighed according to the
- field of vision of the agent.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha i}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
-w(\vec{e},\vec{f}):= & \begin{cases}
-1 & \text{if }\vec{e}\cdot\vec{f}\geq||\vec{f}||cos\varphi\\
-c & \text{otherwise}
-\end{cases}
-\end{align*}
-
-\end_inset
-=======
 \begin_layout Standard
 As with other agents attractive objects must be weighed according to the
  field of vision of the agent.
@@ -764,15 +684,12 @@ c & \text{otherwise}
 \begin_layout Subsubsection
 Total Force
 \end_layout
->>>>>>> 0fcf13b70ce14b86a0ecbfb935050d5193be8f67
 
 \begin_layout Standard
 The total force is the superposition of the above mentioned forces.
  
 \end_layout
 
-<<<<<<< HEAD
-=======
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -994,7 +911,7 @@ R
 \begin_inset Text
 
 \begin_layout Plain Layout
-s
+
 \end_layout
 
 \end_inset
@@ -1153,23 +1070,7 @@ status open
 
 \lang british
 http://psycnet.apa.org/index.cfm?fa=buy.optionToBuy&id=1987-04011-001 
->>>>>>> 0fcf13b70ce14b86a0ecbfb935050d5193be8f67
 \end_layout
-
-\begin_layout Subsubsection
-Total Force
-\end_layout
-
-\begin_layout Standard
-The total force is the superposition of the above mentioned forces.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\vec{F}_{\alpha}(t)=\vec{F_{\alpha}^{0}(\vec{v}_{\alpha}\vec{v}_{\alpha}^{0}\vec{e}_{\alpha})+\sum_{\beta}\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta})+\sum_{B}\vec{F}_{\alpha B}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{B}^{\alpha})+\sum_{i}\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{i},t)}
-\]
 
 \end_inset
 
