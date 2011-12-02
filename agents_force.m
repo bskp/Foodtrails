@@ -67,7 +67,7 @@ function F_tot=agents_force(A,alpha)
     %b=sqrt(sum(r_alphabeta_matrix.^2)); circular potential..
     % absolute value of forces
     
-    F_abs=v0_alphabeta*(-b/sigma).*exp(-b/sigma);
+    F_abs=v0_alphabeta*(-1/sigma).*exp(-b/sigma);
     
     % vector value of forces
     F=e_beta_matrix.*(ones(2,1)*F_abs);
