@@ -1,6 +1,6 @@
-function A=init_agents()
-% es wär toll wenn man dieser fkt ein paar agenten angeben könnte, die ihr
-% ziel erreicht haben und neu plaziert werden müssen!
+function Anew=init_agents(agentID,A)
+% es wï¿½r toll wenn man dieser fkt ein paar agenten angeben kï¿½nnte, die ihr
+% ziel erreicht haben und neu plaziert werden mï¿½ssen!
 
     % DESCRIPTION:
     % This is a function which initializes the Agentsmatrix. The agentmatrix
@@ -22,10 +22,19 @@ function A=init_agents()
     % legal_pos         = all legal positions ordered
     % shuffled_legal_pos= all legal positions shuffled
 
-
+    
     parameters; % load global parameters
 
-    global agent_number v0_mean sqrt_theta map_init X_goals;
+    global agent_number v0_mean sqrt_theta map_init;
+    
+    % check if agentID is set, if so reinitialize only this agent and leave
+    % the rest of the A matrix alone
+    
+    a_num=agent_number;
+    if(nargin~=0) % if inputargument given, only one agent
+        a_num=1;
+    end
+    
 
     %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
     %map(200:250,220:240)=ones(51,21);
@@ -45,27 +54,34 @@ function A=init_agents()
     % random order positions
     rand_index=randperm(size(legal_pos,1));
     shuffled_legal_pos=legal_pos(rand_index,:);
+    
 
-    A=shuffled_legal_pos(1:agent_number,:)';
+    Anew=shuffled_legal_pos(1:a_num,:)';
 
     % generate gaussian distributed v0, the desired speed and initial speed of
     % an agent
 
-    v0=normrnd(v0_mean,sqrt_theta,1,agent_number); 
+    v0=normrnd(v0_mean,sqrt_theta,1,a_num); 
 
     %random unit direction
 
-    agent_directions=[sin(rand(1,agent_number)*2*pi);cos(rand(1,agent_number)*2*pi)];
+    agent_directions=[sin(rand(1,a_num)*2*pi);cos(rand(1,a_num)*2*pi)];
 
     % adding speeds to A
 
     agent_speeds = agent_directions.*(ones(2,1)*v0);
 
     % add v0 and agent speeds to A
+    
 
-    A(3:4,:)=agent_speeds;
-    A(5,:)=v0;
-    A(6,:)=randi(3,1,agent_number);
+    Anew(3:4,:)=agent_speeds;
+    Anew(5,:)=v0;
+    Anew(6,:)=randi(3,1,a_num);
+    
+    if(nargin~=0) 
+        A(:,agentID)=Anew;
+        Anew=A;
+    end
 
 end
 
