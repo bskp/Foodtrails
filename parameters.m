@@ -19,10 +19,10 @@ global ...
 
 % General
 dt = .1;
-agent_number = 100;
+agent_number = 50;
 
 % Map
-meter = 40; % px/m, according to:
+meter = 30; % px/m, according to:
 map_file = 'testmap.png'; % Bitmap file for goals and walls
 
 % Map colors
@@ -32,10 +32,10 @@ hue_init = [0.0 0.1]; % Value / Tolerance
 
 % Boundary potential
 R = 0.2 * meter; % m, according to paper
-U_alphaB_0 = 10 * meter^2; % m^2/s^2, max. boundary potatial
+U_alphaB_0 = 10 * meter^2; % m^2/s^2, max. boundary potential
 
 % Agents
-v0_alphabeta = 2.1*meter^2;
+v0_alphabeta = 2.1*meter^2 * 10; % m^2/s^2, max. agent potential
 sigma = 0.3*meter; % m 
 v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
               % m/s equals v_alpha_0 in formula (2)
