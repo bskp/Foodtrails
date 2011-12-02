@@ -4,7 +4,7 @@
 figure(my_figure);
 clf()
 
-global map_pretty fields_x fields_y;
+global map_pretty fields_x fields_y sigma;
 % 
 % 
 % 
@@ -18,8 +18,8 @@ global map_pretty fields_x fields_y;
     quiver(1:10:300, 1:10:300, fields_x(1:10:300,1:10:300,draw_field), ...
                                fields_y(1:10:300,1:10:300,draw_field));
     
-    quiver(A(1,:),A(2,:),A(3,:),A(4,:));    %Pfeile zeichnen
+    quiver(A(1,:),A(2,:),A(3,:),A(4,:), 0);    %Pfeile zeichnen
     
-    plot(A(1,:),A(2,:),'o','MarkerSize',10); %Punkte zeichnen
+    plot(A(1,:),A(2,:),'o','MarkerSize',sigma); %Punkte zeichnen
     
    
