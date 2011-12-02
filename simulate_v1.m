@@ -16,8 +16,7 @@ for stepnumber=1:10000
 
 for agentID = 1:size(A,2)
     A(3:4,agentID) = ( potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
-        )*timestep+agents_force(A,agentID);
-
+        )*timestep+agents_force(A,agentID)*timestep;
 
 end
 %Find Agents that exceed their max velocity
