@@ -39,7 +39,7 @@ function F_tot=agents_force(A,alpha)
     % type            |
 
     
-    global dt v0_alphabeta sigma meter; % global constants defined in parameters.m
+    global dt v0_alphabeta sigma; % global constants defined in parameters.m
         
     agent_number=size(A,2);
     
@@ -48,7 +48,7 @@ function F_tot=agents_force(A,alpha)
     agent_alpha=A(:,alpha);
     
     % calculate all r_alphabeta vectors and store in matrix
-    r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:))*meter;
+    r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:));
     
     % get all v_betas
     v_beta_matrix=agent_others(3:4,:);
@@ -64,7 +64,7 @@ function F_tot=agents_force(A,alpha)
         ).^2-...
         (sqrt(sum(v_beta_matrix.^2))*dt).^2);
     
-    %b=sqrt(sum(r_alphabeta_matrix.^2)); circular potential..
+    %b=sqrt(sum(r_alphabeta_matrix.^2)); %circular potential..
     % absolute value of forces
     
     F_abs=v0_alphabeta*(-1/sigma).*exp(-b/sigma);
