@@ -73,6 +73,7 @@ function F_tot=agents_force(A,alpha)
     F=e_beta_matrix.*(ones(2,1)*F_abs);
     
     % sum / superposition over all forces -> one vector force
-    F_tot=1000*sum(F,2);
+    F_tot=sum(F,2);
+    F_tot = [ F_tot(2); F_tot(1) ]; %transponieren
     
 end
