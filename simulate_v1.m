@@ -44,15 +44,12 @@ A( A(2,:)<1 ) = 1;
 A( A(2,:)>299 ) = 299;
 
 % Find Agents on target areas
-
 for agentID = 1:size(A,2)
-    
    %           (X,             Y,            Target layer);
    if ( X_goals(ceil(A(2, agentID)), ceil(A(1,agentID)), A(6, agentID) ) )
        % agent reached his target
        A(1, agentID) = randi(300,1,1);
        A(2, agentID) = randi(300,1,1);
-       A(6, agentID)
    end
 end
 
