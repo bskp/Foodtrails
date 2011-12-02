@@ -12,6 +12,7 @@ global map_pretty fields_x fields_y sigma;
     colormap('bone');
     
     hold on;
+    axis equal;
     
     % draw vector field
     draw_field = 2;
