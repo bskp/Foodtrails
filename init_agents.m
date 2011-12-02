@@ -1,7 +1,7 @@
 function Anew=init_agents(agentID,A)
 % es w�r toll wenn man dieser fkt ein paar agenten angeben k�nnte, die ihr
 % ziel erreicht haben und neu plaziert werden m�ssen!
-    
+
     % DESCRIPTION:
     % This is a function which initializes the Agentsmatrix. The agentmatrix
     % holds all required agent information. The structure of the matrix is as
@@ -25,7 +25,7 @@ function Anew=init_agents(agentID,A)
     
     parameters; % load global parameters
 
-    global agent_number v0_mean sqrt_theta map_init meter;
+    global agent_number v0_mean sqrt_theta map_init;
     
     % check if agentID is set, if so reinitialize only this agent and leave
     % the rest of the A matrix alone
@@ -75,7 +75,7 @@ function Anew=init_agents(agentID,A)
     
 
     Anew(3:4,:)=agent_speeds;
-    Anew(5,:)=v0*meter;
+    Anew(5,:)=v0;
     Anew(6,:)=randi(3,1,a_num);
     
     if(nargin~=0) 
