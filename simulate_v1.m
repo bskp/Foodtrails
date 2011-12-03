@@ -15,12 +15,13 @@ for stepnumber=1:10000
 % Calculate the resulting velocities ?
 
 for agentID = 1:size(A,2)
-    A(3:4,agentID) = ( potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
+    A(3:4,agentID) = ( 7*potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
         )*timestep+agents_force(A,agentID)*timestep;
 
 end
 %Find Agents that exceed their max velocity
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
+size(too_fast,2)
 %too_fast_x=find(abs(A(3,:))>A(5,:));
 %too_fast_y=find(abs(A(4,:))>A(5,:));
 
@@ -36,16 +37,16 @@ deltaPos=A(3:4,:)*timestep;
 A(1:2,:)=A(1:2,:)+deltaPos;
 
 % Find Agents that exceed the boundries
-A( A(1,:)<1 ) = 1;
-A( A(1,:)>299 ) = 299;
+A(1, A(1,:)<1 ) = 1;
+A(1, A(1,:)>300 ) = 300;
 
-A( A(2,:)<1 ) = 1;
-A( A(2,:)>299 ) = 299;
-
+A(2, A(2,:)<1 ) = 1;
+A(2, A(2,:)>300 ) = 300;
 % Find Agents on target areas
 for agentID = 1:size(A,2)
+   X = round(A(2, agentID)); Y= round(A(1,agentID));
    %           (X,             Y,            Target layer);
-   if ( X_goals(ceil(A(2, agentID)), ceil(A(1,agentID)), A(6, agentID) ) )
+   if ( X_goals(X,Y, A(6, agentID) ) )
        % agent reached his target
        %A(1, agentID) = randi(300,1,1);
        %A(2, agentID) = randi(300,1,1);
