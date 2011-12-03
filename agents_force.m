@@ -39,7 +39,7 @@ function F_tot=agents_force(A,alpha)
     % type            |
 
     
-    global dt v0_alphabeta sigma; % global constants defined in parameters.m
+    global dt v0_alphabeta sigma maps X_goals; % global constants defined in parameters.m
         
     agent_number=size(A,2);
     
@@ -48,32 +48,51 @@ function F_tot=agents_force(A,alpha)
     agent_alpha=A(:,alpha);
     
     % calculate all r_alphabeta vectors and store in matrix
+    % Doesn't alphabeta mean: beta-alpha? 
     r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:));
     
     % get all v_betas
     v_beta_matrix=agent_others(3:4,:);
     
     % calculate Force Unit vector
-    e_beta_matrix=r_alphabeta_matrix./(ones(2,1)*sum(r_alphabeta_matrix.^2));    
-   
-    % calculate smaller semi axis of ellipse 
-    b=(1/2)*sqrt(...  
-        (...
-        sqrt(sum(r_alphabeta_matrix.^2))+...
-        sqrt(sum((r_alphabeta_matrix-v_beta_matrix*dt).^2))...
-        ).^2-...
-        (sqrt(sum(v_beta_matrix.^2))*dt).^2);
+    % Somethings' odd: The unity vectors are not so much unity
+    % Solved: sqrt was missing...
+    e_beta_matrix=r_alphabeta_matrix./(ones(2,1)*sqrt(sum(r_alphabeta_matrix.^2)));
     
+     
+    deltat=3;
+    % calculate smaller semi axis of ellipse 
+%     b=(1/2)*sqrt(...  
+%         (...
+%         sqrt(sum(r_alphabeta_matrix.^2))+...
+%         sqrt(sum((r_alphabeta_matrix-v_beta_matrix*deltat).^2))...
+%         ).^2-...
+%         (sqrt(sum(v_beta_matrix.^2))*deltat).^2);
+%     
     %b=sqrt(sum(r_alphabeta_matrix.^2)); %circular potential..
     % absolute value of forces
     
-    F_abs=v0_alphabeta*(-1/sigma).*exp(-b/sigma);
+    %F_abs=v0_alphabeta*(-1/sigma).*exp(-b/sigma);
+    
+%     F_abs=v0_alphabeta*...
+%     [ (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*s - 2*x)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - x/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2))
+%     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
+    F_tot = [0;0];
+    for i=1:agent_number-1
+        s = v_beta_matrix(1,i)*dt; r = v_beta_matrix(2,i)*dt;
+        x = r_alphabeta_matrix(1,i); y = r_alphabeta_matrix(2,i);
+        F_tot= F_tot+...
+            [ (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*s - 2*x)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - x/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2));...
+            (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*r - 2*y)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - y/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2))]...
+            .*e_beta_matrix(:,i);
+    end
+        
     
     % vector value of forces
-    F=e_beta_matrix.*(ones(2,1)*F_abs);
+    %F=e_beta_matrix.*(ones(2,1)*F_abs);
     
     % sum / superposition over all forces -> one vector force
-    F_tot=sum(F,2);
+    %F_tot=sum(F,2);
     F_tot = [ F_tot(2); F_tot(1) ]; %transponieren
     
 end
