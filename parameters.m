@@ -20,6 +20,7 @@ global ...
 % General
 dt = .1;
 agent_number = 50;
+dt = .05;
 
 % Map
 meter = 30; % px/m, according to:
