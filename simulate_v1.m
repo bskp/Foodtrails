@@ -4,7 +4,7 @@
 parameters();
 load_map();
 A=init_agents();
-global dt; %X_goals;
+global dt agent_number agents_f; %X_goals;
 
 %% Simulation Loop
 timestep=dt;
@@ -13,15 +13,20 @@ my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Win
 for stepnumber=1:10000
 % Calculate the Forces
 % Calculate the resulting velocities ?
-
+agents_f = zeros(2,agent_number);
+agents_p = zeros(2,agent_number);
 for agentID = 1:size(A,2)
-    A(3:4,agentID) = ( 7*potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
-        )*timestep+agents_force(A,agentID)*timestep;
+    agents_f(:,agentID) = agents_force(A,agentID);
+    agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
+    A(3:4,agentID) = (5*agents_p(:,agentID)...
+        +agents_f(:,agentID)...
+        +0*[(rand(1)-.5)*1e2;(rand(1)-.5)*1e2])...
+        *timestep;
 
 end
 %Find Agents that exceed their max velocity
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
-size(too_fast,2)
+num_toofast =size(too_fast,2);
 %too_fast_x=find(abs(A(3,:))>A(5,:));
 %too_fast_y=find(abs(A(4,:))>A(5,:));
 
@@ -56,5 +61,6 @@ end
 
 % Draw the the agents
 draw_map_agents;
+
 
 end

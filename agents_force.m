@@ -50,7 +50,9 @@ function F_tot=agents_force(A,alpha)
     % calculate all r_alphabeta vectors and store in matrix
     % Doesn't alphabeta mean: beta-alpha? 
     r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:));
-    
+    rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>15;
+    agent_others(:,rausschmeissen) = [];
+    agent_number=size(agent_others,2)+1;
     % get all v_betas
     v_beta_matrix=agent_others(3:4,:);
     
@@ -60,7 +62,6 @@ function F_tot=agents_force(A,alpha)
     e_beta_matrix=r_alphabeta_matrix./(ones(2,1)*sqrt(sum(r_alphabeta_matrix.^2)));
     
      
-    deltat=3;
     % calculate smaller semi axis of ellipse 
 %     b=(1/2)*sqrt(...  
 %         (...
