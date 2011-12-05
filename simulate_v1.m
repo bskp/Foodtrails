@@ -3,9 +3,12 @@
 %% INIT
 parameters();
 load_map();
-A=init_agents();
+%A=init_agents();
+A = [150 150 30 10 30 1
+    150 150 20 20 35 1
+    150 150 20 20 40 1]'
 global dt agent_number agents_f; %X_goals;
-
+agent_number = 3;
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
@@ -20,7 +23,7 @@ for agentID = 1:size(A,2)
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
     A(3:4,agentID) = (5*agents_p(:,agentID)...
         +agents_f(:,agentID)...
-        +0*[(rand(1)-.5)*1e2;(rand(1)-.5)*1e2])...
+        +[(rand(1)-.5)*1e2;(rand(1)-.5)*1e2])...
         *timestep;
 
 end
