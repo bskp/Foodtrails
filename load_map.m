@@ -35,7 +35,7 @@ n = size(X, 2);
 % Color transformations
 X_hsv = rgb2hsv(X);
 X_gs = sum(X, 3)/size(X,3); % Greyscale
-map_pretty = X_gs;
+map_pretty = X; %X_gs;
 
 % Detect goals
 X_goal  = X_hsv(:,:,2) > 0.9 ... % sat
@@ -96,6 +96,7 @@ for i = 1:CC.NumObjects
     r = sqrt( field_x.^2 + field_y.^2 );
     field_x = field_x./r;
     field_y = field_y./r;
+    % Now we've got the fields for the desired direction, e_alpha.
     
     fields_x(:,:,i) = field_x * f + field_walls_x;
     fields_y(:,:,i) = field_y * f + field_walls_y; % Scale & sum fields

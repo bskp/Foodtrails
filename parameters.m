@@ -24,7 +24,7 @@ dt = .05;
 
 % Map
 meter = 30; % px/m, according to:
-map_file = 'testmap.png'; % Bitmap file for goals and walls
+map_file = 'mais.png'; % Bitmap file for goals and walls
 
 % Map colors
 hue_goal = [0.3 0.1]; % Value / Tolerance
