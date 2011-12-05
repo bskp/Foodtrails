@@ -449,7 +449,7 @@ ls, (4) objects of attraction.
 \end_layout
 
 \begin_layout Subsubsection
-Destination 
+Destination
 \end_layout
 
 \begin_layout Standard
@@ -528,6 +528,13 @@ The destination attracts an agent.
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "Formel e_alpha"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -568,7 +575,7 @@ An agent attempts to avoid other agents.
 \begin_inset Float figure
 wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -992,6 +999,191 @@ Image input / map of environment
 
 \begin_layout Subsection
 Social Force model algorithm
+\end_layout
+
+\begin_layout Standard
+In order to speed up our simulations, we seperated the effective forces
+ on our agents in two groups, being either constant on a given place or
+ depending on all other agents positions.
+\end_layout
+
+\begin_layout Subsubsection
+Environmental forces 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+matthias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The forcefields related to the 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+destination (
+\begin_inset Formula $\vec{F}_{\alpha}^{0}$
+\end_inset
+
+)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, walls (
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\vec{F}_{\alpha B}$
+\end_inset
+
+) and attractive objects (
+\begin_inset Formula $\vec{F}_{\alpha i}$
+\end_inset
+
+) are independent of the agents positions, thus can be calculated in advance.
+ This is done by 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun on
+\color inherit
+load_map.m
+\noun default
+, which generates a force field for the walls' potential and every target
+ area on the map.
+\end_layout
+
+\begin_layout Paragraph
+Fast marching algorithm
+\end_layout
+
+\begin_layout Standard
+To prevent the agents getting stuck on more complex floor plans, we employ
+ the 
+\emph on
+accurate fast marching algorithm
+\emph default
+ implemented by Dirk-Jan Kroon
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.mathworks.com/matlabcentral/fileexchange/24531
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Based on a 
+\begin_inset Quotes eld
+\end_inset
+
+speed map
+\begin_inset Quotes erd
+\end_inset
+
+, it creates a potential field representing the shortest time needed to
+ get to one or more target points.
+ Its gradient thereby serves as an indicator for the shortest path, our
+ new 
+\begin_inset Formula $\vec{e}_{\alpha}$
+\end_inset
+
+.
+ The gradient field is then normalized to 
+\begin_inset Formula $\frac{v_{\alpha}^{0}}{\tau_{\alpha}}$
+\end_inset
+
+ to 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+represent the first term of 
+\begin_inset Formula $\vec{F}_{\alpha}^{0}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Formel e_alpha"
+
+\end_inset
+
+).
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ui, der zweite term ist glaub ich noch nirgends
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Agent forces
 \end_layout
 
 \begin_layout Subsection
