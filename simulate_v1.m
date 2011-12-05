@@ -3,9 +3,12 @@
 %% INIT
 parameters();
 load_map();
-A=init_agents();
-global dt; %X_goals;
-
+%A=init_agents();
+A = [150 150 30 10 30 1
+    150 150 20 20 35 1
+    150 150 20 20 40 1]'
+global dt agent_number agents_f; %X_goals;
+agent_number = 3;
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
@@ -13,14 +16,20 @@ my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Win
 for stepnumber=1:10000
 % Calculate the Forces
 % Calculate the resulting velocities ?
-
+agents_f = zeros(2,agent_number);
+agents_p = zeros(2,agent_number);
 for agentID = 1:size(A,2)
-    A(3:4,agentID) = ( potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID))...
-        )*timestep+agents_force(A,agentID)*timestep;
+    agents_f(:,agentID) = agents_force(A,agentID);
+    agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
+    A(3:4,agentID) = (5*agents_p(:,agentID)...
+        +agents_f(:,agentID)...
+        +[(rand(1)-.5)*1e2;(rand(1)-.5)*1e2])...
+        *timestep;
 
 end
 %Find Agents that exceed their max velocity
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
+num_toofast =size(too_fast,2);
 %too_fast_x=find(abs(A(3,:))>A(5,:));
 %too_fast_y=find(abs(A(4,:))>A(5,:));
 
@@ -36,16 +45,16 @@ deltaPos=A(3:4,:)*timestep;
 A(1:2,:)=A(1:2,:)+deltaPos;
 
 % Find Agents that exceed the boundries
-A( A(1,:)<1 ) = 1;
-A( A(1,:)>299 ) = 299;
+A(1, A(1,:)<1 ) = 1;
+A(1, A(1,:)>300 ) = 300;
 
-A( A(2,:)<1 ) = 1;
-A( A(2,:)>299 ) = 299;
-
+A(2, A(2,:)<1 ) = 1;
+A(2, A(2,:)>300 ) = 300;
 % Find Agents on target areas
 for agentID = 1:size(A,2)
+   X = round(A(2, agentID)); Y= round(A(1,agentID));
    %           (X,             Y,            Target layer);
-   if ( X_goals(ceil(A(2, agentID)), ceil(A(1,agentID)), A(6, agentID) ) )
+   if ( X_goals(X,Y, A(6, agentID) ) )
        % agent reached his target
        %A(1, agentID) = randi(300,1,1);
        %A(2, agentID) = randi(300,1,1);
@@ -55,5 +64,6 @@ end
 
 % Draw the the agents
 draw_map_agents;
+
 
 end
