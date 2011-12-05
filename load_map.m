@@ -73,9 +73,9 @@ end
 F_walls = fftshift(fft2(X_walls));
 
 % Filter for walls
-[l,k] = meshgrid(1:m,1:n);
-l_0 = m/2;
-k_0 = n/2;
+[l,k] = meshgrid(1:map_x,1:map_y);
+l_0 = map_x/2;
+k_0 = map_y/2;
 
 g_walls = U_alphaB_0 * exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
