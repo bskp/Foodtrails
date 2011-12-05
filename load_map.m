@@ -10,6 +10,8 @@
 % fields_x, fields_y:   m*n*number_of_goals, contains the force-fields
 % X_goals:              m*n*number_of_goals, target areas
 % n_goals:              1*1, number of goals
+% map_x:                1*1, = m
+% map_y:                1*1, = n
 % map_init:             m*n, boolean map with valid start positions
 %
 
@@ -20,14 +22,14 @@ global hue_goal hue_init map_file R v0_mean tau_alpha U_alphaB_0;
 
 % New globals are created:
 
-global fields_x fields_y n_goals map_init map_pretty X_goals;
+global fields_x fields_y n_goals map_init map_pretty X_goals map_x map_y;
 
 %% Read image
 
 X = imread(['maps/' map_file ]);
 
-m = size(X, 1);
-n = size(X, 2);
+map_x = size(X, 1);
+map_y = size(X, 2);
 
 
 %% Create layers
