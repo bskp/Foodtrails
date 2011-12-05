@@ -1,14 +1,13 @@
 
 parameters; 
+load_map;
 
-load_map();
-
-global fields_x fields_y maps;
+global fields_x fields_y n_goals;
 
 %subplot(1,2,1);
 %image(X_gs); axis equal; colormap('bone');
 
-n_goals = size(maps, 3);
+%n_goals = size(maps, 3);
 
 for i = 1:n_goals
     field_x = fields_x(:,:,i);
@@ -17,11 +16,7 @@ for i = 1:n_goals
     subplot(1,n_goals,i);
     hold on;
     
-    r = sqrt( field_x.^2 + field_y.^2 );
-    field_x = field_x./r;
-    field_y = field_y./r;
-    
-    surf( -maps(:,:,i), r,'LineStyle','none'); colormap('bone');
+    %surf( -maps(:,:,i), r,'LineStyle','none'); colormap('bone');
     
     quiver(1:10:300, 1:10:300, field_x(1:10:300,1:10:300), ...
                                field_y(1:10:300,1:10:300));

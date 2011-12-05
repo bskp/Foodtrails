@@ -1,8 +1,11 @@
 
-X_mf = 0.001 + X_walls*0.1;
+parameters;
+load_map;
+
+X_mf = 0.001 + X_walls*0.5;
 
 addpath fm/;
-[i_x, i_y] = find(X_goals(:,:,1) == 1);
+[i_x, i_y] = find(X_goals(:,:,2) == 1);
 
 [T, Y] = msfm(X_mf, [i_x i_y]');
 [fields_x, fields_y] = gradient(T);

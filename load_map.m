@@ -8,8 +8,8 @@
 %
 %
 % fields_x, fields_y:   m*n*number_of_goals, contains the force-fields
-% maps:                 m*n*number_of_goals, potential-fields
 % X_goals:              m*n*number_of_goals, target areas
+% n_goals:              1*1, number of goals
 % map_init:             m*n, boolean map with valid start positions
 %
 
@@ -20,7 +20,7 @@ global hue_goal hue_init map_file R v0_mean tau_alpha U_alphaB_0;
 
 % New globals are created:
 
-global fields_x fields_y maps map_init map_pretty X_goals;
+global fields_x fields_y n_goals map_init map_pretty X_goals;
 
 %% Read image
 
@@ -65,7 +65,7 @@ if ( max(max( X_init )) == 0) % if there are no init spots
 end
 
 
-%% Calculate filters and convolutions
+%% Calculate filter and convolution
 
 % Fourier transformation
 F_walls = fftshift(fft2(X_walls));
@@ -77,34 +77,30 @@ k_0 = n/2;
 
 g_walls = U_alphaB_0 * exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
-% Filter for goal attraction
-r = ceil( sqrt(m^2 + n^2) ); % Calculate minimal filter radius
-
-[l,k] = meshgrid(1:(2*r),1:(2*r));
-
-g_goal = sqrt( (k-r).^2+(l-r).^2 ); % create cone
-g_goal = g_goal(r, 1) - g_goal; % shift cone
-g_goal(g_goal<0) = 0; % saturate negative values
-
 % Convolution
 X_walls_conv = real(ifft2(ifftshift(F_walls .* g_walls))); % cyclic conv.
 
-for i = 1:CC.NumObjects % do this for every target
-    px_count = size(CC.PixelIdxList{i},1); % target size for normalization
-    f = v0_mean / tau_alpha; % see formula (2) in paper
-    
-    X_goals_conv(:,:,i) = f * 1/px_count * ... 
-        conv2(double(X_goals(:,:,i)), g_goal, 'same'); % zero-padded conv.
-end
+%% Create force fields
 
+[field_walls_x field_walls_y] = gradient(X_walls_conv);
 
-%% Arrange output 
+% Fast marching algorithm
+X_mf = 0.001 + X_walls*0.5;
+addpath fm/;
+f = v0_mean / tau_alpha; % see formula (2) in paper
 
 for i = 1:CC.NumObjects
-    maps(:,:,i) = X_goals_conv(:,:,i) + X_walls_conv(:,:,1);
-    [fields_x(:,:,i), fields_y(:,:,i)] = gradient( maps(:,:,i) );
+    [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
+    [T, Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
+    [field_x, field_y] = gradient(-T);
+    r = sqrt( field_x.^2 + field_y.^2 );
+    field_x = field_x./r;
+    field_y = field_y./r;
+    
+    fields_x(:,:,i) = field_x * f + field_walls_x;
+    fields_y(:,:,i) = field_y * f + field_walls_y; % Scale & sum fields
 end
 
+% Arrange output
 map_init = X_init;
-
-%end
+n_goals = size(fields_x, 3);
