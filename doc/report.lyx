@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -50,6 +51,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\listings_params "language=Matlab"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -772,6 +774,151 @@ The social force model, as described in the previous section, was implimented
 \end_layout
 
 \begin_layout Subsection
+Pseudocode
+\end_layout
+
+\begin_layout Standard
+The following is a pseudocode of the implentation of the social force model.
+ It gives an overview of the chronology of the matlab program.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+initialize global parameters
+\end_layout
+
+\begin_layout Plain Layout
+
+load map from image file
+\end_layout
+
+\begin_layout Plain Layout
+
+	create boundary matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	create destination matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	create starting matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+calculate static potential fields from boundary matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	2d convolution of potential function 
+\end_layout
+
+\begin_layout Plain Layout
+
+	and boundry matrix in frequency domain
+\end_layout
+
+\begin_layout Plain Layout
+
+calculate destination force
+\end_layout
+
+\begin_layout Plain Layout
+
+	calculate shortest path and convlute 
+\end_layout
+
+\begin_layout Plain Layout
+
+	with potential function in frequency domain
+\end_layout
+
+\begin_layout Plain Layout
+
+initialize agents
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent starting positions in boundary matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent initial speeds
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent desired speed
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent type (which destination?)
+\end_layout
+
+\begin_layout Plain Layout
+
+begin simulation loop
+\end_layout
+
+\begin_layout Plain Layout
+
+	for each angent
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate boundary force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate destination force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate other agents force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate total force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate new velocity using euler method
+\end_layout
+
+\begin_layout Plain Layout
+
+    plot image and agents
+\end_layout
+
+\begin_layout Plain Layout
+
+end simulation loop
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Initialization
 \end_layout
 
@@ -780,33 +927,51 @@ Global Parameter values
 \end_layout
 
 \begin_layout Standard
-The values for global parameters suggested by Dirk Helbing et al.
+The values of global parameters (directely related to the social force model)
+ which were used are listed in the following table.
+ They suggested by Dirk Helbing et al.
  were used.
  These are listed bellow:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="3">
+<lyxtabular version="3" rows="9" columns="4">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Parameter name
+
+\series bold
+matlab code
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Parameter Value [
+
+\series bold
+symbolic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Value [
 \begin_inset Formula $Units$
 \end_inset
 
@@ -815,10 +980,12 @@ Parameter Value [
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Parameter discription
 \end_layout
 
@@ -826,7 +993,7 @@ Parameter discription
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -835,7 +1002,19 @@ dt
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $dt$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -848,7 +1027,7 @@ dt
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -859,7 +1038,7 @@ time unit step
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -868,7 +1047,19 @@ meter
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $meter$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -881,7 +1072,7 @@ meter
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -892,7 +1083,7 @@ pixel to meter conversion factor
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -901,7 +1092,19 @@ R
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -914,18 +1117,18 @@ R
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+parameter of boundary potential
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -934,7 +1137,19 @@ U_alphaB_0
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{\alpha B}^{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -947,40 +1162,191 @@ U_alphaB_0
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Parameter of boundary potential
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+v0_mean 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<v_{0}>$
+\end_inset
+
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.34 [
+\begin_inset Formula $m/s$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+desired agent velocity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tau_alpha
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\alpha}$
+\end_inset
+
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+0.5 [
+\begin_inset Formula $s$
+\end_inset
 
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+relaxation time
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sqrt_theta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sqrt{\theta}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.26 [
+\begin_inset Formula $m/s$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+standard deviation of v0_mean
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sigma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3 [
+\begin_inset Formula $m$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter of agent potential
 \end_layout
 
 \end_inset
@@ -995,6 +1361,24 @@ U_alphaB_0
 
 \begin_layout Subsubsection
 Image input / map of environment
+\end_layout
+
+\begin_layout Standard
+An input image (PNG) was used to initialize the destination, starting and
+ boundary positions.
+ The image was color coded.
+ Red pixels were defined as starting positions, green pixels as destinations
+ and black pixels as boundries.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+load_map.m
+\begin_inset Quotes erd
+\end_inset
+
+ is responsible for importing an image and making it useable.
+ 
 \end_layout
 
 \begin_layout Subsection
