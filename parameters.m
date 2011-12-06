@@ -15,15 +15,19 @@ global ...
     v0_mean...
     tau_alpha...
     U_alphaB_0...
-    sqrt_theta;
+    sqrt_theta...
+    A1...
+    A2...
+    B1...
+    B2;
 
 % General
+
+agent_number = 100;
 dt = .1;
-agent_number = 50;
-dt = .05;
 
 % Map
-meter = 30; % px/m, according to:
+meter = 20; % px/m, according to:
 map_file = 'mais.png'; % Bitmap file for goals and walls
 
 % Map colors
@@ -43,3 +47,7 @@ v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
 tau_alpha = 0.5; % s, "relaxation time"
 sqrt_theta = 0.26*meter; % m/s standard deviation of gaussian distributed v0_mean
 
+A1 = 0;
+B1 = 1;
+A2 = 3*meter; % m/s^2
+B2 = 0.2*meter; % m
