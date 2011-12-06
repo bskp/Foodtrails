@@ -23,11 +23,11 @@ global ...
 
 % General
 
-agent_number = 50;
-dt = .05;
+agent_number = 100;
+dt = .1;
 
 % Map
-meter = 10; % px/m, according to:
+meter = 20; % px/m, according to:
 map_file = 'mais.png'; % Bitmap file for goals and walls
 
 % Map colors

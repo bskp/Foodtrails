@@ -47,8 +47,8 @@ function F_tot=agents_force(A,alpha)
     agent_others=[A(:,1:alpha-1) A(:,alpha+1:end)];
     agent_alpha=A(:,alpha);
     
-    e_alpha = [fields_x(round(agent_alpha(1)),round(agent_alpha(2)),agent_alpha(6))
-        fields_y(round(agent_alpha(1)),round(agent_alpha(2)),agent_alpha(6))];
+    e_alpha = [fields_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))
+        fields_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))];
     e_alpha = e_alpha/norm(e_alpha,2);
     % calculate all r_alphabeta vectors and store in matrix
     % Doesn't alphabeta mean: beta-alpha? 
@@ -111,6 +111,6 @@ function F_tot=agents_force(A,alpha)
     
     % sum / superposition over all forces -> one vector force
     %F_tot=sum(F,2);
-    F_tot = [ F_tot(2); F_tot(1) ]; %transponieren
+    %F_tot = [ F_tot(2); F_tot(1) ]; %transponieren
     
 end
