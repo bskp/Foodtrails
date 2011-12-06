@@ -23,6 +23,6 @@ global map_pretty fields_x fields_y sigma;
     quiver(A(1,:),A(2,:),agents_f(1,:),agents_f(2,:));
     %quiver(A(1,:),A(2,:),agents_p(1,:),agents_p(2,:));
     
-    plot(A(1,:),A(2,:),'o','MarkerSize',sigma/4); %Punkte zeichnen
+    plot(A(1,:),A(2,:),'o','MarkerSize',sigma); %Punkte zeichnen
     
    

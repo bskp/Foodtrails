@@ -3,12 +3,11 @@
 %% INIT
 parameters();
 load_map();
-%A=init_agents();
-A = [150 150 30 10 30 1
-    150 150 20 20 35 1
-    150 150 20 20 40 1]'
+A=init_agents();
+%A = [150 150 30 10 30 1; 150 150 20 20 35 1; 150 150 20 20 40 1]';
+    %agent_number = 3;
 global dt agent_number agents_f; %X_goals;
-agent_number = 3;
+
 %% Simulation Loop
 timestep=dt;
 my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
@@ -23,12 +22,14 @@ for agentID = 1:size(A,2)
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
     A(3:4,agentID) = (5*agents_p(:,agentID)...
         +1*agents_f(:,agentID)...
-        +0*[(rand(1)-.5)*1e2;(rand(1)-.5)*1e2])...
+        +1*[(rand(1)-.5)*1e3;(rand(1)-.5)*1e3])...
         *timestep;
 
 end
 %Find Agents that exceed their max velocity
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
+nan = (isnan(A(3,:))|isnan(A(4,:)));
+A(3,nan) = 0; A(4,nan) = 0;
 num_toofast =size(too_fast,2);
 %too_fast_x=find(abs(A(3,:))>A(5,:));
 %too_fast_y=find(abs(A(4,:))>A(5,:));

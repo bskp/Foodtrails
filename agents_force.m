@@ -40,7 +40,7 @@ function F_tot=agents_force(A,alpha)
 
     
     global dt v0_alphabeta sigma tau_alpha maps X_goals fields_x fields_y; % global constants defined in parameters.m
-        
+    global A1 A2 B1 B2;
     agent_number=size(A,2);
     
     % seperate agent alpha from other agents
@@ -63,6 +63,7 @@ function F_tot=agents_force(A,alpha)
     % Nur Agents in einem Radius von radius=15 beachten
     rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>15;
     agent_others(:,rausschmeissen) = [];
+    r_alphabeta_matrix(:,rausschmeissen) = [];
     agent_number=size(agent_others,2)+1;
     % get all v_betas
     v_beta_matrix=agent_others(3:4,:);
@@ -102,7 +103,9 @@ function F_tot=agents_force(A,alpha)
 %             *v0_alphabeta;
 %     end
 %         
-    
+    F_tot = F_tot ...
+        + A2*sum(ones(2,1)*exp(2*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
+        .*e_beta_matrix,2);
     % vector value of forces
     %F=e_beta_matrix.*(ones(2,1)*F_abs);
     
