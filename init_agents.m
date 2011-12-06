@@ -40,7 +40,7 @@ function Anew=init_agents(agentID,A)
     %map(200:250,220:240)=ones(51,21);
     
     map = map_init';
-
+    %map = ones(300,300);
     % find legal x and y positions on map
     %[row,col,v] = find(X, ...) returns a column or row vector v of the nonzero 
     %entries in X
@@ -77,6 +77,7 @@ function Anew=init_agents(agentID,A)
     Anew(3:4,:)=agent_speeds;
     Anew(5,:)=v0;
     Anew(6,:)=randi(3,1,a_num);
+    
     
     if(nargin~=0) 
         A(:,agentID)=Anew;

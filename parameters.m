@@ -23,11 +23,11 @@ global ...
 
 % General
 
-agent_number = 100;
-dt = .1;
+agent_number = 200;
+dt = .05;
 
 % Map
-meter = 20; % px/m, according to:
+meter = 25; % px/m, according to:
 map_file = 'mais.png'; % Bitmap file for goals and walls
 
 % Map colors
@@ -44,7 +44,7 @@ v0_alphabeta = 2.1*meter^2 * 10; % m^2/s^2, max. agent potential
 sigma = 0.3*meter; % m 
 v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
               % m/s equals v_alpha_0 in formula (2)
-tau_alpha = 0.5; % s, "relaxation time"
+tau_alpha = .3; % s, "relaxation time"
 sqrt_theta = 0.26*meter; % m/s standard deviation of gaussian distributed v0_mean
 
 A1 = 0;

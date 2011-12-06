@@ -11,7 +11,8 @@ A=init_agents();
 
 %% Simulation Loop
 timestep=dt;
-my_figure = figure('Position', [20, 100, 1200, 600], 'Name','Simulation Plot Window');
+
+my_figure = figure('Position', [20, 100, 600, 600], 'Name','Simulation Plot Window');
 
 for stepnumber=1:10000
 % Calculate the Forces
@@ -21,9 +22,9 @@ agents_p = zeros(2,agent_number);
 for agentID = 1:size(A,2)
     agents_f(:,agentID) = agents_force(A,agentID);
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
-    A(3:4,agentID) = (0*agents_p(:,agentID)...
+    A(3:4,agentID) = (5*agents_p(:,agentID)...
         +1*agents_f(:,agentID)...
-        +0*[(rand(1)-.5)*1e3;(rand(1)-.5)*1e3])...
+        +0*.5e2*[(rand(1)-.5);(rand(1)-.5)])...
         *timestep;
 
 end
