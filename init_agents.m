@@ -25,7 +25,7 @@ function Anew=init_agents(agentID,A)
     
     parameters; % load global parameters
 
-    global agent_number v0_mean sqrt_theta map_init;
+    global agent_number v0_mean sqrt_theta map_init n_goals;
     
     % check if agentID is set, if so reinitialize only this agent and leave
     % the rest of the A matrix alone
@@ -33,6 +33,11 @@ function Anew=init_agents(agentID,A)
     a_num=agent_number;
     if(nargin~=0) % if inputargument given, only one agent
         a_num=1;
+        if(A(6,agentID)~=1)
+            A(6,agentID)=1;
+            Anew = A;
+            return
+        end
     end
     
 
@@ -76,7 +81,8 @@ function Anew=init_agents(agentID,A)
 
     Anew(3:4,:)=agent_speeds;
     Anew(5,:)=v0;
-    Anew(6,:)=randi(3,1,a_num);
+    % Random Goal from 2 until n_goals, the first goal is the cash point
+    Anew(6,:)=randi(n_goals-1,1,a_num)+1;
     
     
     if(nargin~=0) 
