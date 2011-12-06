@@ -39,7 +39,7 @@ function F_tot=agents_force(A,alpha)
     % type            |
 
     
-    global dt v0_alphabeta sigma maps X_goals; % global constants defined in parameters.m
+    global dt v0_alphabeta sigma tau_alpha maps X_goals; % global constants defined in parameters.m
         
     agent_number=size(A,2);
     
@@ -50,6 +50,14 @@ function F_tot=agents_force(A,alpha)
     % calculate all r_alphabeta vectors and store in matrix
     % Doesn't alphabeta mean: beta-alpha? 
     r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:));
+    
+    % In case two agents are on top of each other
+    % Find the entries where x and y are zero
+    null_entries = find(r_alphabeta_matrix(1,:)==0 & r_alphabeta_matrix(1,:)==0);
+    % Replace the entries by random numbers
+    r_alphabeta_matrix(:,null_entries)=rand(2,size(null_entries,2));
+    
+    % Nur Agents in einem Radius von radius=15 beachten
     rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>15;
     agent_others(:,rausschmeissen) = [];
     agent_number=size(agent_others,2)+1;
@@ -78,7 +86,7 @@ function F_tot=agents_force(A,alpha)
 %     F_abs=v0_alphabeta*...
 %     [ (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*s - 2*x)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - x/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2))
 %     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
-    F_tot = [0;0];
+    
     F_tot = 1/tau_alpha*(agent_alpha(3:4)/norm(agent_alpha(3:4),2)*agent_alpha(5)...
         -agent_alpha(3:4));
     for i=1:agent_number-1
@@ -87,7 +95,7 @@ function F_tot=agents_force(A,alpha)
         F_tot= F_tot...
             -[ (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*s - 2*x)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - x/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2));...
             (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*r - 2*y)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - y/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2))]...
-            .*e_beta_matrix(:,i)*v0_alphabeta;
+            *v0_alphabeta;
     end
         
     
