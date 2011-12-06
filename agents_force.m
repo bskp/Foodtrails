@@ -93,7 +93,7 @@ function F_tot=agents_force(A,alpha)
 %     [ (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*s - 2*x)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - x/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2))
 %     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
     
-    F_tot = 1/tau_alpha*(e_alpha*agent_alpha(5)-agent_alpha(3:4));
+    F_tot = 1/tau_alpha*(-agent_alpha(3:4));
 %     for i=1:agent_number-1
 %         s = v_beta_matrix(1,i)*3; r = v_beta_matrix(2,i)*3;
 %         x = r_alphabeta_matrix(1,i); y = r_alphabeta_matrix(2,i);

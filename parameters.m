@@ -27,7 +27,7 @@ agent_number = 200;
 dt = .05;
 
 % Map
-meter = 25; % px/m, according to:
+meter = 20; % px/m, according to:
 map_file = 'mais.png'; % Bitmap file for goals and walls
 
 % Map colors

@@ -32,7 +32,7 @@ end
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
 nan = (isnan(A(3,:))|isnan(A(4,:)));
 A(3,nan) = 0; A(4,nan) = 0;
-num_toofast =size(too_fast,2)
+num_toofast = size(too_fast,2)
 %too_fast_x=find(abs(A(3,:))>A(5,:));
 %too_fast_y=find(abs(A(4,:))>A(5,:));
 
