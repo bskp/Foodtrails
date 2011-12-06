@@ -26,7 +26,7 @@ function F_tot=agents_force(A,alpha)
     % v_beta_matrix         = 2 by agent_number-1 matrix  all velocities of other agents
     % e_beta_matrix         = 2 by agent_number-1 matrix, direction vector
     % F_abs                 = 1 by agent_number-1 vector, absolute Force
-    %
+    % e_alpha               = 2 by 1 vector, desired direction of the agent
     % Structure of Matrix A:
     %
     %                 | Agent 1  | Agent 2 | Agent 3
@@ -39,7 +39,7 @@ function F_tot=agents_force(A,alpha)
     % type            |
 
     
-    global dt v0_alphabeta sigma tau_alpha maps X_goals; % global constants defined in parameters.m
+    global dt v0_alphabeta sigma tau_alpha maps X_goals fields_x fields_y; % global constants defined in parameters.m
         
     agent_number=size(A,2);
     
@@ -47,6 +47,9 @@ function F_tot=agents_force(A,alpha)
     agent_others=[A(:,1:alpha-1) A(:,alpha+1:end)];
     agent_alpha=A(:,alpha);
     
+    e_alpha = [fields_x(round(agent_alpha(1)),round(agent_alpha(2)),agent_alpha(6))
+        fields_y(round(agent_alpha(1)),round(agent_alpha(2)),agent_alpha(6))];
+    e_alpha = e_alpha/norm(e_alpha,2);
     % calculate all r_alphabeta vectors and store in matrix
     % Doesn't alphabeta mean: beta-alpha? 
     r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:));
@@ -81,23 +84,24 @@ function F_tot=agents_force(A,alpha)
     %b=sqrt(sum(r_alphabeta_matrix.^2)); %circular potential..
     % absolute value of forces
     
+    
+    
     %F_abs=v0_alphabeta*(-1/sigma).*exp(-b/sigma);
     
 %     F_abs=v0_alphabeta*...
 %     [ (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*s - 2*x)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - x/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2))
 %     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
     
-    F_tot = 1/tau_alpha*(agent_alpha(3:4)/norm(agent_alpha(3:4),2)*agent_alpha(5)...
-        -agent_alpha(3:4));
-    for i=1:agent_number-1
-        s = v_beta_matrix(1,i)*3; r = v_beta_matrix(2,i)*3;
-        x = r_alphabeta_matrix(1,i); y = r_alphabeta_matrix(2,i);
-        F_tot= F_tot...
-            -[ (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*s - 2*x)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - x/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2));...
-            (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*r - 2*y)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - y/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2))]...
-            *v0_alphabeta;
-    end
-        
+    F_tot = 1/tau_alpha*(e_alpha*agent_alpha(5)-agent_alpha(3:4));
+%     for i=1:agent_number-1
+%         s = v_beta_matrix(1,i)*3; r = v_beta_matrix(2,i)*3;
+%         x = r_alphabeta_matrix(1,i); y = r_alphabeta_matrix(2,i);
+%         F_tot= F_tot...
+%             -[ (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*s - 2*x)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - x/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2));...
+%             (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*r - 2*y)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - y/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2))]...
+%             *v0_alphabeta;
+%     end
+%         
     
     % vector value of forces
     %F=e_beta_matrix.*(ones(2,1)*F_abs);
