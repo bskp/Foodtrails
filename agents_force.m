@@ -39,7 +39,7 @@ function F_tot=agents_force(A,alpha)
     % type            |
 
     
-    global dt v0_alphabeta sigma maps X_goals; % global constants defined in parameters.m
+    global dt v0_alphabeta sigma tau_alpha X_goals; % global constants defined in parameters.m
         
     agent_number=size(A,2);
     
