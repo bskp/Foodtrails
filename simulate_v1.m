@@ -3,7 +3,7 @@
 %% INIT
 parameters();
 load_map();
-global dt agent_number agents_f; %X_goals;
+global dt agent_number agents_f p_gain; %X_goals;
 A=init_agents();
 % A = [150 150 30 10 30 1; 150 150 20 20 35 1; 150 150 20 20 40 1]';
 %     agent_number = 3;
@@ -12,9 +12,10 @@ A=init_agents();
 %% Simulation Loop
 timestep=dt;
 
-my_figure = figure('Position', [20, 100, 600, 600], 'Name','Simulation Plot Window');
+%my_figure = figure('Position', [20, 100, 600, 600], 'Name','Simulation Plot Window');
 
 for stepnumber=1:10000
+%timestep = stepnumber^-.2
 % Calculate the Forces
 % Calculate the resulting velocities ?
 agents_f = zeros(2,agent_number);
@@ -22,9 +23,9 @@ agents_p = zeros(2,agent_number);
 for agentID = 1:size(A,2)
     agents_f(:,agentID) = agents_force(A,agentID);
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
-    A(3:4,agentID) = (5*agents_p(:,agentID)...
+    A(3:4,agentID) = (1*agents_p(:,agentID)...
         +1*agents_f(:,agentID)...
-        +0*.5e2*[(rand(1)-.5);(rand(1)-.5)])...
+        +100*[(rand(1)-.5);(rand(1)-.5)])...
         *timestep;
 
 end
@@ -38,7 +39,7 @@ num_toofast = size(too_fast,2)
 
 % Throttle them to their desired velocity
 A(3:4,too_fast)= A(3:4,too_fast)./([1 1]'*sqrt(A(3,too_fast).^2+A(4,too_fast).^2))...
-    .*[A(5,too_fast); A(5,too_fast)];
+   .*[A(5,too_fast); A(5,too_fast)];
 
 %A(3,too_fast_x) = A(5,too_fast_x).*sign(A(3,too_fast_x));
 %A(4,too_fast_y) = A(5,too_fast_y).*sign(A(4,too_fast_y));
@@ -67,6 +68,6 @@ end
 
 % Draw the the agents
 draw_map_agents;
-
+pause(0.01);
 
 end
