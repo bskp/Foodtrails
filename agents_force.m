@@ -40,7 +40,7 @@ function F_tot=agents_force(A,alpha)
 
     
     global dt v0_alphabeta sigma tau_alpha maps X_goals fields_x fields_y; % global constants defined in parameters.m
-    global A1 A2 B1 B2;
+    global A1 A2 B1 B2 p_gain ddirect_x ddirect_y v0_mean meter;
     agent_number=size(A,2);
     
     % seperate agent alpha from other agents
@@ -61,7 +61,7 @@ function F_tot=agents_force(A,alpha)
     r_alphabeta_matrix(:,null_entries)=rand(2,size(null_entries,2));
     
     % Nur Agents in einem Radius von radius=15 beachten
-    rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>15;
+    rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>1*meter;
     agent_others(:,rausschmeissen) = [];
     r_alphabeta_matrix(:,rausschmeissen) = [];
     agent_number=size(agent_others,2)+1;
@@ -92,8 +92,12 @@ function F_tot=agents_force(A,alpha)
 %     F_abs=v0_alphabeta*...
 %     [ (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*s - 2*x)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - x/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2))
 %     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
-    
-    F_tot = 1/tau_alpha*(-agent_alpha(3:4));
+%     n_alpha = agent(3:4)/norm(agent(3:4);
+%     v0 = (1-n_alpha
+    F_tot = 1/tau_alpha...
+        *(v0_mean*[ddirect_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6));...
+        ddirect_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))]...
+        -agent_alpha(3:4));
 %     for i=1:agent_number-1
 %         s = v_beta_matrix(1,i)*3; r = v_beta_matrix(2,i)*3;
 %         x = r_alphabeta_matrix(1,i); y = r_alphabeta_matrix(2,i);
@@ -102,9 +106,10 @@ function F_tot=agents_force(A,alpha)
 %             (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*r - 2*y)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - y/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2))]...
 %             *v0_alphabeta;
 %     end
-%         
+    
+    
     F_tot = F_tot ...
-        + A2*sum(ones(2,1)*exp(2*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
+        + A2*sum(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
         .*e_beta_matrix,2);
     % vector value of forces
     %F=e_beta_matrix.*(ones(2,1)*F_abs);
