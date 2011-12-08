@@ -55,6 +55,7 @@ A(1, A(1,:)>300 ) = 300;
 
 A(2, A(2,:)<1 ) = 1;
 A(2, A(2,:)>300 ) = 300;
+
 % Find Agents on target areas
 for agentID = 1:size(A,2)
    X = round(A(2, agentID)); Y= round(A(1,agentID));
@@ -63,7 +64,12 @@ for agentID = 1:size(A,2)
        % agent reached his target
        %A(1, agentID) = randi(300,1,1);
        %A(2, agentID) = randi(300,1,1);
-       A=init_agents(agentID,A);
+       
+       if ( A(6, agentID) == 1) % agent past kassa?
+           A = init_agents(agentID,A);
+       else
+           A(6, agentID) = 1; % shoo him to the kassa!
+       end
    end
 end
 

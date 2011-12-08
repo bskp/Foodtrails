@@ -91,9 +91,6 @@ X_mf = 0.001 + X_walls*0.5;
 addpath fm/;
 f = v0_mean / tau_alpha; % see formula (2) in paper
 
-%clear global ddirect*;
-%clear global fields_*;
-
 for i = 1:CC.NumObjects
     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
     [T, Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing

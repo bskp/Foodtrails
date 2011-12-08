@@ -33,11 +33,6 @@ function Anew=init_agents(agentID,A)
     a_num=agent_number;
     if(nargin~=0) % if inputargument given, only one agent
         a_num=1;
-        if(A(6,agentID)~=1)
-            A(6,agentID)=1;
-            Anew = A;
-            return
-        end
     end
     
 
@@ -85,7 +80,7 @@ function Anew=init_agents(agentID,A)
     Anew(6,:)=ones(1,a_num);
     
     
-    if(nargin~=0) 
+    if(nargin~=0)
         A(:,agentID)=Anew;
         Anew=A;
     end
