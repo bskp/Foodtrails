@@ -80,7 +80,7 @@ k_0 = map_y/2;
 g_walls = U_alphaB_0 * exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
 % Convolution
-X_walls_conv = real(ifft2(ifftshift(F_walls .* g_walls))); % cyclic conv.
+X_walls_conv = real(ifft2(ifftshift(F_walls .* g_walls'))); % cyclic conv.
 
 %% Create force fields
 
@@ -90,6 +90,9 @@ X_walls_conv = real(ifft2(ifftshift(F_walls .* g_walls))); % cyclic conv.
 X_mf = 0.001 + X_walls*0.5;
 addpath fm/;
 f = v0_mean / tau_alpha; % see formula (2) in paper
+
+%clear global ddirect*;
+%clear global fields_*;
 
 for i = 1:CC.NumObjects
     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
