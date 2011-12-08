@@ -51,10 +51,10 @@ A(1:2,:)=A(1:2,:)+deltaPos;
 
 % Find Agents that exceed the boundries
 A(1, A(1,:)<1 ) = 1;
-A(1, A(1,:)>300 ) = 300;
+A(1, A(1,:)>map_y ) = map_y;
 
 A(2, A(2,:)<1 ) = 1;
-A(2, A(2,:)>300 ) = 300;
+A(2, A(2,:)>map_x ) = map_x;
 
 % Find Agents on target areas
 for agentID = 1:size(A,2)
