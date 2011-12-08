@@ -2,7 +2,7 @@
 parameters; 
 load_map;
 
-global fields_x fields_y n_goals map_pretty;
+global fields_x fields_y n_goals map_pretty map_x map_y;
 
 %subplot(1,2,1);
 %image(X_gs); axis equal; colormap('bone');

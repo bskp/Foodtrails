@@ -1,13 +1,14 @@
 %% Basic draft of a Simulation
 
 %% INIT
+
+clear all;
+clear global;
+
 parameters();
 load_map();
 global dt agent_number agents_f p_gain; %X_goals;
 A=init_agents();
-% A = [150 150 30 10 30 1; 150 150 20 20 35 1; 150 150 20 20 40 1]';
-%     agent_number = 3;
-
 
 %% Simulation Loop
 timestep=dt;
