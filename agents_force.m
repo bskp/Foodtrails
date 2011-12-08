@@ -74,7 +74,7 @@ function F_tot=agents_force(A,alpha)
     e_beta_matrix=r_alphabeta_matrix./(ones(2,1)*sqrt(sum(r_alphabeta_matrix.^2)));
     
      
-     %calculate smaller semi axis of ellipse 
+    % calculate smaller semi axis of ellipse 
 %     b=(1/2)*sqrt(...  
 %         (...
 %         sqrt(sum(r_alphabeta_matrix.^2))+...
@@ -82,20 +82,22 @@ function F_tot=agents_force(A,alpha)
 %         ).^2-...
 %         (sqrt(sum(v_beta_matrix.^2))*deltat).^2);
 %     
-    
+    %b=sqrt(sum(r_alphabeta_matrix.^2)); %circular potential..
     % absolute value of forces
     
-
+    
+    
+    %F_abs=v0_alphabeta*(-1/sigma).*exp(-b/sigma);
     
 %     F_abs=v0_alphabeta*...
 %     [ (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*s - 2*x)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - x/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2))
 %     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
 %     n_alpha = agent(3:4)/norm(agent(3:4);
 %     v0 = (1-n_alpha
-F_tot = 1/tau_alpha...
-     *(v0_mean*[ddirect_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6));...
-     ddirect_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))]...
-     -agent_alpha(3:4));
+    F_tot = 1/tau_alpha...
+        *(v0_mean*[ddirect_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6));...
+        ddirect_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))]...
+        -agent_alpha(3:4));
 %     for i=1:agent_number-1
 %         s = v_beta_matrix(1,i)*3; r = v_beta_matrix(2,i)*3;
 %         x = r_alphabeta_matrix(1,i); y = r_alphabeta_matrix(2,i);
@@ -103,7 +105,7 @@ F_tot = 1/tau_alpha...
 %             -[ (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*s - 2*x)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - x/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2));...
 %             (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*r - 2*y)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - y/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2))]...
 %             *v0_alphabeta;
-%     endt
+%     end
     
     
     F_tot = F_tot ...
@@ -113,11 +115,7 @@ F_tot = 1/tau_alpha...
     %F=e_beta_matrix.*(ones(2,1)*F_abs);
     
     % sum / superposition over all forces -> one vector force
-    
-        
-
-  
+    %F_tot=sum(F,2);
     %F_tot = [ F_tot(2); F_tot(1) ]; %transponieren
-  
     
 end

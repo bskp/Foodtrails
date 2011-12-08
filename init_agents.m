@@ -33,17 +33,22 @@ function Anew=init_agents(agentID,A)
     a_num=agent_number;
     if(nargin~=0) % if inputargument given, only one agent
         a_num=1;
+        if(A(6,agentID)~=1)
+            A(6,agentID)=1;
+            Anew = A;
+            return
+        end
     end
     
 
+    %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
+    %map(200:250,220:240)=ones(51,21);
     
     map = map_init';
-    %map=ones(300,300);
     %map = ones(300,300);
     % find legal x and y positions on map
     %[row,col,v] = find(X, ...) returns a column or row vector v of the nonzero 
     %entries in X
-   
 
     [row, col, ~]=find(map);
 
@@ -77,10 +82,10 @@ function Anew=init_agents(agentID,A)
     Anew(3:4,:)=agent_speeds;
     Anew(5,:)=v0;
     % Random Goal from 2 until n_goals, the first goal is the cash point
-    Anew(6,:)=ones(1,a_num);
+    Anew(6,:)=randi(n_goals-1,1,a_num)+1;
     
     
-    if(nargin~=0)
+    if(nargin~=0) 
         A(:,agentID)=Anew;
         Anew=A;
     end
