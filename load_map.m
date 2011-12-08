@@ -17,12 +17,12 @@
 
 % The Force field depends on the following globals:
 
-global hue_goal hue_init map_file R v0_mean tau_alpha U_alphaB_0;
+global hue_goal hue_init hue_counter map_file R v0_mean tau_alpha U_alphaB_0;
 
 
 % New globals are created:
 
-global fields_x fields_y ddirect_x ddirect_y n_goals map_init map_pretty X_goals map_x map_y;
+global fields_x fields_y ddirect_x ddirect_y n_goals map_init map_pretty X_goals X_counter n_counters map_x map_y;
 
 %% Read image
 
@@ -44,23 +44,30 @@ X_goal  = X_hsv(:,:,2) > 0.9 ... % sat
         & X_hsv(:,:,1) < hue_goal(1)+hue_goal(2) ... % hue max
         & X_hsv(:,:,1) > hue_goal(1)-hue_goal(2); % hue min
 
-CC = bwconncomp( X_goal );
-clear X_goals;
-for i = 1:CC.NumObjects % for every found component in the goal-layer
-    layer = X_goal*0;
-    layer(CC.PixelIdxList{i}) = 1;
-    X_goals(:,:,i) = layer; % add a layer with it to X_goals
-end
+[X_goals n_goals] = seperateAreas(X_goal);
     
 % Init areas
 X_init  = X_hsv(:,:,2) > 0.9 ... % sat
         & X_hsv(:,:,1) < hue_init(1)+hue_init(2) ... % hue max
         & X_hsv(:,:,1) > hue_init(1)-hue_init(2); % hue min
     
+% Counter areas
+X_counter  = X_hsv(:,:,2) > 0.9 ... % sat
+        & X_hsv(:,:,1) < hue_counter(1)+hue_counter(2) ... % hue max
+        & X_hsv(:,:,1) > hue_counter(1)-hue_counter(2); % hue min
+    
+[X_counters, n_counters] = seperateAreas(X_counter);
 
-% Wall potential: treat init- and goal-areas as free space
+X_counter = X_counter*0; % compose counter-layers to one map
+for i = 1:n_counters
+    X_counter = X_counter + X_counters(:,:,i)*i; % number indicates counter
+end
+
+passes = zeros(n_counters, 1);
+
+% Wall potential: treat init-, counter- and goal-areas as free space
 X_walls = X_gs/255;
-X_walls(X_init | X_goal ) = 1 ; 
+X_walls(X_init | X_goal | X_counter) = 1 ; 
 
 if ( max(max( X_init )) == 0) % if there are no init spots
     X_init = X_hsv(:,:,3) < 1; % use free space as x_init
@@ -91,7 +98,7 @@ X_mf = 0.001 + X_walls*0.5;
 addpath fm/;
 f = v0_mean / tau_alpha; % see formula (2) in paper
 
-for i = 1:CC.NumObjects
+for i = 1:n_goals
     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
     [T, Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
     [ddirect_x(:,:,i), ddirect_y(:,:,i)] = gradient(-T);
@@ -106,4 +113,3 @@ end
 
 % Arrange output
 map_init = X_init;
-n_goals = size(fields_x, 3);

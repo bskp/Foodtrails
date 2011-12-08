@@ -75,6 +75,11 @@ end
 
 % Draw the the agents
 draw_map_agents;
+
+count_passes;
+
+passes
+
 pause(0.01);
 
 end

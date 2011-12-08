@@ -14,6 +14,7 @@ function Anew=init_agents(agentID,A)
     % 4 speed    y      |
     % 5 desired speed v0|
     % 6 type            |
+    % 7 last counter    |
     %
     % PARAMETERS:
     % A                 = agent Matrix
@@ -83,6 +84,7 @@ function Anew=init_agents(agentID,A)
     Anew(5,:)=v0;
     % Random Goal from 2 until n_goals, the first goal is the cash point
     Anew(6,:)=randi(n_goals-1,1,a_num)+1;
+    Anew(7,:) = 0;
     
     
     if(nargin~=0) 

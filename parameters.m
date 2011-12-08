@@ -7,6 +7,7 @@ global ...
     meter...
     hue_goal ...
     hue_init ...
+    hue_counter ...
     map_file ...
     R ... 
     v0_alphabeta ...
@@ -29,12 +30,13 @@ dt = .05;
 video_on = false;
 
 % Map
-meter = 10; % px/m, according to:
-map_file = 'grundrissplan.png'; % Bitmap file for goals and walls
+meter = 20; % px/m, according to:
+map_file = 'testmap_counter.png'; % Bitmap file for goals and walls
 
-% Map colors
-hue_goal = [0.3 0.1]; % Value / Tolerance
-hue_init = [0.0 0.1]; % Value / Tolerance
+% Map colors  % Value / Tolerance
+hue_goal = [0.3 0.1]; % green
+hue_init = [0.0 0.1]; % red
+hue_counter = [0.1 0.1]; % yellow
 
 
 % Boundary potential
