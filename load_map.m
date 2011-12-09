@@ -13,7 +13,7 @@
 % map_x:                1*1, = m
 % map_y:                1*1, = n
 % map_init:             m*n, boolean map with valid start positions
-% ddirect_x, ddirect_y  m*n*n_goals, the desired directions
+% e_alpha_x, e_alpha_y  m*n*n_goals, the desired directions
 
 % The Force field depends on the following globals:
 
@@ -22,7 +22,7 @@ global hue_goal hue_init hue_counter map_file R v0_mean tau_alpha U_alphaB_0;
 
 % New globals are created:
 
-global fields_x fields_y ddirect_x ddirect_y n_goals map_init map_pretty X_goals X_counter n_counters map_x map_y;
+global fields_x fields_y n_goals map_init map_pretty X_goals X_counter n_counters map_x map_y;
 
 %% Read image
 
@@ -103,14 +103,14 @@ f = v0_mean / tau_alpha; % see formula (2) in paper
 for i = 1:n_goals
     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
     [T, Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
-    [ddirect_x(:,:,i), ddirect_y(:,:,i)] = gradient(-T);
-    r = sqrt( ddirect_x(:,:,i).^2 + ddirect_y(:,:,i).^2 );
-    ddirect_x(:,:,i) = ddirect_x(:,:,i)./r;
-    ddirect_y(:,:,i) = ddirect_y(:,:,i)./r;
+    [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T);
+    r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
+    e_alpha_x(:,:,i) = e_alpha_x(:,:,i)./r;
+    e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
     % Now we've got the fields for the desired direction, e_alpha.
     
-    fields_x(:,:,i) =  field_walls_x+f*ddirect_x(:,:,i);
-    fields_y(:,:,i) =  field_walls_y+f*ddirect_y(:,:,i); % Scale & sum fields
+    fields_x(:,:,i) =  field_walls_x + f*e_alpha_x(:,:,i);
+    fields_y(:,:,i) =  field_walls_y + f*e_alpha_y(:,:,i); % Scale & sum fields
 end
 
 % Arrange output
