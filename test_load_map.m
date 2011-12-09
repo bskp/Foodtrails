@@ -1,18 +1,13 @@
 % Which maps shall be drawn?
 
 %draw_these = 1:n_goals; 
-draw_these = 1;
+draw_these = [2 3];
 
 
 parameters; 
 load_map;
 
 global fields_x fields_y n_goals map_pretty map_x map_y;
-
-%subplot(1,2,1);
-%image(X_gs); axis equal; colormap('bone');
-
-%n_goals = size(maps, 3);
 
 n_plots = size(draw_these,2);
 
@@ -24,7 +19,7 @@ for i = draw_these;
     field_x = fields_x(:,:,i);
     field_y = fields_y(:,:,i);
     
-    subplot(1,n_plots,i);
+    subplot(1,n_plots,find(draw_these == i));
     hold on;
     
     image(map_pretty);
