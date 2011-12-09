@@ -8,4 +8,3 @@ function f = potential_force( x, y, goal_layer )
          fields_y(y,x,goal_layer)];
 
 end
-

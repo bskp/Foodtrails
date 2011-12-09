@@ -40,8 +40,8 @@ hue_counter = [0.1 0.1]; % yellow
 
 
 % Boundary potential
-R = 0.2 * meter; % m, according to paper
-U_alphaB_0 = 10 * meter^2; % m^2/s^2, max. boundary potential
+R = 0.1 * meter; % m, according to paper
+U_alphaB_0 = 5 * meter^2; % m^2/s^2, max. boundary potential
 
 % Agents
 v0_alphabeta = 2.1*meter^2 * 10; % m^2/s^2, max. agent potential
