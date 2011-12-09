@@ -3,7 +3,7 @@ function [areas, n] = seperateAreas( pattern )
 %   Detailed explanation goes here
 
     CC = bwconncomp( pattern );
-    
+    areas = [];
     n = CC.NumObjects;
     
     for i = 1:n % for every found component in the goal-layer

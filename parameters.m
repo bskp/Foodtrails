@@ -25,13 +25,13 @@ global ...
 
 % General
 
-agent_number = 200;
+agent_number = 50;
 dt = .05;
 video_on = false;
 
 % Map
-meter = 20; % px/m, according to:
-map_file = 'testmap_counter.png'; % Bitmap file for goals and walls
+meter = 10; % px/m, according to:
+map_file = 'grundrissplan.png'; % Bitmap file for goals and walls
 
 % Map colors  % Value / Tolerance
 hue_goal = [0.3 0.1]; % green

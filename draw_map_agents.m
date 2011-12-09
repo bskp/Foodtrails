@@ -24,7 +24,7 @@ global map_pretty fields_x fields_y sigma ddirect_x ddirect_y;
     %quiver(A(1,:),A(2,:),agents_p(1,:),agents_p(2,:));
 %     plot(A(1,:),A(2,:),'o','MarkerSize',sigma,'MarkerFaceColor','y'); %Punkte zeichnen
 %     
-   plot(A(1,A(6,:)==1),A(2,A(6,:)==1),'o','MarkerSize',sigma,'MarkerEdgeColor','y','MarkerFaceColor','y'); %Punkte zeichnen
+   plot(A(1,A(6,:)==1),A(2,A(6,:)==1),'o','MarkerSize',sigma,'MarkerEdgeColor','r','MarkerFaceColor','r'); %Punkte zeichnen
    plot(A(1,A(6,:)~=1),A(2,A(6,:)~=1),'o','MarkerSize',sigma,'MarkerFaceColor','b'); %Punkte zeichnen
 %     plot(A(1,A(6,:)==3),A(2,A(6,:)==3),'o','MarkerSize',sigma,'MarkerFaceColor','b'); %Punkte zeichnen
 %    
