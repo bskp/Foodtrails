@@ -16,8 +16,10 @@ global map_pretty fields_x fields_y sigma ddirect_x ddirect_y;
     
     % draw vector field
     draw_field = 1;
-    %quiver(1:10:300, 1:10:300, ddirect_x(1:10:300,1:10:300,draw_field), ...
-               %                ddirect_y(1:10:300,1:10:300,draw_field),'Color',[.5,.5,.5]);
+%     quiver(ddirect_x(:,:,draw_field), ...
+%                                ddirect_y(:,:,draw_field),'Color',[.5,.5,.5]);
+    quiver(fields_x(:,:,draw_field), ...
+                               fields_y(:,:,draw_field),'Color',[.5,.5,.5]);
     
     %quiver(A(1,:),A(2,:),A(3,:),A(4,:),0,'g');    %Pfeile zeichnen
     %quiver(A(1,:),A(2,:),agents_f(1,:)/1e2,agents_f(2,:)/1e2,0,'r');

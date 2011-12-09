@@ -107,8 +107,8 @@ for i = 1:n_goals
     ddirect_y(:,:,i) = ddirect_y(:,:,i)./r;
     % Now we've got the fields for the desired direction, e_alpha.
     
-    fields_x(:,:,i) =  field_walls_x;
-    fields_y(:,:,i) =  field_walls_y; % Scale & sum fields
+    fields_x(:,:,i) =  field_walls_x+f*ddirect_x(:,:,i);
+    fields_y(:,:,i) =  field_walls_y+f*ddirect_y(:,:,i); % Scale & sum fields
 end
 
 % Arrange output
