@@ -107,8 +107,24 @@ function F_tot=agents_force(A,alpha)
 %             *v0_alphabeta;
 %     end
     
+    % following makes sure agents behind me don't matter as much:
+    % angle=acos(vec(a)*vec(b)/(abs(vec(a)*abs(vec(b)))
+    % a= agent alpha direction (e_alpha)
+    % b= from beta to alpha direction (r_alphabeta_matrix)
+
+    e=e_alpha;
+    r=r_alphabeta_matrix;
+    cosangle=(e'*r)./(sqrt(sum(r.^2)));
+    lambda=0.75;
+    l=size(r,2);
     
+    angle_terms=ones(2,1)*((ones(1,l)*lambda)+((1-lambda)/2).*(ones(1,l)*1+cosangle))...   
+                .*(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)...
+                -sum(r_alphabeta_matrix.^2)/B1))...
+                .*e_beta_matrix; 
+
     F_tot = F_tot ...
+        + A1*sum(angle_terms,2)...
         + A2*sum(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
         .*e_beta_matrix,2);
     % vector value of forces
