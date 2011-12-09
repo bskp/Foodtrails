@@ -80,6 +80,10 @@ count_passes;
 
 passes
 
+if (mod(stepnumber, 20) == 0)
+    refresh_fields;
+end
+
 pause(0.01);
 
 end
