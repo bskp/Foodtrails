@@ -1,24 +1,35 @@
+% Which maps shall be drawn?
+
+%draw_these = 1:n_goals;
+draw_these = 1;
+
 
 parameters; 
 load_map;
 
-global ddirect_x ddirect_y fields_x fields_y n_goals map_pretty map_x map_y;
+global fields_x fields_y n_goals map_pretty map_x map_y;
 
 %subplot(1,2,1);
 %image(X_gs); axis equal; colormap('bone');
 
 %n_goals = size(maps, 3);
 
-for i = 1:n_goals
-    field_x = ddirect_x(:,:,i);
-    field_y = ddirect_y(:,:,i);
+n_plots = size(draw_these,2);
+
+space_x = floor(linspace(1,map_x, 50));
+space_y = floor(linspace(1,map_y, 50));
+
+for i = draw_these;
     
-    subplot(1,n_goals,i);
+    field_x = fields_x(:,:,i);
+    field_y = fields_y(:,:,i);
+    
+    subplot(1,n_plots,i);
     hold on;
     
     %surf( -maps(:,:,i), r,'LineStyle','none'); colormap('bone');
     image(map_pretty);
-    quiver(1:10:300, 1:10:300, field_x(1:10:300,1:10:300), ...
-                               field_y(1:10:300,1:10:300));
+    quiver(space_y, space_x, ...
+           field_x(space_x, space_y), field_y(space_x, space_y));
     
 end
