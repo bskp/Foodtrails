@@ -17,7 +17,7 @@
 
 % The Force field depends on the following globals:
 
-global hue_goal hue_init hue_counter map_file R v0_mean tau_alpha U_alphaB_0;
+global hue_goal hue_init hue_counter wall_th map_file R v0_mean tau_alpha U_alphaB_0;
 
 
 % New globals are created:
@@ -66,8 +66,10 @@ end
 passes = zeros(n_counters, 1);
 
 % Wall potential: treat init-, counter- and goal-areas as free space
+% and grey drawings too;
+
 X_walls = X_gs/255;
-X_walls(X_init | X_goal | X_counter) = 1 ; 
+X_walls(X_init | X_goal | X_counter | X_walls > 1-wall_th) = 1 ; 
 
 if ( max(max( X_init )) == 0) % if there are no init spots
     X_init = X_hsv(:,:,3) < 1; % use free space as x_init

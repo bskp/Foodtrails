@@ -1,7 +1,7 @@
 % Which maps shall be drawn?
 
 %draw_these = 1:n_goals; 
-draw_these = [2 3];
+draw_these = [1];
 
 
 parameters; 
