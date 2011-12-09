@@ -86,10 +86,10 @@ k_0 = map_y/2;
 
 g_walls = U_alphaB_0 * exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
-g_walls = fftshift(fft2(g_walls));
+g_walls = fftshift(fft2(g_walls))';
 
 % Convolution
-X_walls_conv = fftshift(real(ifft2(ifftshift(F_walls .* g_walls')))); % cyclic conv.
+X_walls_conv = fftshift(real(ifft2(ifftshift(F_walls .* g_walls)))); % cyclic conv.
 
 %% Create force fields
 
@@ -105,6 +105,9 @@ for i = 1:n_goals
     [T, Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
     [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T);
     r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
+    
+    r( r==0) = inf;
+    
     e_alpha_x(:,:,i) = e_alpha_x(:,:,i)./r;
     e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
     % Now we've got the fields for the desired direction, e_alpha.
