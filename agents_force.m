@@ -61,7 +61,7 @@ function F_tot=agents_force(A,alpha)
     r_alphabeta_matrix(:,null_entries)=rand(2,size(null_entries,2));
     
     % Nur Agents in einem Radius von radius=15 beachten
-    rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>1*meter;
+    rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>.7*meter;
     agent_others(:,rausschmeissen) = [];
     r_alphabeta_matrix(:,rausschmeissen) = [];
     agent_number=size(agent_others,2)+1;
@@ -101,13 +101,13 @@ function F_tot=agents_force(A,alpha)
     
     closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_others(6,:)==agent_alpha(6))));
     if(size(closer_agents,2)>0&&agent_alpha(6)~=1)
-        [C,I] = min (closer_agents(3,:));
+        [C,I] = max (closer_agents(3,:));
         closest_agent = closer_agents(1:2,I);
-        d_direction = closest_agent/norm(closest_agent,2);
+        d_direction = d_direction*.2+0.8*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
     end
    
     F_tot = 1/tau_alpha*(...
-        v0_mean*d_direction...
+        v0_mean*d_direction*(1+3*(agent_alpha(6)==1))...
         -agent_alpha(3:4)...
         );
 %       
@@ -132,13 +132,13 @@ function F_tot=agents_force(A,alpha)
     l=size(r,2);
     
     angle_terms=ones(2,1)*((ones(1,l)*lambda)+((1-lambda)/2).*(ones(1,l)*1+cosangle))...   
-                .*(ones(2,1)*exp((2+1*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)...
+                .*(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)...
                 -sum(r_alphabeta_matrix.^2)/B1))...
                 .*e_beta_matrix; 
 
     F_tot = F_tot ...
         + A1*sum(angle_terms,2)...
-        + A2*sum(ones(2,1)*exp((2+1*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
+        + A2*sum(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
         .*e_beta_matrix,2);
     % vector value of forces
     %F=e_beta_matrix.*(ones(2,1)*F_abs);

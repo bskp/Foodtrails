@@ -31,7 +31,7 @@ dt = .1;
 video_on = false;
 
 % Map
-meter = 8; % px/m, according to:
+meter = 12; % px/m, according to:
 map_file = 'grundrissplan2.png'; % Bitmap file for goals and walls
 
 % Map colors  % Value / Tolerance
@@ -54,7 +54,7 @@ v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
 tau_alpha = .3; % s, "relaxation time"
 sqrt_theta = 0.26*meter; % m/s standard deviation of gaussian distributed v0_mean
 
-A1 = 0*meter;
-B1 = 1*meter;
+A1 = 3*meter;
+B1 = 0.2*meter;
 A2 = 3*meter; % m/s^2
 B2 = 0.2*meter; % m
