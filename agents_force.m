@@ -40,7 +40,7 @@ function F_tot=agents_force(A,alpha)
 
     
     global dt v0_alphabeta sigma tau_alpha maps X_goals fields_x fields_y; % global constants defined in parameters.m
-    global A1 A2 B1 B2 p_gain ddirect_x ddirect_y v0_mean meter;
+    global A1 A2 B1 B2 p_gain e_alpha_x e_alpha_y v0_mean meter T;
     agent_number=size(A,2);
     
     % seperate agent alpha from other agents
@@ -94,9 +94,22 @@ function F_tot=agents_force(A,alpha)
 %     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
 %     n_alpha = agent(3:4)/norm(agent(3:4);
 %     v0 = (1-n_alpha
-    F_tot = 1/tau_alpha*(-agent_alpha(3:4));
-%         *(v0_mean*[ddirect_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6));...
-%         ddirect_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))]...
+    
+    % Desired Direction
+    d_direction = [e_alpha_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6));...
+        e_alpha_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))];
+    
+    closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_others(6,:)==agent_alpha(6))));
+    if(size(closer_agents,2)>0&&agent_alpha(6)~=1)
+        [C,I] = min (closer_agents(3,:));
+        closest_agent = closer_agents(1:2,I);
+        d_direction = closest_agent/norm(closest_agent,2);
+    end
+   
+    F_tot = 1/tau_alpha*(...
+        v0_mean*d_direction...
+        -agent_alpha(3:4)...
+        );
 %       
 %     for i=1:agent_number-1
 %         s = v_beta_matrix(1,i)*3; r = v_beta_matrix(2,i)*3;
@@ -111,7 +124,7 @@ function F_tot=agents_force(A,alpha)
     % angle=acos(vec(a)*vec(b)/(abs(vec(a)*abs(vec(b)))
     % a= agent alpha direction (e_alpha)
     % b= from beta to alpha direction (r_alphabeta_matrix)
-
+    
     e=e_alpha;
     r=r_alphabeta_matrix;
     cosangle=(e'*r)./(sqrt(sum(r.^2)));
@@ -119,13 +132,13 @@ function F_tot=agents_force(A,alpha)
     l=size(r,2);
     
     angle_terms=ones(2,1)*((ones(1,l)*lambda)+((1-lambda)/2).*(ones(1,l)*1+cosangle))...   
-                .*(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)...
+                .*(ones(2,1)*exp((2+1*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)...
                 -sum(r_alphabeta_matrix.^2)/B1))...
                 .*e_beta_matrix; 
 
     F_tot = F_tot ...
         + A1*sum(angle_terms,2)...
-        + A2*sum(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
+        + A2*sum(ones(2,1)*exp((2+1*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
         .*e_beta_matrix,2);
     % vector value of forces
     %F=e_beta_matrix.*(ones(2,1)*F_abs);

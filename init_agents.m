@@ -43,7 +43,7 @@ function Anew=init_agents(agentID,A)
     
     map = map_init';
     %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
-    map(120:220,120:240)=ones(101,121);
+    map(140:175,150:300)=1;
     
     
     %map = ones(300,300);
@@ -70,7 +70,7 @@ function Anew=init_agents(agentID,A)
     v0=normrnd(v0_mean,sqrt_theta,1,a_num); 
 
     %random unit direction
-
+    
     agent_directions=[sin(rand(1,a_num)*2*pi);cos(rand(1,a_num)*2*pi)];
 
     % adding speeds to A
@@ -84,8 +84,8 @@ function Anew=init_agents(agentID,A)
     Anew(5,:)=v0;
     % Random Goal from 2 until n_goals, the first goal is the cash point
     Anew(6,:)=randi(n_goals-1,1,a_num)+1;
-    Anew(7,:) = 0;
-    
+    Anew(7,:) = 0; %Counter
+    Anew(8,:) = Inf; %Expected time till goal (from fast marching)
     
     if(nargin~=0) 
         A(:,agentID)=Anew;

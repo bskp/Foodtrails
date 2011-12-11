@@ -22,6 +22,7 @@ for stepnumber=1:10000
 agents_f = zeros(2,agent_number);
 agents_p = zeros(2,agent_number);
 for agentID = 1:size(A,2)
+    A(8,agentID) = T(round(A(2,agentID)),round(A(1,agentID)),A(6,agentID));
     agents_f(:,agentID) = agents_force(A,agentID);
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
     A(3:4,agentID) = (1*agents_p(:,agentID)...
@@ -34,7 +35,7 @@ end
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
 nan = (isnan(A(3,:))|isnan(A(4,:)));
 A(3,nan) = 0; A(4,nan) = 0;
-num_toofast = size(too_fast,2)
+num_toofast = size(too_fast,2);
 %too_fast_x=find(abs(A(3,:))>A(5,:));
 %too_fast_y=find(abs(A(4,:))>A(5,:));
 

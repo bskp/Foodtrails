@@ -22,8 +22,7 @@ global hue_goal hue_init hue_counter wall_th map_file R v0_mean tau_alpha U_alph
 
 % New globals are created:
 
-global fields_x fields_y n_goals map_init map_pretty X_goals X_counter n_counters map_x map_y;
-
+global fields_x fields_y n_goals map_init map_pretty X_goals X_counter n_counters map_x map_y e_alpha_x e_alpha_y T;
 %% Read image
 
 X = imread(['maps/' map_file ]);
@@ -104,8 +103,8 @@ f = v0_mean / tau_alpha; % see formula (2) in paper
 
 for i = 1:n_goals
     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
-    [T, Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
-    [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T);
+    [T(:,:,i), Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
+    [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T(:,:,i));
     r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
     
     r( r==0) = inf;
@@ -114,8 +113,8 @@ for i = 1:n_goals
     e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
     % Now we've got the fields for the desired direction, e_alpha.
     
-    fields_x(:,:,i) =  field_walls_x + f*e_alpha_x(:,:,i);
-    fields_y(:,:,i) =  field_walls_y + f*e_alpha_y(:,:,i); % Scale & sum fields
+    fields_x(:,:,i) =  field_walls_x;% + f*e_alpha_x(:,:,i);
+    fields_y(:,:,i) =  field_walls_y;% + f*e_alpha_y(:,:,i); % Scale & sum fields
 end
 
 % Arrange output
