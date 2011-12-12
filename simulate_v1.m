@@ -7,15 +7,21 @@ clear global;
 
 parameters();
 load_map();
-global dt agent_number agents_f p_gain; %X_goals;
+global dt agent_number statistic agents_f p_gain; %X_goals;
 A=init_agents();
+
+%% STATISTICS
+
+n_through = 0;
+cpu_a = 0;
+
 
 %% Simulation Loop
 timestep=dt;
 
 %my_figure = figure('Position', [20, 100, 600, 600], 'Name','Simulation Plot Window');
 
-for stepnumber=1:10000
+for stepnumber=1:100000
 %timestep = stepnumber^-.2
 % Calculate the Forces
 % Calculate the resulting velocities ?
@@ -34,7 +40,7 @@ end
 too_fast=find(sqrt(A(3,:).^2+A(4,:).^2)>A(5,:));
 nan = (isnan(A(3,:))|isnan(A(4,:)));
 A(3,nan) = 0; A(4,nan) = 0;
-num_toofast = size(too_fast,2)
+num_toofast = size(too_fast,2);
 %too_fast_x=find(abs(A(3,:))>A(5,:));
 %too_fast_y=find(abs(A(4,:))>A(5,:));
 
@@ -67,6 +73,7 @@ for agentID = 1:size(A,2)
        
        if ( A(6, agentID) == 1) % agent past kassa?
            A = init_agents(agentID,A);
+           n_through = n_through + 1;
        else
            A(6, agentID) = 1; % shoo him to the kassa!
        end
@@ -74,11 +81,16 @@ for agentID = 1:size(A,2)
 end
 
 % Draw the the agents
-draw_map_agents;
 
 count_passes;
 
-passes
+fps = 1/(cputime - cpu_a);
+cpu_a = cputime;
+
+statistic = {'Durchgänge:',[passes], '', 'Zu schnell:', num_toofast,...
+             'Gefüttert:', n_through, 'fps', fps };
+
+draw_map_agents;
 
 pause(0.01);
 

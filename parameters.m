@@ -43,7 +43,7 @@ wall_th = 0.2; % less than 20% grey is ignored and counts as free space
 
 
 % Boundary potential
-R = 0.1 * meter; % m, according to paper
+R = 0.05 * meter; % m, according to paper
 U_alphaB_0 = 5 * meter^2; % m^2/s^2, max. boundary potential
 
 % Agents
