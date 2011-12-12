@@ -98,6 +98,7 @@ F_walls = fftshift(fft2(X_walls));
 l_0 = map_x/2;
 k_0 = map_y/2;
 
+g_walls = exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
 g_walls = repmat(fftshift(fft2(g_walls))', [1 1 n_goals]);
 
@@ -120,10 +121,9 @@ f = v0_mean / tau_alpha; % see formula (2) in paper
 
 for i = 1:n_goals
     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
-    [T(:,:,i), Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
+    [T(:,:,i), Y] = msfm(X_fm(:,:,i), [t_x t_y]'); % Do the fast marching thing
     [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T(:,:,i));
-    [T, Y] = msfm(X_fm(:,:,i), [t_x t_y]'); % Do the fast marching thing
-    [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T);
+    
     r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
     
     r( r==0) = inf;
@@ -132,8 +132,8 @@ for i = 1:n_goals
     e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
     % Now we've got the fields for the desired direction, e_alpha.
     
-    fields_x(:,:,i) =  field_walls_x;% + f*e_alpha_x(:,:,i);
-    fields_y(:,:,i) =  field_walls_y;% + f*e_alpha_y(:,:,i); % Scale & sum fields
+    fields_x(:,:,i) =  fields_walls_x(:,:,i);% + f*e_alpha_x(:,:,i);
+    fields_y(:,:,i) =  fields_walls_y(:,:,i);% + f*e_alpha_y(:,:,i); % Scale & sum fields
 end
 
 % Arrange output
