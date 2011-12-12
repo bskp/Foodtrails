@@ -100,7 +100,7 @@ function F_tot=agents_force(A,alpha)
         e_alpha_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))];
     
     closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_others(6,:)==agent_alpha(6))));
-    if(size(closer_agents,2)>0&&agent_alpha(6)~=1)
+    if(size(closer_agents,2)>0)%&&agent_alpha(6)~=1)
         [C,I] = max (closer_agents(3,:));
         closest_agent = closer_agents(1:2,I);
         d_direction = d_direction*.2+0.8*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);

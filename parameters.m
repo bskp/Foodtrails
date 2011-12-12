@@ -56,5 +56,5 @@ sqrt_theta = 0.26*meter; % m/s standard deviation of gaussian distributed v0_mea
 
 A1 = 3*meter;
 B1 = 0.2*meter;
-A2 = 3*meter; % m/s^2
+A2 = 0*meter; % m/s^2
 B2 = 0.2*meter; % m
