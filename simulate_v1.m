@@ -80,7 +80,7 @@ count_passes;
 
 passes
 
-if (mod(stepnumber, 50) == 0)
+if (mod(stepnumber, 20) == 0)
     refresh_fields;
 end
 

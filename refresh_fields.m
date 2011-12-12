@@ -1,3 +1,5 @@
+
+global X_fm e_alpha_x e_alpha_y;
 % Fast marching algorithm
 X_fm = 0.00001 + X_walls*0.9;
 
@@ -5,7 +7,7 @@ X_people = 0*X_walls;
 a_pos = round(A(2,:)) + map_x * round(A(1,:)); % liste der pixel der a.
 X_people( a_pos ) = 1;
 
-R_p = 10* R;
+R_p = 5 * R;
 
 g_people = exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R_p );
 
