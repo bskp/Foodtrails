@@ -43,7 +43,7 @@ function Anew=init_agents(agentID,A)
     
     map = map_init';
     %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
-    map(120:220,120:240)=ones(101,121);
+    %map(120:220,120:240)=ones(101,121);
     
     
     %map = ones(300,300);
