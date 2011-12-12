@@ -42,7 +42,6 @@ function Anew=init_agents(agentID,A)
     end
     
     map = map_init';
-    %map=zeros(300,300); % NEEDS TO BE REPLACED BY LOADED MAP !
     map(140:175,200:300)=1;
     
     
