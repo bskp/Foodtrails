@@ -10,6 +10,9 @@ load_map();
 global dt agent_number statistic agents_f p_gain; %X_goals;
 A=init_agents();
 
+vidObj= VideoWriter('video.avi');
+open(vidObj);
+
 %% STATISTICS
 
 n_through = 0;
@@ -21,7 +24,7 @@ timestep=dt;
 
 %my_figure = figure('Position', [20, 100, 600, 600], 'Name','Simulation Plot Window');
 
-for stepnumber=1:100000
+for stepnumber=1:1000
 %timestep = stepnumber^-.2
 % Calculate the Forces
 % Calculate the resulting velocities ?
@@ -33,7 +36,7 @@ for agentID = 1:size(A,2)
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
     A(3:4,agentID) = (agents_p(:,agentID)...
         +1*agents_f(:,agentID)...
-        +10*[(rand(1)-.5);(rand(1)-.5)])...
+        +100*[(rand(1)-.5);(rand(1)-.5)])...
         *timestep;
 
 end
@@ -88,15 +91,33 @@ count_passes;
 fps = 1/(cputime - cpu_a);
 cpu_a = cputime;
 
-statistic = {'Durchgänge:',[passes], '', 'Zu schnell:', num_toofast,...
-             'Gefüttert:', n_through, 'fps', fps };
+statistic = {'Durchgaenge:',[passes], '', 'Zu schnell:', num_toofast,...
+             'Gefuettert:', n_through, 'fps', fps };
 
-draw_map_agents;
+% draw
 
-if (mod(stepnumber, 30) == 0)
-    refresh_fields;
-end
+clf();
+
+
+imagesc( map_pretty );        %Hintergrundbild laden
+colormap('bone');
+hold on;
+ draw_field = 1;
+plot(A(1,A(6,:)==1),A(2,A(6,:)==1),'o','MarkerSize',sigma,'MarkerEdgeColor','r','MarkerFaceColor','r'); %Punkte zeichnen
+plot(A(1,A(6,:)~=1),A(2,A(6,:)~=1),'o','MarkerSize',sigma,'MarkerFaceColor','b'); %Punkte zeichnen
+axis image;
+
+annotation(figure(1),'textbox',...
+    [0 0 0.245428571428571 0.395238095238098],...
+    'String', statistic ,...
+    'FitBoxToText','off');
+   
 
 pause(0.01);
 
+currentFrame=getframe;
+writeVideo(vidObj,currentFrame);
+
 end
+
+close(vidObj);

@@ -98,12 +98,12 @@ F_walls = fftshift(fft2(X_walls));
 l_0 = map_x/2;
 k_0 = map_y/2;
 
-g_walls = exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
+g_walls = U_alphaB_0 * exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
 g_walls = repmat(fftshift(fft2(g_walls))', [1 1 n_goals]);
 
 % Convolution
-X_walls_conv = U_alphaB_0 * fftshift(real(ifft2(ifftshift(F_walls .* g_walls)))); % cyclic conv.
+X_walls_conv = fftshift(real(ifft2(ifftshift(F_walls .* g_walls)))); % cyclic conv.
 
 X_walls_conv = ifftshift( X_walls_conv, 3 ); %swap along third dimension, too
 
