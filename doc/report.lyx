@@ -835,7 +835,7 @@ calculate destination force
 
 \begin_layout Plain Layout
 
-	calculate shortest path and convlute 
+	calculate shortest path and convolute 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1541,24 +1541,62 @@ reference "Formel e_alpha"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Subsubsection
+Agent forces
+\end_layout
+
+\begin_layout Subsection
+Etiquette training for ruthless agents (queueing heuristics)
+\end_layout
+
+\begin_layout Standard
+We made different attempts to improve the agent-flow through the mensa.
+ Since the agents don't take the crowd into account for their route-planing
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
+ja wer weiss, vielleicht ja doch noch
+\end_layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-ui, der zweite term ist glaub ich noch nirgends
+\end_inset
+
+, even simple corrections far from queueing reduce the hungry agents passing
+ through time.
+\end_layout
+
+\begin_layout Paragraph
+Emerging and vanishing walls
+\end_layout
+
+\begin_layout Standard
+Instead of only drawing target areas on the map (green), we implemented
+ support for target-specific walls (dark green) that impact only agents
+ with the neighbouring target area.
+ These additional wall potentials force waiting people in to a 
+\begin_inset Quotes eld
+\end_inset
+
+waiting-area
+\begin_inset Quotes erd
+\end_inset
+
+, which allows served agents to leave quicker.
+\end_layout
+
+\begin_layout Paragraph
+Real-time fast marching 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+vielleicht kommt dies schon ins reguläre Programm
 \end_layout
 
 \end_inset
@@ -1566,8 +1604,8 @@ ui, der zweite term ist glaub ich noch nirgends
 
 \end_layout
 
-\begin_layout Subsubsection
-Agent forces
+\begin_layout Paragraph
+Queue sensing agents
 \end_layout
 
 \begin_layout Subsection
