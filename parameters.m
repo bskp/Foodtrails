@@ -31,8 +31,8 @@ dt = .1;
 video_on = false;
 
 % Map
-meter = 12; % px/m, according to:
-map_file = 'grundrissplan2.png'; % Bitmap file for goals and walls
+meter = 10; % px/m, according to:
+map_file = 'grundrissplan3.png'; % Bitmap file for goals and walls
 
 % Map colors  % Value / Tolerance
 hue_goal = [0.3 0.1]; % green
@@ -43,7 +43,7 @@ wall_th = 0.2; % less than 20% grey is ignored and counts as free space
 
 
 % Boundary potential
-R = 0.1 * meter; % m, according to paper
+R = 0.05 * meter; % m, according to paper
 U_alphaB_0 = 5 * meter^2; % m^2/s^2, max. boundary potential
 
 % Agents

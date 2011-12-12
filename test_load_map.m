@@ -1,7 +1,7 @@
 % Which maps shall be drawn?
 
 %draw_these = 1:n_goals; 
-draw_these = [1] ;
+draw_these = [3 4];
 
 
 parameters; 
@@ -25,5 +25,6 @@ for i = draw_these;
     image(map_pretty);
     quiver(space_y, space_x, ...
            e_alpha_x(space_x, space_y), e_alpha_y(space_x, space_y));
+           field_x(space_x, space_y), field_y(space_x, space_y));
     
 end

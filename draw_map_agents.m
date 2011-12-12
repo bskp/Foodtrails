@@ -4,7 +4,7 @@
 % figure(my_figure);
 clf()
 
-global map_pretty fields_x fields_y sigma ddirect_x ddirect_y;
+global map_pretty fields_x fields_y sigma statistic ddirect_x ddirect_y;
 % 
 % 
 % 
@@ -28,5 +28,13 @@ global map_pretty fields_x fields_y sigma ddirect_x ddirect_y;
 %     
    plot(A(1,A(6,:)==1),A(2,A(6,:)==1),'o','MarkerSize',sigma,'MarkerEdgeColor','r','MarkerFaceColor','r'); %Punkte zeichnen
    plot(A(1,A(6,:)~=1),A(2,A(6,:)~=1),'o','MarkerSize',sigma,'MarkerFaceColor','b'); %Punkte zeichnen
+   axis image;
+   
+   annotation(figure(1),'textbox',...
+    [0 0 0.245428571428571 0.395238095238098],...
+    'String', statistic ,...
+    'FitBoxToText','off');
+   
+   
 %     plot(A(1,A(6,:)==3),A(2,A(6,:)==3),'o','MarkerSize',sigma,'MarkerFaceColor','b'); %Punkte zeichnen
 %    
