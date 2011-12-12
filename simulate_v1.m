@@ -35,11 +35,13 @@ for stepnumber=1:duration
 agents_f = zeros(2,agent_number);
 agents_p = zeros(2,agent_number);
 for agentID = 1:size(A,2)
+    A(8,agentID) = T(round(A(2,agentID)),round(A(1,agentID)),A(6,agentID));
+    agents_f(:,agentID) = agents_force(A,agentID);
     [agents_f(:,agentID), nb] = agents_force(A,agentID);
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
     A(3:4,agentID) = (agents_p(:,agentID)...
         +1*agents_f(:,agentID)...
-        +100*[(rand(1)-.5);(rand(1)-.5)])...
+        +1000*[(rand(1)-.5);(rand(1)-.5)])...
         *timestep;
     if (log_on) % record density around agent
         A_stat(2, agentID, stepnumber) = nb; 
