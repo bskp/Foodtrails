@@ -111,7 +111,8 @@ fps = 1/(cputime - cpu_a);
 cpu_a = cputime;
 
 statistic = {'Durchgaenge:',[passes], '', 'Zu schnell:', num_toofast,...
-             'Gefuettert:', n_through, 'fps', fps };
+             'Gefuettert:', n_through, 'fps', fps,...
+             'Frame', stepnumber };
 
 % draw
 
