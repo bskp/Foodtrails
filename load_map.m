@@ -42,10 +42,21 @@ map_pretty = X; %X_gs;
 % Detect goals
 X_goal  = X_hsv(:,:,2) > 0.9 ... % sat
         & X_hsv(:,:,1) < hue_goal(1)+hue_goal(2) ... % hue max
-        & X_hsv(:,:,1) > hue_goal(1)-hue_goal(2); % hue min
+        & X_hsv(:,:,1) > hue_goal(1)-hue_goal(2)... % hue min
+        & X_hsv(:,:,3) > 0.5; % brightness min
 
 [X_goals n_goals] = seperateAreas(X_goal);
-    
+
+% Detect goal-boundaries
+X_goal_bd  = X_hsv(:,:,2) > 0.9 ... % sat
+           & X_hsv(:,:,1) < hue_goal(1)+hue_goal(2) ... % hue max
+           & X_hsv(:,:,1) > hue_goal(1)-hue_goal(2); % hue min
+       
+[X_goals_bd n_goals_bd] = seperateAreas(X_goal_bd); % seperate
+X_goals_bd( X_goals == 1 ) = 0; % remove actual goal areas
+% why is this done this way? it ensures (hopefully) matching enumeration for
+% the goals an their corresponding boundaries.
+
 % Init areas
 X_init  = X_hsv(:,:,2) > 0.9 ... % sat
         & X_hsv(:,:,1) < hue_init(1)+hue_init(2) ... % hue max
@@ -67,14 +78,16 @@ passes = zeros(n_counters, 1);
 
 % Wall potential: treat init-, counter- and goal-areas as free space
 % and grey drawings too;
+% and goal-specific walls too;
 
 X_walls = X_gs/255;
-X_walls(X_init | X_goal | X_counter | X_walls > 1-wall_th) = 1 ; 
+X_walls(X_init | X_goal | X_counter | X_walls > 1-wall_th | X_goal_bd) = 1 ; 
 
 if ( max(max( X_init )) == 0) % if there are no init spots
     X_init = X_hsv(:,:,3) < 1; % use free space as x_init
 end
 
+X_walls = repmat(X_walls, [1 1 n_goals]) - X_goals_bd;
 
 %% Calculate filter and convolution
 
@@ -88,23 +101,28 @@ k_0 = map_y/2;
 
 g_walls = U_alphaB_0 * exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R );
 
-g_walls = fftshift(fft2(g_walls))';
+g_walls = repmat(fftshift(fft2(g_walls))', [1 1 n_goals]);
 
 % Convolution
 X_walls_conv = fftshift(real(ifft2(ifftshift(F_walls .* g_walls)))); % cyclic conv.
 
+X_walls_conv = ifftshift( X_walls_conv, 3 ); %swap along third dimension, too
+
+% Debugger's little helper:
+% image( X_walls_conv(:,:,5) , 'CDataMapping','scaled' ); axis image;
+
 %% Create force fields
 
-[field_walls_x field_walls_y] = gradient(X_walls_conv);
+[fields_walls_x fields_walls_y] = gradient(X_walls_conv);
 
 % Fast marching algorithm
-X_mf = 0.001 + X_walls*0.5;
+X_fm = 0.001 + X_walls*0.5;
 addpath fm/;
 f = v0_mean / tau_alpha; % see formula (2) in paper
 
 for i = 1:n_goals
     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
-    [T, Y] = msfm(X_mf, [t_x t_y]'); % Do the fast marching thing
+    [T, Y] = msfm(X_fm(:,:,i), [t_x t_y]'); % Do the fast marching thing
     [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T);
     r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
     
@@ -114,8 +132,8 @@ for i = 1:n_goals
     e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
     % Now we've got the fields for the desired direction, e_alpha.
     
-    fields_x(:,:,i) =  field_walls_x + f*e_alpha_x(:,:,i);
-    fields_y(:,:,i) =  field_walls_y + f*e_alpha_y(:,:,i); % Scale & sum fields
+    fields_x(:,:,i) =  fields_walls_x(:,:,i) + f*e_alpha_x(:,:,i);
+    fields_y(:,:,i) =  fields_walls_y(:,:,i) + f*e_alpha_y(:,:,i); % Scale & sum fields
 end
 
 % Arrange output
