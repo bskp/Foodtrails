@@ -7,8 +7,13 @@ clear global;
 
 parameters();
 load_map();
+<<<<<<< HEAD
 global dt agent_number statistic agents_f p_gain; %X_goals;
 %A=init_agents();
+=======
+global dt agent_number statistic agents_f p_gain log_on duration; %X_goals;
+A=init_agents();
+>>>>>>> a4b9462369c92eebc5c69add44ba309547731933
 
 vidObj= VideoWriter(['videos/foodtrail ' datestr(now) '.avi']);
 open(vidObj);
@@ -35,7 +40,12 @@ for stepnumber=1:duration
 agents_f = zeros(2,agent_number);
 agents_p = zeros(2,agent_number);
 for agentID = 1:size(A,2)
+<<<<<<< HEAD
+    A(8,agentID) = T(round(A(2,agentID)),round(A(1,agentID)),A(6,agentID));
+    agents_f(:,agentID) = agents_force(A,agentID);
+=======
     [agents_f(:,agentID), nb] = agents_force(A,agentID);
+>>>>>>> a4b9462369c92eebc5c69add44ba309547731933
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
     A(3:4,agentID) = (agents_p(:,agentID)...
         +1*agents_f(:,agentID)...

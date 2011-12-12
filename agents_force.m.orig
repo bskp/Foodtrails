@@ -60,8 +60,13 @@ function [F_tot, agent_number] = agents_force(A,alpha)
     % Replace the entries by random numbers
     r_alphabeta_matrix(:,null_entries)=rand(2,size(null_entries,2));
     
+<<<<<<< HEAD
+    % Nur Agents in einem Radius von radius=15 beachten
+    rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>.7*meter;
+=======
     % Nur Agents in einem Radius von radius=1meter beachten
     rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>1*meter;
+>>>>>>> a4b9462369c92eebc5c69add44ba309547731933
     agent_others(:,rausschmeissen) = [];
     r_alphabeta_matrix(:,rausschmeissen) = [];
     agent_number=size(agent_others,2)+1;
@@ -137,7 +142,6 @@ function [F_tot, agent_number] = agents_force(A,alpha)
                 .*e_beta_matrix; 
 
     F_tot = F_tot ...
-        + A1*sum(angle_terms,2)...
         + A2*sum(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
         .*e_beta_matrix,2);
     % vector value of forces

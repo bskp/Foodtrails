@@ -85,8 +85,14 @@ function Anew=init_agents(agentID,A)
     Anew(5,:)=v0;
     % Random Goal from 2 until n_goals, the first goal is the cash point
     Anew(6,:)=randi(n_goals-1,1,a_num)+1;
+<<<<<<< HEAD
+    Anew(7,:) = 0; %Counter
+    Anew(8,:) = Inf; %Expected time till goal (from fast marching)
+=======
     Anew(7,:) = 0;
     Anew(8,:) = -1;
+    
+>>>>>>> a4b9462369c92eebc5c69add44ba309547731933
     
     if(nargin~=0) 
         A(:,agentID)=Anew;
