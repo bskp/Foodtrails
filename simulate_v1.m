@@ -2,15 +2,15 @@
 
 %% INIT
 
-clear all;
+%clear all;
 clear global;
 
 parameters();
 load_map();
 global dt agent_number statistic agents_f p_gain; %X_goals;
-A=init_agents();
+%A=init_agents();
 
-vidObj= VideoWriter('video.avi');
+vidObj= VideoWriter(['videos/foodtrail ' datestr(now) '.avi']);
 open(vidObj);
 
 %% STATISTICS
@@ -119,5 +119,6 @@ currentFrame=getframe;
 writeVideo(vidObj,currentFrame);
 
 end
+
 
 close(vidObj);
