@@ -1,4 +1,4 @@
-function F_tot=agents_force(A,alpha)
+function [F_tot, agent_number] = agents_force(A,alpha)
     % DISCRIPTION:
     % This function calculates the force caused on the agent in coloumn alpha
     % of matrix A. 
@@ -60,7 +60,7 @@ function F_tot=agents_force(A,alpha)
     % Replace the entries by random numbers
     r_alphabeta_matrix(:,null_entries)=rand(2,size(null_entries,2));
     
-    % Nur Agents in einem Radius von radius=15 beachten
+    % Nur Agents in einem Radius von radius=1meter beachten
     rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>1*meter;
     agent_others(:,rausschmeissen) = [];
     r_alphabeta_matrix(:,rausschmeissen) = [];

@@ -15,6 +15,8 @@ function Anew=init_agents(agentID,A)
     % 5 desired speed v0|
     % 6 type            |
     % 7 last counter    |
+    % 8 red-carpet-time | (indicates the frame when the agent actually
+    %                      left the red area; thus "entered" the mensa)
     %
     % PARAMETERS:
     % A                 = agent Matrix
@@ -85,6 +87,7 @@ function Anew=init_agents(agentID,A)
     % Random Goal from 2 until n_goals, the first goal is the cash point
     Anew(6,:)=randi(n_goals-1,1,a_num)+1;
     Anew(7,:) = 0;
+    Anew(8,:) = -1;
     
     
     if(nargin~=0) 
