@@ -61,23 +61,6 @@
 
 \begin_body
 
-\begin_layout Title
-Lecture with Computer Exercises: Modelling and Simulating Social Systems
- with MATLAB
-\end_layout
-
-\begin_layout Title
-Simulating Crowd Behaviour of the Polymensa
-\end_layout
-
-\begin_layout Author
-Matthias Roggo, Moritz Vifian, Michael Aebli
-\end_layout
-
-\begin_layout Address
-Zürich
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -86,20 +69,265 @@ status open
 
 
 \backslash
-pagebreak
+thispagestyle{empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=5cm]{ETHlogo}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+LARGE{ 	
+\backslash
+
+\backslash
+ Lecture with Computer Exercises:
+\backslash
+
+\backslash
+ } 
+\backslash
+LARGE{ Modelling and Simulating Social Systems with MATLAB
+\backslash
+
+\backslash
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+small{Project Report}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{|c|} 
+\backslash
+hline 
+\backslash
+
+\backslash
+ 
+\backslash
+textbf{
+\backslash
+LARGE{Modelling Crowd Behaviour in the Polymensa}}
+\backslash
+
+\backslash
+ 
+\backslash
+textbf{
+\backslash
+LARGE{Using the Social Force Model}}
+\backslash
+
+\backslash
+ 
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+end{tabular} 
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+LARGE{ 
+\backslash
+
+\backslash
+ Moritz Vivian, Matthias Roggo, Michael Aebli}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+Zurich
+\backslash
+
+\backslash
+ December 2011
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section*
-Declaration of originality
-\end_layout
-
-\begin_layout Standard
-http://www.ethz.ch/faculty/exams/plagiarism/index_EN
 \end_layout
 
 \begin_layout Standard
@@ -126,7 +354,87 @@ Agreement for free-download
 We hereby agree to make our source code of this project freely available
  for download from the web pages of the SOMS chair.
  Furthermore, we assure that all source code is written by ourselves and
- is not violating any copyright restrictions.
+ is not violating any copyright restrictions
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moritz Vivian 
+\begin_inset space \qquad{}
+\end_inset
+
+ 
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+Matthias Roggo
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+ Michael Aebli
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "10em"
+height "1pt"
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+ 
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "10em"
+height "1pt"
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "10em"
+height "1pt"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -146,7 +454,20 @@ pagebreak
 \end_layout
 
 \begin_layout Abstract
-Abstract goes here..
+This report aims to simulate crowd behaviour in the ETHZ polymensa.
+ Being able to realistically simulate crowd 
+\lang british
+behaviour
+\lang english
+ could serve as a useful tool in architectural design in general.
+ Thus the core goal of this report is to find the degree of realism with
+ which crowd behaviour may be simulated.
+ In order to answer this question the Social Force Model was implemented
+ in form of a matlab program.
+ The results of the simulation show patterns in the crowd dynamics which
+ resemble empirical observations.
+ The report concludes that simulations could aid room design by reducing
+ crossing paths of agents and areas of high crowd concentration.
 \end_layout
 
 \begin_layout Standard
@@ -159,6 +480,15 @@ status open
 \backslash
 pagebreak
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -552,7 +882,7 @@ An agent attempts to avoid other agents.
 \end_inset
 
 .
- This potential field has elliptic equipotent lines (See Figure 1).
+ This potential field has elliptic equipotent lines.
  The agent is at the center of the ellipses.
  The semi major axis is aligned parallel to the desired direction of the
  agent.
@@ -567,38 +897,6 @@ An agent attempts to avoid other agents.
 \textrm{ semi Axis: }b= & \frac{1}{2}\sqrt{||\vec{r}_{\alpha\beta}||+||\vec{r}_{\alpha\beta}-v_{\beta}\Delta te_{\beta}||^{2}-(v_{\beta}\Delta t)||}\\
 \text{Force Field: }\vec{f}_{\alpha\beta}(\vec{r}_{\alpha\beta})= & -\nabla_{\vec{r}_{\alpha\beta}}V_{\alpha\beta}\left[b(\vec{r}_{\alpha\beta})\right]
 \end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide true
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename imgs/drawing-1.svg
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 
@@ -761,7 +1059,7 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-The social force model, as described in the previous section, was implimented
+The social force model, as described in the previous section, was implemented
  as described in this section.
  The simulation input consists of a .png image file and a list of global
  parameters.
@@ -774,11 +1072,12 @@ The social force model, as described in the previous section, was implimented
 \end_layout
 
 \begin_layout Subsection
-Pseudocode
+Pseudo-code
 \end_layout
 
 \begin_layout Standard
-The following is a pseudocode of the implentation of the social force model.
+The following is a pseudo code of the implementation of the social force
+ model.
  It gives an overview of the chronology of the matlab program.
 \end_layout
 
@@ -935,6 +1234,10 @@ The values of global parameters (directely related to the social force model)
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
 <features tabularvalignment="middle">
@@ -986,7 +1289,7 @@ Value [
 \begin_layout Plain Layout
 
 \series bold
-Parameter discription
+Parameter description
 \end_layout
 
 \end_inset
@@ -1368,7 +1671,7 @@ An input image (PNG) was used to initialize the destination, starting and
  boundary positions.
  The image was color coded.
  Red pixels were defined as starting positions, green pixels as destinations
- and black pixels as boundries.
+ and black pixels as boundaries.
  
 \begin_inset Quotes eld
 \end_inset
@@ -1377,8 +1680,21 @@ load_map.m
 \begin_inset Quotes erd
 \end_inset
 
- is responsible for importing an image and making it useable.
- 
+ is responsible for importing an image and making it usable.
+ The potential field is generated through the convolution of a 2d potential
+ function (see Section 2) and the black areas of the map which represent
+ walls.
+ The convolution was calculated as a multiplication in the frequency domain
+ via matlab's fast fourier transformation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename imgs/potential.eps
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1386,7 +1702,7 @@ Social Force model algorithm
 \end_layout
 
 \begin_layout Standard
-In order to speed up our simulations, we seperated the effective forces
+In order to speed up our simulations, we separated the effective forces
  on our agents in two groups, being either constant on a given place or
  depending on all other agents positions.
 \end_layout
@@ -1614,6 +1930,18 @@ Visualization / Plotting birds eye view
 
 \begin_layout Section
 Simulation and Discussion
+\end_layout
+
+\begin_layout Subsection
+Simulation
+\end_layout
+
+\begin_layout Subsection
+Discussion
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
