@@ -10,8 +10,10 @@ load_map();
 global dt agent_number statistic agents_f p_gain; %X_goals;
 %A=init_agents();
 
+if(video_on)
 vidObj= VideoWriter(['videos/foodtrail ' datestr(now) '.avi']);
 open(vidObj);
+end
 
 %% STATISTICS
 
@@ -137,8 +139,11 @@ annotation(figure(1),'textbox',...
 
 pause(0.01);
 
+if (video_on)
 currentFrame=getframe;
 writeVideo(vidObj,currentFrame);
+end  
+
 
 end
 

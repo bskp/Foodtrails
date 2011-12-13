@@ -1,6 +1,4 @@
 function Anew=init_agents(agentID,A)
-% es w�r toll wenn man dieser fkt ein paar agenten angeben k�nnte, die ihr
-% ziel erreicht haben und neu plaziert werden m�ssen!
 
     % DESCRIPTION:
     % This is a function which initializes the Agentsmatrix. The agentmatrix
