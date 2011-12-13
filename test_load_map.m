@@ -1,7 +1,7 @@
 % Which maps shall be drawn?
 
 %draw_these = 1:n_goals; 
-draw_these = [4 5];
+draw_these = [1 4 5];
 
 
 parameters; 
@@ -28,6 +28,6 @@ for i = draw_these;
        'Color','g');
     quiver(space_y, space_x, ...
            field_x(space_x, space_y), field_y(space_x, space_y),...
-           'Color','r');
+           'Color','b');
     
 end

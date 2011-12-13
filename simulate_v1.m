@@ -8,7 +8,7 @@ clear global;
 parameters();
 load_map();
 global dt agent_number statistic agents_f p_gain; %X_goals;
-%A=init_agents();
+A=init_agents();
 
 if(video_on)
 vidObj= VideoWriter(['videos/foodtrail ' datestr(now) '.avi']);
@@ -43,7 +43,7 @@ for agentID = 1:size(A,2)
     agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(6,agentID));
     A(3:4,agentID) = (agents_p(:,agentID)...
         +1*agents_f(:,agentID)...
-        +1000*[(rand(1)-.5);(rand(1)-.5)])...
+        +10 *[(rand(1)-.5);(rand(1)-.5)])...
         *timestep;
     if (log_on) % record density around agent
         A_stat(2, agentID, stepnumber) = nb; 
