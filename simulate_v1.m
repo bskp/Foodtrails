@@ -147,5 +147,6 @@ end
 
 end
 
-
+if (video_on)
 close(vidObj);
+end 
