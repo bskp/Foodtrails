@@ -42,7 +42,7 @@ function Anew=init_agents(agentID,A)
     end
     
     map = map_init';
-    map(140:175,100:300)=1;
+    %map(140:175,100:300)=1;
     
     
     %map = ones(300,300);

@@ -1,4 +1,3 @@
-%% Basic draft of a Simulation
 
 %% INIT
 
@@ -8,7 +7,7 @@ clear global;
 parameters();
 load_map();
 global dt agent_number statistic agents_f p_gain; %X_goals;
-A=init_agents();
+%A=init_agents();
 
 if(video_on)
 vidObj= VideoWriter(['videos/foodtrail ' datestr(now) '.avi']);
@@ -122,6 +121,18 @@ statistic = {'Durchgaenge:',[passes], '', 'Zu schnell:', num_toofast,...
 
 clf();
 
+subplot(1,2,2);
+image( X_fm(:,:,1) , 'CDataMapping','scaled' ); axis image;
+hold on;
+
+fieldplot = 1; % e_alpha-field to plot next to the simulation
+space_x = floor(linspace(1,map_x, 50));
+space_y = floor(linspace(1,map_y, 50));
+quiver(space_y, space_x, ...
+       e_alpha_x(space_x, space_y, fieldplot), ...
+       e_alpha_y(space_x, space_y, fieldplot), 0.5);
+
+subplot(1,2,1);
 
 imagesc( map_pretty );        %Hintergrundbild laden
 colormap('bone');
@@ -132,10 +143,14 @@ plot(A(1,A(6,:)~=1),A(2,A(6,:)~=1),'o','MarkerSize',sigma,'MarkerFaceColor','b')
 axis image;
 
 annotation(figure(1),'textbox',...
-    [0 0 0.245428571428571 0.395238095238098],...
+    [0 0 0.1 0.5],...
     'String', statistic ,...
     'FitBoxToText','off');
    
+
+if (mod(stepnumber, 20) == 0)
+    refresh_fields;
+end
 
 pause(0.01);
 
