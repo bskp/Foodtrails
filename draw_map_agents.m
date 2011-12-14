@@ -12,7 +12,7 @@ global map_pretty X_fm map_x map_y e_alpha_x e_alpha_y fields_x fields_y sigma d
 clf()
 
 subplot(1,2,2);
-image( X_fm , 'CDataMapping','scaled' ); axis image;
+image( X_fm(:,:,1) , 'CDataMapping','scaled' ); axis image;
 hold on;
 
 space_x = floor(linspace(1,map_x, 50));

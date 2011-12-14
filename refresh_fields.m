@@ -9,13 +9,13 @@ for i = 1
     a_pos = round(A(2,:)) + (map_x) * round(A(1,:)-1); % liste der pixel der a.
     X_people( a_pos ) = 1;
 
-    R_p = 2;
+    R_p = 5 * R;
 
     g_people = exp( -sqrt( (k-k_0).^2+(l-l_0).^2 )/R_p );
 
     X_people_conv = conv2(X_people, g_people, 'same');
 
-    X_fm(:,:,i) = 4*X_fm(:,:,i) - X_people_conv;
+    X_fm(:,:,i) = 2*X_fm(:,:,i) - X_people_conv;
 
 %%
     addpath fm/;
