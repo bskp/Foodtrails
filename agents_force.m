@@ -100,14 +100,14 @@ function [F_tot, agent_number] = agents_force(A,alpha)
         e_alpha_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))];
     
     closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_others(6,:)==agent_alpha(6))));
-    if(size(closer_agents,2)>0&&agent_alpha(6)~=1)
+    if(size(closer_agents,2)>0&&agent_alpha(6)~=1) %Agenten in Richtung Kasse machen keine Schlange
         [~,I] = max (closer_agents(3,:));
         closest_agent = closer_agents(1:2,I);
-        d_direction = d_direction*.1+0.9*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
+        d_direction = d_direction*.2+0.8*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
     end
    
     F_tot = 1/tau_alpha*(...
-        v0_mean*d_direction*(1+(agent_alpha(6)==1))...
+        v0_mean*d_direction/norm(d_direction,2)*(1+0.5*(agent_alpha(6)==1))...
         -agent_alpha(3:4)...
         );
 %       
@@ -137,8 +137,8 @@ function [F_tot, agent_number] = agents_force(A,alpha)
 %                 .*e_beta_matrix; 
 
     F_tot = F_tot ...
-                + A2*sum(ones(2,1)*exp((2+5*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2)...
-        .*e_beta_matrix,2);
+                + A2*sum((ones(2,1)*((3*(agent_others(6,:)==1)+1).*exp((2+2*(agent_alpha(6)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2))...
+        ).*e_beta_matrix,2);
     % vector value of forces
     %F=e_beta_matrix.*(ones(2,1)*F_abs);
     
