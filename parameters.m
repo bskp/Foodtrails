@@ -30,7 +30,7 @@ global ...
 
 agent_number = 300;
 dt = .1;
-video_on = true;
+video_on = false;
 log_on = true;
 duration = 1000; % frames
 

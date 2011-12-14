@@ -109,13 +109,18 @@ bigskip
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 LARGE{ Lecture with Computer Exercises:
 \backslash
 
 \backslash
- } 
+ }
+\end_layout
+
+\begin_layout Plain Layout
+
+%
 \backslash
 LARGE{ Modelling and Simulating Social Systems with MATLAB
 \backslash
@@ -1256,10 +1261,6 @@ The values of global parameters (directly related to the social force model)
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
 <features tabularvalignment="middle">
@@ -1712,7 +1713,7 @@ load_map.m
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename imgs/potential.eps
+	filename imgs/potential_new.eps
 
 \end_inset
 
@@ -1850,7 +1851,14 @@ speed map
 \begin_inset Formula $\vec{e}_{\alpha}$
 \end_inset
 
-.
+ (see figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Naive-vs.-crowd-aware"
+
+\end_inset
+
+ for an example).
  The gradient field is then normalized to 
 \begin_inset Formula $\frac{v_{\alpha}^{0}}{\tau_{\alpha}}$
 \end_inset
@@ -1892,17 +1900,7 @@ Etiquette training for ruthless agents (queueing heuristics)
 \begin_layout Standard
 We made different attempts to improve the agent-flow through the mensa.
  Since the agents don't take the crowd into account for their route-planing
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ja wer weiss, vielleicht ja doch noch
-\end_layout
-
-\end_inset
-
-, even simple corrections far from queueing reduce the hungry agents passing
+ , even simple corrections far from queueing reduce the hungry agents' passing
  through time.
 \end_layout
 
@@ -1911,10 +1909,48 @@ Emerging and vanishing walls
 \end_layout
 
 \begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/come_and_go.png
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+Subjective
+\begin_inset Quotes erd
+\end_inset
+
+ walls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 Instead of only drawing target areas on the map (green), we implemented
  support for target-specific walls (dark green) that impact only agents
- with the neighbouring target area.
- These additional wall potentials force waiting people in to a 
+ targeting the adjacent goals.
+ These additional wall potentials force waiting people into a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1922,7 +1958,7 @@ waiting-area
 \begin_inset Quotes erd
 \end_inset
 
-, which allows served agents to leave quicker.
+, which allows served agents to leave more quickly.
 \end_layout
 
 \begin_layout Paragraph
@@ -1930,11 +1966,94 @@ Real-time fast marching
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+So far, the FM (fast marching)-algorithm did not take into account wheter
+ an area was crowded or not: The agents are forced by 
+\begin_inset Formula $\vec{e}_{\alpha}$
+\end_inset
+
+ towards 
+\begin_inset Quotes eld
+\end_inset
+
+their
+\begin_inset Quotes erd
+\end_inset
+
+ check-out, even when another (free) one would be way quicker.
+ So we ended up having a huge crowd waiting in front of check-out 1.
+ Real-time FM can solve this problem, but since it takes 250
+\begin_inset space \thinspace{}
+\end_inset
+
+ms to calculate the FM-fields for all the five layers (each one corresponding
+ to a target) we decided to neglect small changes and but do this every
+ 20 frames.
+ Now, 
+\noun on
+refresh_fields.m 
+\noun default
+draws the agents' location into an additional map, convolutes it with an
+ exponential peak and gives now hand to 
+\begin_inset Quotes eld
+\end_inset
+
+beat the traffic
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Check figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Naive-vs.-crowd-aware"
+
+\end_inset
+
+ to see the difference in the fields that draw the agents to the other check-out
+s.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-vielleicht kommt dies schon ins reguläre Programm
+\begin_inset Graphics
+	filename imgs/comp_e-field.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Naive-vs.-crowd-aware"
+
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+Naive
+\begin_inset Quotes erd
+\end_inset
+
+ vs.
+ crowd-aware FM
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1944,6 +2063,19 @@ vielleicht kommt dies schon ins reguläre Programm
 
 \begin_layout Paragraph
 Queue sensing agents
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+moritz chaschu hie häretue widu die schlange chasch mache?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1959,8 +2091,16 @@ Simulation
 \end_layout
 
 \begin_layout Standard
-In order to run a simulation the parameters.m file must be altered.
- To run a simulation the file simulation_v1.m
+In order to run a simulation the 
+\noun on
+parameters.m
+\noun default
+ file must be altered.
+ To run a simulation the file 
+\noun on
+simulation_v1.m
+\noun default
+
 \begin_inset Note Note
 status open
 
@@ -2140,6 +2280,16 @@ status open
 
 \backslash
 pagebreak
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+yeah geil
 \end_layout
 
 \end_inset

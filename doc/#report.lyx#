@@ -1,0 +1,2403 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\listings_params "language=Matlab"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+includegraphics[width=5cm]{ETHlogo}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+LARGE{ 	
+\backslash
+
+\backslash
+ Lecture with Computer Exercises:
+\backslash
+
+\backslash
+ }
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+LARGE{ Modelling and Simulating Social Systems with MATLAB
+\backslash
+
+\backslash
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+small{Project Report}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{|c|} 
+\backslash
+hline 
+\backslash
+
+\backslash
+ 
+\backslash
+textbf{
+\backslash
+LARGE{Modelling Crowd Behaviour in the Polymensa}}
+\backslash
+
+\backslash
+ 
+\backslash
+textbf{
+\backslash
+LARGE{Using the Social Force Model}}
+\backslash
+
+\backslash
+ 
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+end{tabular} 
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+LARGE{ 
+\backslash
+
+\backslash
+ Moritz Vivian, Matthias Roggo, Michael Aebli}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+Zurich
+\backslash
+
+\backslash
+ December 2011
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Agreement for free-download
+\end_layout
+
+\begin_layout Standard
+We hereby agree to make our source code of this project freely available
+ for download from the web pages of the SOMS chair.
+ Furthermore, we assure that all source code is written by ourselves and
+ is not violating any copyright restrictions
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moritz Vivian 
+\begin_inset space \qquad{}
+\end_inset
+
+ 
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+Matthias Roggo
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+ Michael Aebli
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "10em"
+height "1pt"
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+ 
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "10em"
+height "1pt"
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "10em"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This report aims to simulate crowd behaviour in the ETHZ polymensa.
+ Being able to realistically simulate crowd 
+\lang british
+behaviour
+\lang english
+ could serve as a useful tool in architectural design in general.
+ Thus the core goal of this report is to find the degree of realism with
+ which crowd behaviour may be simulated.
+ In order to answer this question the Social Force Model was implemented
+ in form of a matlab program.
+ The results of the simulation show patterns in the crowd dynamics which
+ resemble empirical observations.
+ The report concludes that simulations could aid room design by reducing
+ crossing paths of agents and areas of high crowd concentration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Individual contributions
+\end_layout
+
+\begin_layout Section
+Introduction and Motivation
+\end_layout
+
+\begin_layout Subsection
+General Introduction
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+It has been noted by many people that the architectural design of the Polymensa
+ is sub-par.
+ The queue formation seems chaotic in nature and not predetermined.
+ For example, people are forced to cross each others paths.
+ The question arises if there is room for improvement or if the current
+ system is already optimal as it is.
+ More broadly speaking, this is a problem concerning pedestrian/crowd dynamics.
+ How do pedestrians chose their paths and how do they interact.
+ Pedestrian dynamics has many fields of application (such as evacuation)
+ and is becoming more important as cities and buildings are more densely
+ populated.
+ There have been many proposed models for pedestrian dynamics.
+ A well known example is the Social Force Model of 1995 (Helbing Dirk et.
+ al).
+ 
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang british
+Fundamental Questions
+\end_layout
+
+\begin_layout Enumerate
+
+\lang british
+How do pedestrian groups with different destinations interact with one another?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang british
+How does one group of pedestrians with one destination behave? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+How do two groups of pedestrians with separate destinations interact? (Fig
+ 1, top)
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+How do two groups of pedestrians with separate destinations interact when
+ there are obstacles? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+How do two groups of pedestrians with separate destinations interact closely
+ in a room 2D room resembling a birds-eye-view of the Polymensa?
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+What happens when there are three groups or more? (Fig 1, middle)
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Is queue formation accurately modelled? (Fig 1, bottom) What changes/additions
+ need to be made if this is not the case?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang british
+How do pedestrian groups with different destinations interact when all pedestria
+ns return to the same checkout point (cash register) once they have reached
+ their respective destination?
+\end_layout
+
+\begin_layout Enumerate
+
+\lang british
+How accurately are pedestrian-dynamics models able to depict the empirically
+ collected crowd behaviour of the Mensa queue area? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang british
+Are queues formed at the same locations? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Are similar distributions observed? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Are densely occupied areas in the same location? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+Are certain areas never occupied? 
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+What geometrical changes could be made to the Mensa to increase the flow
+ of pedestrians per unit time?
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\lang british
+Variables of Interest
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+The time it takes for all pedestrians to reach their destinations -- measured
+ by logging simulation
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+The number of times pedestrians cannot move because their path is blocked
+ by another pedestrian -- measured by logging simulation
+\end_layout
+
+\begin_layout Itemize
+
+\lang british
+The location of the queues (are they realistic?) -- measured by analysing
+ simulation snapshots
+\end_layout
+
+\begin_layout Subsection
+
+\lang british
+Expected Results
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+Results which resemble the crowd behaviour observed at the Polymensa are
+ expected.
+ This means queue formation at similar localities and similar flow of pedestrian
+s per unit of time.
+ We expect that the flow of pedestrians per unit of time can be influenced
+ by the number of different destinations.
+ The more destinations the slower the whole process.
+\end_layout
+
+\begin_layout Section
+Description of Model
+\end_layout
+
+\begin_layout Standard
+This section aims to describe the social force model.
+ The social force model aims to reduce pedestrian dynamics to force fields.
+ Force fields act upon agents.
+ Agents are an abstraction of pedestrians.
+ The nomenclature used is consistent with the paper 
+\begin_inset Quotes eld
+\end_inset
+
+Social Force model for pedestrian dynamics
+\begin_inset Quotes erd
+\end_inset
+
+ by Dirk Helbing et al.
+ 
+\end_layout
+
+\begin_layout Subsection
+Agents 
+\end_layout
+
+\begin_layout Standard
+Agents are objects with the local parameters
+\series bold
+ :
+\end_layout
+
+\begin_layout Itemize
+actual velocity 
+\begin_inset Formula $\vec{v}_{\alpha}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+current actual position
+\series bold
+ 
+\series default
+
+\begin_inset Formula $\vec{r}_{\alpha}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+desired speed 
+\begin_inset Formula $v_{\alpha}^{0}(t)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is a speed which is initiated at the beginning of the simulation and
+ remains constant throughout the simulation.
+ The speeds are randomly Gaussian distributed 
+\begin_inset Formula $\mathscr{N}(v^{0},\sqrt{\theta})$
+\end_inset
+
+ .
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+And the global parameters :
+\end_layout
+
+\begin_layout Itemize
+relaxation time: 
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+step size: 
+\begin_inset Formula $\Delta s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Force Fields 
+\end_layout
+
+\begin_layout Standard
+All objects recognizable by an agent have a potential field.
+ Using the potential field of a repulsive or attractive object the force
+ at a certain location and time may be determined.
+ The final force acting on an agent is the superposition of all forces.
+ These forces are: (1) Destination, (2) other agents, (3) boarders/buildings/wal
+ls, (4) objects of attraction.
+ These will be described more closely in the following section.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Destination
+\end_layout
+
+\begin_layout Standard
+The destination attracts an agent.
+ More specifically, the closest point, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\vec{r}_{\alpha}^{k}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, of the destination polygon to the agent at position 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\vec{r}_{\alpha}(t)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ attracts an agent.
+ An agent will attempt to take the most direct route to reach his destination.
+ The vector from an agent to the closest destination point forms the desired
+ direction.
+ The force caused by the destination is referred to as acceleration term.
+ It is independent of distance and time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{e}_{\alpha}(t):= & \frac{\vec{r}_{\alpha}^{k}-\vec{r}_{\alpha}(t)}{||\vec{r}_{\alpha}^{k}-\vec{r}_{\alpha}(t)||}\\
+\vec{F}_{\alpha}^{0}(\vec{v}_{\alpha},\vec{v}_{\alpha}^{0},\vec{e}_{\alpha}(t)):= & \frac{1}{\tau_{\alpha}}(v_{\alpha}^{0}\vec{e}_{\alpha}-\vec{v}_{\alpha})
+\end{align*}
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Formel e_alpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Other Pedestrians/Agents
+\end_layout
+
+\begin_layout Standard
+An agent attempts to avoid other agents.
+ Therefore other agents have a repulsive nature.
+ This repulsive nature is described by a monotonically decreasing potential
+ field 
+\begin_inset Formula $V_{\alpha\beta}[b(\vec{r}_{\alpha\beta})]$
+\end_inset
+
+.
+ This potential field has elliptic equipotent lines.
+ The agent is at the center of the ellipses.
+ The semi major axis is aligned parallel to the desired direction of the
+ agent.
+ The potential is calculated as a function of the semi minor axis of the
+ ellipse which is in turn dependent on the agent to agent distance.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{Potential :}V_{\alpha\beta}\left[b\vec{r}_{\alpha\beta}\right]= & V_{\alpha\beta}^{0}e^{-b/\sigma}\\
+\textrm{ semi Axis: }b= & \frac{1}{2}\sqrt{||\vec{r}_{\alpha\beta}||+||\vec{r}_{\alpha\beta}-v_{\beta}\Delta te_{\beta}||^{2}-(v_{\beta}\Delta t)||}\\
+\text{Force Field: }\vec{f}_{\alpha\beta}(\vec{r}_{\alpha\beta})= & -\nabla_{\vec{r}_{\alpha\beta}}V_{\alpha\beta}\left[b(\vec{r}_{\alpha\beta})\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lastly one must take into consideration that the field of vision of an agent
+ has an influence on the forces.
+ An other agent which is standing behind agent alpha will have a considerably
+ smaller influence than one which agent alpha is facing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
+w(\vec{e},\vec{f}):= & \begin{cases}
+1 & \text{if }\vec{e}\cdot\vec{f}\geq||\vec{f}||cos\varphi\\
+c & \text{otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An improved approach to this problem is proposed by 
+\begin_inset Quotes eld
+\end_inset
+
+Self organized pedestrian crowd dynamics
+\begin_inset Quotes erd
+\end_inset
+
+ by Helbing et al.
+ (2005).
+ Here the agent to agent force is calculated as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{F}_{\alpha\beta}(t)= & A_{\alpha}^{1}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{1}\right]\vec{n}_{\alpha\beta}\cdot\left(\lambda_{\alpha}+(1-\lambda_{\alpha})\frac{1+\cos(\varphi_{\alpha\beta})}{2}\right)\\
+ & +A_{\alpha}^{2}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{2}\right]\vec{n}_{\alpha B}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Boarders/ Buildings/ Walls
+\end_layout
+
+\begin_layout Standard
+Boarders, buildings and walls repulse agents.
+ They induce monotonically decreasing potential fields.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{boundry Repulsion Force }\vec{F}_{\alpha B}= & -\nabla_{\vec{r_{\alpha B}}}U_{\alpha B}(||\vec{r}_{\alpha B}||)\\
+U_{\alpha B}(||\vec{r}_{\alpha B}||)= & U_{^{0}\alpha B}e^{-||\vec{r}_{\alpha B}||/R}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Objects of Attraction
+\end_layout
+
+\begin_layout Standard
+Objects of attraction draw agents towards themselves.
+ They are similar to destination forces.
+ This force is a function of time as it decays over time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{attractive Force }\vec{f_{\alpha i}}(||\vec{r}_{\alpha i}||,t)= & -\nabla_{\vec{r}_{\alpha i}}\cdot W_{\alpha i}(||\vec{r}_{\alpha i}||,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As with other agents attractive objects must be weighed according to the
+ field of vision of the agent.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha i}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
+w(\vec{e},\vec{f}):= & \begin{cases}
+1 & \text{if }\vec{e}\cdot\vec{f}\geq||\vec{f}||cos\varphi\\
+c & \text{otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Total Force
+\end_layout
+
+\begin_layout Standard
+The total force is the superposition of the above mentioned forces.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\vec{F}_{\alpha}(t)=\vec{F_{\alpha}^{0}}(\vec{v}_{\alpha}\vec{v}_{\alpha}^{0}\vec{e}_{\alpha})+\sum_{\beta}\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta})+\sum_{B}\vec{F}_{\alpha B}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{B}^{\alpha})+\sum_{i}\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{i},t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Social Force Model
+\end_layout
+
+\begin_layout Standard
+The movement of the agents must now be derived from the total force acting
+ on them at a specific time.
+ This can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d\vec{w_{\alpha}}}{dt}:= & \vec{F}_{\alpha}(t)+fluctuations
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The actual velocity must not be greater then the agent's desired velocity
+ 
+\begin_inset Formula $v_{0}^{\alpha}$
+\end_inset
+
+defined during the initialization of an agent.
+ The velocity is thus given as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{Actual velocity }\vec{v}_{\alpha} & =\vec{w}_{\alpha}\cdot g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right)\\
+g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right) & =\begin{cases}
+1 & ,\text{ if }||\vec{w}_{\alpha}||<v_{0}^{\alpha}\\
+\frac{v_{o}^{\alpha}}{||\vec{w}_{\alpha}||} & ,\text{ otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Implementation
+\end_layout
+
+\begin_layout Standard
+The social force model, as described in the previous section, was implemented
+ as described in this section.
+ The simulation input consists of a .png image file and a list of global
+ parameters.
+ On the input image information concerning destinations, starting positions
+ and boundaries are stored.
+ The social force model is then applied to this environment.
+ The output two dimensional animation from a birds eye view simulating the
+ movement of pedestrians according to the social force model.
+ 
+\end_layout
+
+\begin_layout Subsection
+Pseudo-code
+\end_layout
+
+\begin_layout Standard
+The following is a pseudo code of the implementation of the social force
+ model.
+ It gives an overview of the chronology of the matlab program.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+initialize global parameters
+\end_layout
+
+\begin_layout Plain Layout
+
+load map from image file
+\end_layout
+
+\begin_layout Plain Layout
+
+	create boundary matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	create destination matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	create starting matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+calculate static potential fields from boundary matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	2d convolution of potential function 
+\end_layout
+
+\begin_layout Plain Layout
+
+	and boundry matrix in frequency domain
+\end_layout
+
+\begin_layout Plain Layout
+
+calculate destination force
+\end_layout
+
+\begin_layout Plain Layout
+
+	calculate shortest path and convolute 
+\end_layout
+
+\begin_layout Plain Layout
+
+	with potential function in frequency domain
+\end_layout
+
+\begin_layout Plain Layout
+
+initialize agents
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent starting positions in boundary matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent initial speeds
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent desired speed
+\end_layout
+
+\begin_layout Plain Layout
+
+	set agent type (which destination?)
+\end_layout
+
+\begin_layout Plain Layout
+
+begin simulation loop
+\end_layout
+
+\begin_layout Plain Layout
+
+	for each angent
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate boundary force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate destination force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate other agents force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate total force
+\end_layout
+
+\begin_layout Plain Layout
+
+		calculate new velocity using euler method
+\end_layout
+
+\begin_layout Plain Layout
+
+    plot image and agents
+\end_layout
+
+\begin_layout Plain Layout
+
+end simulation loop
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Initialization
+\end_layout
+
+\begin_layout Subsubsection
+Global Parameter values
+\end_layout
+
+\begin_layout Standard
+The values of global parameters (directly related to the social force model)
+ which were used are listed in the following table.
+ They suggested by Dirk Helbing et al.
+ were used.
+ These are listed bellow:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+matlab code
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+symbolic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Value [
+\begin_inset Formula $Units$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Parameter description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $dt$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 [
+\begin_inset Formula $s$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+time unit step
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $meter$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40 [
+\begin_inset Formula $px/m$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pixel to meter conversion factor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2 [
+\begin_inset Formula $m$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+parameter of boundary potential
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+U_alphaB_0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{\alpha B}^{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 [
+\begin_inset Formula $m^{2}/s^{2}$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter of boundary potential
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+v0_mean 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<v_{0}>$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.34 [
+\begin_inset Formula $m/s$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+desired agent velocity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tau_alpha
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5 [
+\begin_inset Formula $s$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+relaxation time
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sqrt_theta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sqrt{\theta}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.26 [
+\begin_inset Formula $m/s$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+standard deviation of v0_mean
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sigma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3 [
+\begin_inset Formula $m$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter of agent potential
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Image input / map of environment
+\end_layout
+
+\begin_layout Standard
+An input image (PNG) was used to initialize the destination, starting and
+ boundary positions.
+ The image was color coded.
+ Red pixels were defined as starting positions, green pixels as destinations
+ and black pixels as boundaries.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+load_map.m
+\begin_inset Quotes erd
+\end_inset
+
+ is responsible for importing an image and making it usable.
+ The potential field is generated through the convolution of a 2d potential
+ function (see Section 2) and the black areas of the map which represent
+ walls.
+ The convolution was calculated as a multiplication in the frequency domain
+ via matlab's fast fourier transformation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename imgs/potential_new.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Social Force model algorithm
+\end_layout
+
+\begin_layout Standard
+In order to speed up our simulations, we separated the effective forces
+ on our agents in two groups, being either constant on a given place or
+ depending on all other agents positions.
+\end_layout
+
+\begin_layout Subsubsection
+Environmental forces 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+matthias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The forcefields related to the 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+destination (
+\begin_inset Formula $\vec{F}_{\alpha}^{0}$
+\end_inset
+
+)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, walls (
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\vec{F}_{\alpha B}$
+\end_inset
+
+) and attractive objects (
+\begin_inset Formula $\vec{F}_{\alpha i}$
+\end_inset
+
+) are independent of the agents positions, thus can be calculated in advance.
+ This is done by 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun on
+\color inherit
+load_map.m
+\noun default
+, which generates a force field for the walls' potential and every target
+ area on the map.
+\end_layout
+
+\begin_layout Paragraph
+Fast marching algorithm
+\end_layout
+
+\begin_layout Standard
+To prevent the agents getting stuck on more complex floor plans, we employ
+ the 
+\emph on
+accurate fast marching algorithm
+\emph default
+ implemented by Dirk-Jan Kroon
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.mathworks.com/matlabcentral/fileexchange/24531
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Based on a 
+\begin_inset Quotes eld
+\end_inset
+
+speed map
+\begin_inset Quotes erd
+\end_inset
+
+, it creates a potential field representing the shortest time needed to
+ get to one or more target points.
+ Its gradient thereby serves as an indicator for the shortest path, our
+ new 
+\begin_inset Formula $\vec{e}_{\alpha}$
+\end_inset
+
+ (see figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Naive-vs.-crowd-aware"
+
+\end_inset
+
+ for an example).
+ The gradient field is then normalized to 
+\begin_inset Formula $\frac{v_{\alpha}^{0}}{\tau_{\alpha}}$
+\end_inset
+
+ to 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+represent the first term of 
+\begin_inset Formula $\vec{F}_{\alpha}^{0}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Formel e_alpha"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+Agent forces
+\end_layout
+
+\begin_layout Subsection
+Etiquette training for ruthless agents (queueing heuristics)
+\end_layout
+
+\begin_layout Standard
+We made different attempts to improve the agent-flow through the mensa.
+ Since the agents don't take the crowd into account for their route-planing
+ , even simple corrections far from queueing reduce the hungry agents' passing
+ through time.
+\end_layout
+
+\begin_layout Paragraph
+Emerging and vanishing walls
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/come_and_go.png
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+Subjective
+\begin_inset Quotes erd
+\end_inset
+
+ walls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Instead of only drawing target areas on the map (green), we implemented
+ support for target-specific walls (dark green) that impact only agents
+ targeting the adjacent goals.
+ These additional wall potentials force waiting people into a 
+\begin_inset Quotes eld
+\end_inset
+
+waiting-area
+\begin_inset Quotes erd
+\end_inset
+
+, which allows served agents to leave more quickly.
+\end_layout
+
+\begin_layout Paragraph
+Real-time fast marching 
+\end_layout
+
+\begin_layout Standard
+So far, the FM (fast marching)-algorithm did not take into account wheter
+ an area was crowded or not: The agents are forced by 
+\begin_inset Formula $\vec{e}_{\alpha}$
+\end_inset
+
+ towards 
+\begin_inset Quotes eld
+\end_inset
+
+their
+\begin_inset Quotes erd
+\end_inset
+
+ check-out, even when another (free) one would be way quicker.
+ So we ended up having a huge crowd waiting in front of check-out 1.
+ Real-time FM can solve this problem, but since it takes 250
+\begin_inset space \thinspace{}
+\end_inset
+
+ms to calculate the FM-fields for all the five layers (each one corresponding
+ to a target) we decided to neglect small changes and but do this every
+ 20 frames.
+ Check figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Naive-vs.-crowd-aware"
+
+\end_inset
+
+ to see the difference in the fields which 
+\begin_inset Quotes eld
+\end_inset
+
+draw
+\begin_inset Quotes erd
+\end_inset
+
+ the agents to the other check-outs.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/comp_e-field.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Naive-vs.-crowd-aware"
+
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+Naive
+\begin_inset Quotes erd
+\end_inset
+
+ vs.
+ crowd-aware FM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Queue sensing agents
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+moritz chaschu hie häretue widu die schlange chasch mache?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Visualization / Plotting birds eye view
+\end_layout
+
+\begin_layout Section
+Simulation and Discussion
+\end_layout
+
+\begin_layout Subsection
+Simulation
+\end_layout
+
+\begin_layout Standard
+In order to run a simulation the 
+\noun on
+parameters.m
+\noun default
+ file must be altered.
+ To run a simulation the file 
+\noun on
+simulation_v1.m
+\noun default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+chli komisch dass das med _v1 endet ...
+ vellecht no ändere
+\end_layout
+
+\end_inset
+
+ must be launched.
+ The implemented social force model was simulated with various parameters
+ in an attempt to answer the questions which were initially posed.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Primitive Simulation with and without queues
+\end_layout
+
+\begin_layout Standard
+One of the preliminary goals was to analyze crowd behavior for two groups
+ with two goals.
+ This is presented in the following section.
+ The simulations were conducted with 200 agents and a time step of .1 seconds.
+ First the simulation was executed with queue formation and then without
+ it.
+ The difference is very apparent.
+ The queuing heuristics cause the formation of very distinct one man queues.
+ Without the queues the crowds move in packs.
+\end_layout
+
+\begin_layout Standard
+The code for the queuing can be found in the following snippet.
+ Firstly, only the agents near by are looked at.
+ Secondly, of the close by agents, the agent which is closest to the destination
+ is found.
+ Thirdly, the direction is influenced by the direction of the closest agent.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+formatierig vom code isch no ned soooo schön aber akzeptabel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+closer_agents=agent_others([1,2,8],((agent_others(8,:)<agent_alpha(8))...
+\end_layout
+
+\begin_layout Plain Layout
+
+	&(agent_others(6,:)==agent_alpha(6))));     
+\end_layout
+
+\begin_layout Plain Layout
+
+if(size(closer_agents,2)>0&&agent_alpha(6)~=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	[~,I] = max (closer_agents(3,:));     
+\end_layout
+
+\begin_layout Plain Layout
+
+	closest_agent = closer_agents(1:2,I);
+\end_layout
+
+\begin_layout Plain Layout
+
+	d_direction = d_direction*.5+0.5*(closest_agent-agent_alpha(1:2))...
+\end_layout
+
+\begin_layout Plain Layout
+
+	/norm(closest_agent-agent_alpha(1:2),2);   
+\end_layout
+
+\begin_layout Plain Layout
+
+end
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/noque.eps
+	width 105col%
+	BoundingBox 0bp 0bp 1311bp 661bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+primitive simulation without queues 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Graphics
+	filename imgs/que.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+primitive simulation with queues
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+yeah geil
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Discussion
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Summary and Outlook
+\end_layout
+
+\begin_layout Subsection
+
+\lang british
+References
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Social Force Model for Pedestrian dynamics (1995) -- Dirk Helbing et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Describes model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Self-organized Pedestrian Crowd Dynamics (2005) -- Helving et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Uses model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Pedestrian Dynamics Airplane Evacuation Simulation -- Author(s): P.
+ Heer, L.
+ Bühler 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Model we are considering to build on (Social Force Model)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Response to intrusion into waiting lines.
+ (2010) By Milgram, Stanley et al.
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang british
+http://psycnet.apa.org/index.cfm?fa=buy.optionToBuy&id=1987-04011-001 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+A possible extension to queue modeling.
+ This extension would include intruders which are more aggressive and attempt
+ to intrude into waiting lines.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Approach to Collective Phenomena in Pedestrian Dynamics (2002) Andreas Schadschn
+eider et al.
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+In case we attempt to use Cellular Automata this paper would be useful.
+ 
+\end_layout
+
+\end_body
+\end_document
