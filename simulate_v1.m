@@ -137,6 +137,10 @@ annotation(figure(1),'textbox',...
     'FitBoxToText','off');
    
 
+if (mod(stepnumber, 20) == 0)
+    refresh_fields;
+end
+
 pause(0.01);
 
 if (video_on)
