@@ -556,8 +556,8 @@ How do two groups of pedestrians with separate destinations interact? (Fig
 \begin_layout Itemize
 
 \lang british
-How do two groups of pedestrians with separate destinations interact on
- a there are obstacles? 
+How do two groups of pedestrians with separate destinations interact when
+ there are obstacles? 
 \end_layout
 
 \begin_layout Itemize
@@ -925,6 +925,32 @@ c & \text{otherwise}
 
 \end_layout
 
+\begin_layout Standard
+An improved approach to this problem is proposed by 
+\begin_inset Quotes eld
+\end_inset
+
+Self organized pedestrian crowd dynamics
+\begin_inset Quotes erd
+\end_inset
+
+ by Helbing et al.
+ (2005).
+ Here the agent to agent force is calculated as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{F}_{\alpha\beta}(t)= & A_{\alpha}^{1}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{1}\right]\vec{n}_{\alpha\beta}\cdot\left(\lambda_{\alpha}+(1-\lambda_{\alpha})\frac{1+\cos(\varphi_{\alpha\beta})}{2}\right)\\
+ & +A_{\alpha}^{2}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{2}\right]\vec{n}_{\alpha B}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Boarders/ Buildings/ Walls
 \end_layout
@@ -1226,7 +1252,7 @@ Global Parameter values
 \end_layout
 
 \begin_layout Standard
-The values of global parameters (directely related to the social force model)
+The values of global parameters (directly related to the social force model)
  which were used are listed in the following table.
  They suggested by Dirk Helbing et al.
  were used.
@@ -1936,6 +1962,195 @@ Simulation and Discussion
 Simulation
 \end_layout
 
+\begin_layout Standard
+In order to run a simulation the parameters.m file must be altered.
+ To run a simulation the file simulation_v1.m
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+chli komisch dass das med _v1 endet ...
+ vellecht no ändere
+\end_layout
+
+\end_inset
+
+ must be launched.
+ The implemented social force model was simulated with various parameters
+ in an attempt to answer the questions which were initially posed.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Primitive Simulation with and without queues
+\end_layout
+
+\begin_layout Standard
+One of the preliminary goals was to analyze crowd behavior for two groups
+ with two goals.
+ This is presented in the following section.
+ The simulations were conducted with 200 agents and a time step of .1 seconds.
+ First the simulation was executed with queue formation and then without
+ it.
+ The difference is very apparent.
+ The queuing heuristics cause the formation of very distinct one man queues.
+ Without the queues the crowds move in packs.
+\end_layout
+
+\begin_layout Standard
+The code for the queuing can be found in the following snippet.
+ Firstly, only the agents near by are looked at.
+ Secondly, of the close by agents, the agent which is closest to the destination
+ is found.
+ Thirdly, the direction is influenced by the direction of the closest agent.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+formatierig vom code isch no ned soooo schön aber akzeptabel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+closer_agents=agent_others([1,2,8],((agent_others(8,:)<agent_alpha(8))...
+\end_layout
+
+\begin_layout Plain Layout
+
+	&(agent_others(6,:)==agent_alpha(6))));     
+\end_layout
+
+\begin_layout Plain Layout
+
+if(size(closer_agents,2)>0&&agent_alpha(6)~=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	[~,I] = max (closer_agents(3,:));     
+\end_layout
+
+\begin_layout Plain Layout
+
+	closest_agent = closer_agents(1:2,I);
+\end_layout
+
+\begin_layout Plain Layout
+
+	d_direction = d_direction*.5+0.5*(closest_agent-agent_alpha(1:2))...
+\end_layout
+
+\begin_layout Plain Layout
+
+	/norm(closest_agent-agent_alpha(1:2),2);   
+\end_layout
+
+\begin_layout Plain Layout
+
+end
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/noque.eps
+	width 105col%
+	BoundingBox 0bp 0bp 1311bp 661bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+primitive simulation without queues 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Graphics
+	filename imgs/que.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+primitive simulation with queues
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagebreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Discussion
 \end_layout
@@ -1972,7 +2187,7 @@ Describes model we are considering to build on (Social Force Model)
 
 \emph on
 \lang british
-Self-organized Pedestrian Crowd Dynamics (2005) -- Helbing et al.
+Self-organized Pedestrian Crowd Dynamics (2005) -- Helving et al.
  
 \emph default
 
