@@ -81,7 +81,7 @@ begin{center}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 includegraphics[width=5cm]{ETHlogo}
 \end_layout
@@ -111,11 +111,7 @@ bigskip
 
 
 \backslash
-LARGE{ 	
-\backslash
-
-\backslash
- Lecture with Computer Exercises:
+LARGE{ Lecture with Computer Exercises:
 \backslash
 
 \backslash
@@ -242,7 +238,7 @@ LARGE{
 \backslash
 
 \backslash
- Moritz Vivian, Matthias Roggo, Michael Aebli}
+ Moritz Vifian, Matthias Roggo, Michael Aebli}
 \end_layout
 
 \begin_layout Plain Layout
@@ -365,7 +361,7 @@ We hereby agree to make our source code of this project freely available
 \end_layout
 
 \begin_layout Standard
-Moritz Vivian 
+Moritz Vifian 
 \begin_inset space \qquad{}
 \end_inset
 
