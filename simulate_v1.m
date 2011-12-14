@@ -1,4 +1,3 @@
-%% Basic draft of a Simulation
 
 %% INIT
 
