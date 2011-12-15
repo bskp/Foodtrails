@@ -894,7 +894,7 @@ An agent attempts to avoid other agents.
 \end_inset
 
 .
- This potential field has elliptic equipotental lines.
+ This potential field has elliptic equipotential lines.
  The agent is at the center of the ellipses.
  The semi major axis is aligned parallel to the desired direction of the
  agent.
@@ -1121,7 +1121,9 @@ g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right) & =\begin{cases}
 \end_layout
 
 \begin_layout Subsection
-Simple Queueing
+Simple 
+\lang british
+Queueing
 \end_layout
 
 \begin_layout Standard
@@ -2405,7 +2407,7 @@ Self-organized Pedestrian Crowd Dynamics
 \end_inset
 
  (2005) which were both published by Dirk Helbing et al.
- an algorithm to simulate crowd behaviour was implimented.
+ an algorithm to simulate crowd behaviour was implemented.
  The task was to fabricate a concrete model derived from these general models.
  The models were to some extent modified and extended to realistically simulate
  crowd behaviour in the ETHZ Polymensa.
@@ -2417,18 +2419,18 @@ Self-organized Pedestrian Crowd Dynamics
 
 \begin_layout Standard
 The simulations showed characteristics which group members have observed
- to exist (See Section 5.2).
+ to exist (see Section 5.2).
  From the current results it is not yet possible to draw a conclusion concerning
  the degree of realism of the simulation.
- In order to this emperical data would have to be collected.
+ In order to this empirical data would have to be collected.
  This information could then be compared to simulated data.
  In a further step empirical data could be collected from various mensas
- which would could also be simualted.
- If these prove to be reallistic with only little modification of the model,
- then the simulation could be used as an aid in the architaural design of
- mensas.
- It is only possible through the extensive collection of emperical data
- to draw conclusions about emperical reality from computer simulated reality
+ which would could also be simulated.
+ If these prove to be realistic with only little modification of the model,
+ then the simulation could be used as an aid in the architectural design
+ of mensas.
+ It is only possible through the extensive collection of empirical data
+ to draw conclusions about empirical reality from computer simulated reality
  which was outside the scope of this report.
 \end_layout
 
