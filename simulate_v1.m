@@ -50,10 +50,13 @@ for agentID = 1:size(A,2)
     end
 end
 
-% log velocities and goals
+% log velocities and goals and walkingtimes
 if (log_on)
     A_stat(1, :, stepnumber) = sqrt(A(3,:).^2+A(4,:).^2);
     A_stat(3, :, stepnumber) = A(6,:);
+    wtimes = stepnumber - A(9,:);
+    wtimes(wtimes == stepnumber+1) = 0; % erase not-yet-started ones
+    A_stat(4, :, stepnumber) = wtimes;
 end
 
 %Find Agents that exceed their max velocity

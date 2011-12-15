@@ -5,7 +5,7 @@
 % 1 Velocity |\        
 % 2 Crowd    |  \
 % 3 Goal     |    \
-%            |      \
+% 4 w-time   |      \
 %            |        \ 3rd Dimension: frames
 
 loglen = nnz( sum( sum(A_stat, 2), 1) );
@@ -41,6 +41,16 @@ legend(d_avg, 'Average density');
 set(gca,'FontSize',16)
 xlabel('time [frames]');
 ylabel('density [neighbours within 1m]');
+
+%% walkingtime-dependend
+
+%surf(permute(A_stat(4,:,1:100), [3,2,1]), 'LineStyle', 'none')
+
+%density vs. walkingtime
+
+den_wt = permute(A_stat([2 4], :, 1:100), [3,2,1]);
+
+surf(den_wt(:,:,1), 'LineStyle', 'none');
 
 
 %% fetching time graph
