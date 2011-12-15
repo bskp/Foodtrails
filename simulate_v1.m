@@ -128,7 +128,7 @@ statistic = {'Durchgaenge:',[passes], '', 'Zu schnell:', num_toofast,...
 % draw
 
 if (noplot)
-    fps
+    [fps stepnumber duration]
 else
 
 clf();
