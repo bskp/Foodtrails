@@ -2381,6 +2381,26 @@ yeah geil
 
 \end_layout
 
+\begin_layout Subsubsection
+Mensa Simulations
+\end_layout
+
+\begin_layout Paragraph
+Simulation using bare Social Force model (no extensions)
+\end_layout
+
+\begin_layout Paragraph
+Simulation using queuing
+\end_layout
+
+\begin_layout Paragraph
+Simulation using realtime fast marching
+\end_layout
+
+\begin_layout Paragraph
+Simulation using all extensions
+\end_layout
+
 \begin_layout Subsection
 Discussion
 \end_layout
