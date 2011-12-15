@@ -82,8 +82,18 @@ function Anew=init_agents(agentID,A)
     Anew(3:4,:)=agent_speeds;
     Anew(5,:)=v0;
     % Random Goal from 2 until n_goals, the first goal is the cash point
-    Anew(6,:)=randi(n_goals-1,1,a_num)+1;
+    %Anew(6,:)=randi(n_goals-3,1,a_num)+randi(2,1,a_num)+1;
+    %1=Bio
+    %2=Menu1
+    %3=Spezial
+    %4=Salat
+    %5=Vegi
+    Menus = [ 1 2 2 2 2 3 3 4 5 5 ]; 
     Anew(7,:) = 0;
+    for i = 1:a_num
+        bla = mod(i,size(Menus,2))+1
+        Anew(6,i)= Menus(bla)+1;
+    end
     Anew(9,:) = -1;
     
     if(nargin~=0) 
