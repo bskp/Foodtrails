@@ -1,5 +1,5 @@
 - Zeiten messen (roggo)
-- Code aufräumen (moritz)
+- Code aufräumen (moritz) //Done
 - LaTeX snipets als Codebeispiele in Bericht platzieren (moritz)
 - Notizen hinzufügen (moritz)
 - A8 vs A9 überprüfen (moritz)
