@@ -127,6 +127,10 @@ statistic = {'Durchgaenge:',[passes], '', 'Zu schnell:', num_toofast,...
 
 % draw
 
+if (noplot)
+    fps
+else
+
 clf();
 
 if (~video_on)
@@ -169,6 +173,7 @@ currentFrame=getframe;
 writeVideo(vidObj,currentFrame);
 end  
 
+end %noplot
 
 end
 

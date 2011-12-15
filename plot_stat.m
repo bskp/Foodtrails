@@ -54,4 +54,5 @@ end
 
 %% fetching time graph
 
-plot(fetchtimes(2,:), fetchtimes(2,:)-fetchtimes(1,:), 'ok');
+dft = fetchtimes(2,:)-fetchtimes(1,:)
+plot(fetchtimes(2,:), dft, 'ok');
