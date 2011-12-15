@@ -10,7 +10,7 @@
 
 loglen = nnz( sum( sum(A_stat, 2), 1) );
 
-global fetchtimes;
+global fetchtimes agent_number;
 
 % to improve: nur agenten, die den roten bereich verlassen haben, beachten!
 %% speed graph
@@ -44,14 +44,13 @@ ylabel('density [neighbours within 1m]');
 
 %% walkingtime-dependend
 
-%surf(permute(A_stat(4,:,1:100), [3,2,1]), 'LineStyle', 'none')
-
-%density vs. walkingtime
-
-den_wt = permute(A_stat([2 4], :, 1:100), [3,2,1]);
-
-surf(den_wt(:,:,1), 'LineStyle', 'none');
-
+figure();
+hold on;
+for id = 1:agent_number
+    a = permute(A_stat(:, id, :), [1,3,2]);
+    a( 2, a(4,:) == 0 ) = Inf;
+    plot( a(4, :), a(2,:), 'Color', rand(3,1)); % dens / wt
+end
 
 %% fetching time graph
 
