@@ -121,6 +121,8 @@ statistic = {'Durchgaenge:',[passes], '', 'Zu schnell:', num_toofast,...
 
 clf();
 
+if (~video_on)
+
 subplot(1,2,2);
 image( X_fm(:,:,1) , 'CDataMapping','scaled' ); axis image;
 hold on;
@@ -133,7 +135,7 @@ quiver(space_y, space_x, ...
        e_alpha_y(space_x, space_y, fieldplot), 0.5);
 
 subplot(1,2,1);
-
+end
 imagesc( map_pretty );        %Hintergrundbild laden
 colormap('bone');
 hold on;
