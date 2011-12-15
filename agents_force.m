@@ -68,8 +68,8 @@ function [F_tot, agent_number_back] = agents_force(A,alpha)
     % Exclude agent_alpha from the selection
     close_agents(alpha) = 0; 
     
-    agent_others = A(close_agents);
-    agent_number_back = size(agent_others,2);
+    agent_others = A(:,close_agents);
+    agent_number_back = size(agent_others,2)+1;
     
     % Remove unnecessary distances
     r_alphabeta_matrix(:,~close_agents) = [];
@@ -120,7 +120,7 @@ function [F_tot, agent_number_back] = agents_force(A,alpha)
                 (ones(2,1)...
                 *((3*(agent_others(6,:)==1)+1)...The agents towards the cashpoint have more power
                 .*exp((2+2*(agent_alpha(6)==1))...and because of the tray the have a double radius
-                *sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2))...
+                *sigma*ones(1,agent_number_back-1)-sum(r_alphabeta_matrix.^2)/B2))...
                 ).*e_beta_matrix,2);
     
 end

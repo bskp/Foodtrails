@@ -1131,8 +1131,8 @@ In case of many agents having the same goal, the social force model itself
  just produces a crowd of agents all pushing in same direction.
  Our goal is to learn the agents to queue.
  If a person in real life wants to walk toward a specific place, she or
- her looks around to check wheter there are other people headed in the same
- direction.
+ her looks around to check whether there are other people headed in the
+ same direction.
  If so, she or he joins the crowd and this leads to a queue.
  What one basically does is
 \end_layout
@@ -1148,10 +1148,6 @@ Who in front of me is last in queue?
 
 \begin_layout Itemize
 Join him or her
-\end_layout
-
-\begin_layout Itemize
-
 \end_layout
 
 \begin_layout Section

@@ -2,7 +2,7 @@
 
 f = v0_mean / tau_alpha; % see formula (2) in paper
 
-for i = 1
+for i = 1:n_goals
     X_fm(:,:,i) = 0.00001 + X_walls(:,:,i)*0.9;
 
     X_people = 0*X_walls(:,:,i);
@@ -26,7 +26,7 @@ for i = 1
     [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T(:,:,i));
     r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
     
-    r( r==0) = inf;
+    r( r==0 ) = inf;
     
     e_alpha_x(:,:,i) = e_alpha_x(:,:,i)./r;
     e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
