@@ -31,17 +31,28 @@ ylabel('speed [px/frame]');
 
 %% density graph
 
-dens = permute( A_stat(2, :, 1:loglen), [3,2,1] );
+% dens = permute( A_stat(2, :, 1:loglen), [3,2,1] );
+% 
+% hold on;
+% 
+% plot( dens, 'k' );
+% d_avg = plot( sum( dens, 2)/size(A_stat, 2) , 'b' , 'LineWidth', 2);
+% legend(d_avg, 'Average density');
+% 
+% set(gca,'FontSize',16)
+% xlabel('time [frames]');
+% ylabel('density [neighbours within 1m]');
 
-hold on;
 
-plot( dens, 'k' );
-d_avg = plot( sum( dens, 2)/size(A_stat, 2) , 'b' , 'LineWidth', 2);
-legend(d_avg, 'Average density');
+avg = zeros(duration);
+for t = 1:duration
+    a_stat = A_stat(:,:,t);
+    a_stat( :, a_stat(4,:)==0 ) = [];
+    avg(t) = sum( a_stat(2,:) )/ size(a_stat, 2);
+end
 
-set(gca,'FontSize',16)
-xlabel('time [frames]');
-ylabel('density [neighbours within 1m]');
+plot(avg);
+
 
 %% walkingtime-dependend
 
@@ -57,10 +68,11 @@ end
 
 dft = fetchtimes(2,:)-fetchtimes(1,:)
 
-set(gca,'FontSize',16)
 subplot(2,1,1);
 hold on;
-plot(fetchtimes(2,:), dft, 'ok');
+
+set(gca,'FontSize',16)
+plot(fetchtimes(2,:), dft, '.k');
 
 
 ylabel('pass-through-time');
@@ -68,6 +80,7 @@ xlabel('arrival time');
 
 subplot(2,1,2);
 
+set(gca,'FontSize',16)
 hist(dft, 30)
 ylabel('pass-through-time');
 xlabel('frequency');
