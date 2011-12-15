@@ -55,4 +55,6 @@ end
 %% fetching time graph
 
 dft = fetchtimes(2,:)-fetchtimes(1,:)
-plot(fetchtimes(2,:), dft, 'ok');
+%plot(fetchtimes(2,:), dft, 'ok');
+hist(dft)
+

@@ -3,6 +3,6 @@
 sim_id = ['test' datestr(now)];
 
 reset_sim;
-simulate;
+simulate_v1;
 
 save('sim_id');
