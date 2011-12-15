@@ -6,7 +6,7 @@
 \begin_preamble
 
 \usepackage{mcode} %matlab-code-highlightning
-\usepackage{microtype} %yeah blocksatz
+%\usepackage{microtype} %yeah blocksatz
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -86,7 +86,7 @@ begin{center}
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 includegraphics[width=5cm]{ETHlogo}
 \end_layout
@@ -114,7 +114,7 @@ bigskip
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 LARGE{ Lecture with Computer Exercises:
 \backslash
@@ -125,7 +125,7 @@ LARGE{ Lecture with Computer Exercises:
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 LARGE{ Modelling and Simulating Social Systems with MATLAB
 \backslash
@@ -461,11 +461,8 @@ pagebreak
 
 \begin_layout Abstract
 This report aims to simulate crowd behaviour in the ETHZ polymensa.
- Being able to realistically simulate crowd 
-\lang british
-behaviour
-\lang english
- could serve as a useful tool in architectural design in general.
+ Being able to realistically simulate crowd behaviour could serve as a useful
+ tool in architectural design in general.
  Thus the core goal of this report is to find the degree of realism with
  which crowd behaviour may be simulated.
  In order to answer this question the Social Force Model was implemented
@@ -888,7 +885,7 @@ An agent attempts to avoid other agents.
 \end_inset
 
 .
- This potential field has elliptic equipotent lines.
+ This potential field has elliptic equipotental lines.
  The agent is at the center of the ellipses.
  The semi major axis is aligned parallel to the desired direction of the
  agent.
@@ -955,6 +952,34 @@ Self organized pedestrian crowd dynamics
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+This agent force does not have elliptic equipotential lines as the gradient
+ is equal for all points in equal distance away from an agent.
+ The values for the constants 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $A_{\alpha}^{1},A_{\alpha}^{2},B_{\alpha}^{1},$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{\alpha}^{2}$
+\end_inset
+
+suggested by by Helbing et al.
+ were used (See 4.
+ Implementation ).
 \end_layout
 
 \begin_layout Subsubsection
@@ -1231,7 +1256,7 @@ begin simulation loop
 
 \begin_layout Plain Layout
 
-		calculate new velocity using euler method
+		calculate new velocity and positions using euler method
 \end_layout
 
 \begin_layout Plain Layout
@@ -1684,6 +1709,17 @@ Parameter of agent potential
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die Tabelle chönte me no schöner darstelle, isch öber vo euch en tabelle
+ guru?
+\end_layout
 
 \end_inset
 
@@ -2306,12 +2342,53 @@ yeah geil
 Discussion
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Summary and Outlook
+\end_layout
+
+\begin_layout Standard
+Building mainly on the concepts published by the 
+\begin_inset Quotes eld
+\end_inset
+
+Social Force Model of Pedestrian dynamics
+\begin_inset Quotes erd
+\end_inset
+
+ (1995) and 
+\begin_inset Quotes eld
+\end_inset
+
+Self-organized Pedestrian Crowd Dynamics
+\begin_inset Quotes erd
+\end_inset
+
+ (2005) which were both published by Dirk Helbing et al.
+ an algorithm to simulate crowd behaviour was implimented.
+ The task was to fabricate a concrete model derived from these general models.
+ The models were to some extent modified and extended to realistically simulate
+ crowd behaviour in the ETHZ Polymensa.
+ Summarized, the added extensions were queue heuristics as well as crowd
+ destination dynamics (first the different meals, then the cash register)
+ which are described in detail in sections 4 and 5.
+ 
+\end_layout
+
+\begin_layout Standard
+The simulations showed characteristics which group members have observed
+ to exist (See Section 5.2).
+ From the current results it is not yet possible to draw a conclusion concerning
+ the degree of realism of the simulation.
+ In order to this emperical data would have to be collected.
+ This information could then be compared to simulated data.
+ In a further step empirical data could be collected from various mensas
+ which would could also be simualted.
+ If these prove to be reallistic with only little modification of the model,
+ then the simulation could be used as an aid in the architaural design of
+ mensas.
+ It is only possible through the extensive collection of emperical data
+ to draw conclusions about emperical reality from computer simulated reality
+ which was outside the scope of this report.
 \end_layout
 
 \begin_layout Subsection
@@ -2338,7 +2415,7 @@ Describes model we are considering to build on (Social Force Model)
 
 \emph on
 \lang british
-Self-organized Pedestrian Crowd Dynamics (2005) -- Helving et al.
+Self-organized Pedestrian Crowd Dynamics (2005) -- Helbing et al.
  
 \emph default
 
