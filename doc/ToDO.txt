@@ -6,4 +6,5 @@
 - Kräfte dokumentieren (moritz)
 - Tablethack in Hackliste integrieren (moritz)
 - Anstehheuristik Implantation erklären (Moritz)
+- Report Summary and Outlook, 1. Draft (Michael)
 
