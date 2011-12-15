@@ -29,6 +29,11 @@ ylabel('speed [px/frame]');
 
 % des sagt uebrigens rein gar nichts aus, nicht verwenden!
 
+%% spatial density graph
+
+image( X_traces , 'CDataMapping','scaled' ); axis image;
+
+
 %% density graph
 
 % dens = permute( A_stat(2, :, 1:loglen), [3,2,1] );
