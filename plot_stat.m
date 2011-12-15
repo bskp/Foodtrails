@@ -27,6 +27,7 @@ set(gca,'FontSize',16)
 xlabel('time [frames]');
 ylabel('speed [px/frame]');
 
+% des sagt uebrigens rein gar nichts aus, nicht verwenden!
 
 %% density graph
 
@@ -55,6 +56,19 @@ end
 %% fetching time graph
 
 dft = fetchtimes(2,:)-fetchtimes(1,:)
-%plot(fetchtimes(2,:), dft, 'ok');
-hist(dft)
+
+set(gca,'FontSize',16)
+subplot(2,1,1);
+hold on;
+plot(fetchtimes(2,:), dft, 'ok');
+
+
+ylabel('pass-through-time');
+xlabel('arrival time');
+
+subplot(2,1,2);
+
+hist(dft, 30)
+ylabel('pass-through-time');
+xlabel('frequency');
 
