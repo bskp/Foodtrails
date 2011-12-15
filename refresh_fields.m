@@ -2,7 +2,7 @@
 
 f = v0_mean / tau_alpha; % see formula (2) in paper
 
-for i = 1:n_goals
+for i = 1
     X_fm(:,:,i) = 0.00001 + X_walls(:,:,i)*0.9;
 
     X_people = 0*X_walls(:,:,i);

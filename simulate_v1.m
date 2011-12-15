@@ -19,6 +19,7 @@ end
 n_through = 0;
 fetchtimes = [];
 cpu_a = 0;
+X_traces = X_walls(:,:,1)*0;
 
 if (log_on)
     A_stat = zeros(3, agent_number, duration);
@@ -57,6 +58,10 @@ if (log_on)
     wtimes = stepnumber - A(9,:);
     wtimes(wtimes == stepnumber+1) = 0; % erase not-yet-started ones
     A_stat(4, :, stepnumber) = wtimes;
+    
+    % create "tracemap"
+    
+    
 end
 
 %Find Agents that exceed their max velocity
@@ -164,6 +169,7 @@ annotation(figure(1),'textbox',...
 
 if (mod(stepnumber, 20) == 0)
     refresh_fields;
+    X_traces = X_traces + X_people_conv;
 end
 
 pause(0.01);
