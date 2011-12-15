@@ -5,11 +5,12 @@
 % 1 Velocity |\        
 % 2 Crowd    |  \
 % 3 Goal     |    \
-%            |      \
+% 4 w-time   |      \
 %            |        \ 3rd Dimension: frames
 
 loglen = nnz( sum( sum(A_stat, 2), 1) );
 
+global fetchtimes agent_number;
 
 % to improve: nur agenten, die den roten bereich verlassen haben, beachten!
 %% speed graph
@@ -41,7 +42,16 @@ set(gca,'FontSize',16)
 xlabel('time [frames]');
 ylabel('density [neighbours within 1m]');
 
+%% walkingtime-dependend
+
+figure();
+hold on;
+for id = 1:agent_number
+    a = permute(A_stat(:, id, :), [1,3,2]);
+    a( 2, a(4,:) == 0 ) = Inf;
+    plot( a(4, :), a(2,:), 'Color', rand(3,1)); % dens / wt
+end
 
 %% fetching time graph
 
-
+plot(fetchtimes(2,:), fetchtimes(2,:)-fetchtimes(1,:), 'ok');

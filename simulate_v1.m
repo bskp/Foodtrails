@@ -6,7 +6,7 @@ clear global;
 
 parameters();
 load_map();
-global dt agent_number statistic agents_f p_gain; %X_goals;
+global dt agent_number statistic agents_f p_gain fetchtimes; %X_goals;
 %A=init_agents();
 
 if(video_on)
@@ -17,6 +17,7 @@ end
 %% STATISTICS
 
 n_through = 0;
+fetchtimes = [];
 cpu_a = 0;
 
 if (log_on)
@@ -49,10 +50,13 @@ for agentID = 1:size(A,2)
     end
 end
 
-% log velocities and goals
+% log velocities and goals and walkingtimes
 if (log_on)
     A_stat(1, :, stepnumber) = sqrt(A(3,:).^2+A(4,:).^2);
     A_stat(3, :, stepnumber) = A(6,:);
+    wtimes = stepnumber - A(9,:);
+    wtimes(wtimes == stepnumber+1) = 0; % erase not-yet-started ones
+    A_stat(4, :, stepnumber) = wtimes;
 end
 
 %Find Agents that exceed their max velocity
@@ -92,22 +96,26 @@ for agentID = 1:size(A,2)
        %A(2, agentID) = randi(300,1,1);
        
        if ( A(6, agentID) == 1) % agent past kassa?
-           A = init_agents(agentID,A);
+           % pass-specific statistics are done here
+           fetchtimes = [fetchtimes [A(9, agentID); stepnumber]];
            n_through = n_through + 1;
+           
+           A = init_agents(agentID,A); % restart agent
        else
            A(6, agentID) = 1; % shoo him to the kassa!
        end
    end
    
    % Find Agents leaving the red init area
-   if ( A(8, agentID) == -1 && X_init(X,Y) == 0)
-        A(8, agentID) = stepnumber;
+   if ( A(9, agentID) == -1 && X_init(X,Y) == 0)
+        A(9, agentID) = stepnumber;
    end
 end
 
 
 % Draw the the agents
 
+% Statistics
 count_passes;
 
 fps = 1/(cputime - cpu_a);
@@ -121,6 +129,8 @@ statistic = {'Durchgaenge:',[passes], '', 'Zu schnell:', num_toofast,...
 
 clf();
 
+if (~video_on)
+
 subplot(1,2,2);
 image( X_fm(:,:,1) , 'CDataMapping','scaled' ); axis image;
 hold on;
@@ -133,7 +143,7 @@ quiver(space_y, space_x, ...
        e_alpha_y(space_x, space_y, fieldplot), 0.5);
 
 subplot(1,2,1);
-
+end
 imagesc( map_pretty );        %Hintergrundbild laden
 colormap('bone');
 hold on;
