@@ -1,4 +1,4 @@
-function [F_tot, agent_number] = agents_force(A,alpha)
+function [F_tot, agent_number_back] = agents_force(A,alpha)
     % DISCRIPTION:
     % This function calculates the force caused on the agent in coloumn alpha
     % of matrix A. 
@@ -31,119 +31,96 @@ function [F_tot, agent_number] = agents_force(A,alpha)
     %
     %                 | Agent 1  | Agent 2 | Agent 3
     %-----------------------------------------------
-    % position x      |
-    % position y      |
-    % speed    x      |
-    % speed    y      |
-    % desired speed v0|
-    % type            |
-
+    % 1 position x      |
+    % 2 position y      |
+    % 3 speed    x      |
+    % 4 speed    y      |
+    % 5 desired speed v0|
+    % 6 goal            |
+    % 7 last counter
+    % 8 ETR from FM
+    % 9 Red Carpet...
+    %
+    %
+    % ==Some hints to understand the calculations below:==
+    %
+    % if A=[a b c; d e f] sum(A) or sum(A,1) creates the matrix [a+d,b+e,c+f]
+    % and sum(A,2) creates the matrix [a+b+c;d+e+f]
+    %
+    % if B=[3 4 2 5 1], then (B>2) creates the matrix
+    % [1 1 0 1 0] which one can use select partial matrices
+    % for example B([1 1 0 1 0]) results in [3 4 5] 
+    %
     
-    global dt v0_alphabeta sigma tau_alpha maps X_goals fields_x fields_y; % global constants defined in parameters.m
-    global A1 A2 B1 B2 p_gain e_alpha_x e_alpha_y v0_mean meter T;
-    agent_number=size(A,2);
     
-    % seperate agent alpha from other agents
-    agent_others=[A(:,1:alpha-1) A(:,alpha+1:end)];
+    
+    global sigma tau_alpha agent_number; % global constants defined in parameters.m
+    global A1 A2 B1 B2 e_alpha_x e_alpha_y v0_mean sight;
     agent_alpha=A(:,alpha);
     
-    e_alpha = [fields_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))
-        fields_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))];
-    e_alpha = e_alpha/norm(e_alpha,2);
-    % calculate all r_alphabeta vectors and store in matrix
-    % Doesn't alphabeta mean: beta-alpha? 
-    r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number-1)-agent_others(1:2,:));
+    % calculate all r_alphabeta vectors (distance between) and store in matrix
+    r_alphabeta_matrix=(agent_alpha(1:2,:)*ones(1,agent_number)-A(1:2,:));
+    
+    
+    % Select only Agents inside the radius "sight"
+    close_agents = sqrt(sum(r_alphabeta_matrix.^2))<sight;
+    
+    % Exclude agent_alpha from the selection
+    close_agents(alpha) = 0; 
+    
+    agent_others = A(close_agents);
+    agent_number_back = size(agent_others,2);
+    
+    % Remove unnecessary distances
+    r_alphabeta_matrix(:,~close_agents) = [];
+    
+    
     
     % In case two agents are on top of each other
     % Find the entries where x and y are zero
+    % Totally unlikely, but it would cause a division by zero 
     null_entries = find(r_alphabeta_matrix(1,:)==0 & r_alphabeta_matrix(1,:)==0);
     % Replace the entries by random numbers
     r_alphabeta_matrix(:,null_entries)=rand(2,size(null_entries,2));
     
-    % Nur Agents in einem Radius von radius=1meter beachten
-    rausschmeissen = sqrt(sum(r_alphabeta_matrix.^2))>1*meter;
-    agent_others(:,rausschmeissen) = [];
-    r_alphabeta_matrix(:,rausschmeissen) = [];
-    agent_number=size(agent_others,2)+1;
-    % get all v_betas
-    v_beta_matrix=agent_others(3:4,:);
-    
-    % calculate Force Unit vector
-    % Somethings' odd: The unity vectors are not so much unity
-    % Solved: sqrt was missing...
+    % Calculating the normal vectors (aka the directions) towards the other agents  
     e_beta_matrix=r_alphabeta_matrix./(ones(2,1)*sqrt(sum(r_alphabeta_matrix.^2)));
     
      
-    % calculate smaller semi axis of ellipse 
-%     b=(1/2)*sqrt(...  
-%         (...
-%         sqrt(sum(r_alphabeta_matrix.^2))+...
-%         sqrt(sum((r_alphabeta_matrix-v_beta_matrix*deltat).^2))...
-%         ).^2-...
-%         (sqrt(sum(v_beta_matrix.^2))*deltat).^2);
-%     
-    %b=sqrt(sum(r_alphabeta_matrix.^2)); %circular potential..
-    % absolute value of forces
-    
-    
-    
-    %F_abs=v0_alphabeta*(-1/sigma).*exp(-b/sigma);
-    
-%     F_abs=v0_alphabeta*...
-%     [ (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*s - 2*x)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - x/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2))
-%     (((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2))*((2*r - 2*y)/(2*((r - y).^2 + (s - x).^2).^(1/2)) - y/(x.^2 + y.^2).^(1/2)))/(sigma*exp((((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2).^(1/2)/sigma)*(((x.^2 + y.^2).^(1/2) + ((r - y).^2 + (s - x).^2).^(1/2)).^2 - s.^2 - r.^2)^(1/2))]
-%     n_alpha = agent(3:4)/norm(agent(3:4);
-%     v0 = (1-n_alpha
-    
-    % Desired Direction
+    % d_direction: Desired Direction
+    % Read the desired direction from the Fast March Gradient
     d_direction = [e_alpha_x(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6));...
         e_alpha_y(round(agent_alpha(2)),round(agent_alpha(1)),agent_alpha(6))];
     
+    % Queueing
+    % Select all agents around alpha that have smaller time till reaching the goal.
     closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_others(6,:)==agent_alpha(6))));
-    if(size(closer_agents,2)>0&&agent_alpha(6)~=1) %Agenten in Richtung Kasse machen keine Schlange
+    
+    % Exclude the agents towards the first goal (aka cash point)
+    % They should not queue as the cassa is not designed like it
+    if(size(closer_agents,2)>0&&agent_alpha(6)~=1) 
+        % Of these take the one that has the longest 
+        % expected time as the new desired direction.
         [~,I] = max (closer_agents(3,:));
         closest_agent = closer_agents(1:2,I);
+        % Mix the desired direction with the queueing direction
         d_direction = d_direction*.2+0.8*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
     end
    
+    % Relaxion term
+    % If the agent already has its desired speed
+    % and direction, no force comes from this term
     F_tot = 1/tau_alpha*(...
-        v0_mean*d_direction/norm(d_direction,2)*(1+0.5*(agent_alpha(6)==1))...
+        v0_mean*d_direction/norm(d_direction,2)...
         -agent_alpha(3:4)...
         );
-%       
-%     for i=1:agent_number-1
-%         s = v_beta_matrix(1,i)*3; r = v_beta_matrix(2,i)*3;
-%         x = r_alphabeta_matrix(1,i); y = r_alphabeta_matrix(2,i);
-%         F_tot= F_tot...
-%             -[ (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*s - 2*x)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - x/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2));...
-%             (((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))*((2*r - 2*y)/(2*((r - y)^2 + (s - x)^2)^(1/2)) - y/(x^2 + y^2)^(1/2)))/(sigma*exp((((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2)/sigma)*(((x^2 + y^2)^(1/2) + ((r - y)^2 + (s - x)^2)^(1/2))^2 - s^2 - r^2)^(1/2))]...
-%             *v0_alphabeta;
-%     end
-    
-    % following makes sure agents behind me don't matter as much:
-    % angle=acos(vec(a)*vec(b)/(abs(vec(a)*abs(vec(b)))
-    % a= agent alpha direction (e_alpha)
-    % b= from beta to alpha direction (r_alphabeta_matrix)
-%     
-%     e=e_alpha;
-%     r=r_alphabeta_matrix;
-%     cosangle=(e'*r)./(sqrt(sum(r.^2)));
-%     lambda=0.75;
-%     l=size(r,2);
-%     
-%     angle_terms=ones(2,1)*((ones(1,l)*lambda)+((1-lambda)/2).*(ones(1,l)*1+cosangle))...   
-%                 .*(ones(2,1)*exp((2+2*(A(6,alpha)==1))*sigma*ones(1,agent_number-1)...
-%                 -sum(r_alphabeta_matrix.^2)/B1))...
-%                 .*e_beta_matrix; 
 
     F_tot = F_tot ...
-                + A2*sum((ones(2,1)*((3*(agent_others(6,:)==1)+1).*exp((2+2*(agent_alpha(6)==1))*sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2))...
-        ).*e_beta_matrix,2);
-    % vector value of forces
-    %F=e_beta_matrix.*(ones(2,1)*F_abs);
-    
-    % sum / superposition over all forces -> one vector force
-    %F_tot=sum(F,2);
-    %F_tot = [ F_tot(2); F_tot(1) ]; %transponieren
+                + A2*sum(...
+                (ones(2,1)...
+                *((3*(agent_others(6,:)==1)+1)...The agents towards the cashpoint have more power
+                .*exp((2+2*(agent_alpha(6)==1))...and because of the tray the have a double radius
+                *sigma*ones(1,agent_number-1)-sum(r_alphabeta_matrix.^2)/B2))...
+                ).*e_beta_matrix,2);
     
 end
