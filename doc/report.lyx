@@ -31,7 +31,16 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -1083,6 +1092,38 @@ g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right) & =\begin{cases}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
+Simple Queueing
+\end_layout
+
+\begin_layout Standard
+In case of many agents having the same goal, the social force model itself
+ just produces a crowd of agents all pushing in same direction.
+ Our goal is to learn the agents to queue.
+ If a person in real life wants to walk toward a specific place, she or
+ her looks around to check wheter there are other people headed in the same
+ direction.
+ If so, she or he joins the crowd and this leads to a queue.
+ What one basically does is
+\end_layout
+
+\begin_layout Itemize
+Look towards the goal.
+ Is there anyone else in front of me headed the same way?
+\end_layout
+
+\begin_layout Itemize
+Who in front of me is last in queue?
+\end_layout
+
+\begin_layout Itemize
+Join him or her
+\end_layout
+
+\begin_layout Itemize
 
 \end_layout
 
