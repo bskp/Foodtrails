@@ -2,3 +2,5 @@
 *~
 *.orig
 videos/*.avi
+
+doc/#report.lyx#

@@ -1,0 +1,9 @@
+- Zeiten messen (roggo)
+- Code aufräumen (moritz)
+- LaTeX snipets als Codebeispiele in Bericht platzieren (moritz)
+- Notizen hinzufügen (moritz)
+- A8 vs A9 überprüfen (moritz)
+- Kräfte dokumentieren (moritz)
+- Tablethack in Hackliste integrieren (moritz)
+- Anstehheuristik Implantation erklären (Moritz)
+
