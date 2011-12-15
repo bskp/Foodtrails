@@ -34,6 +34,18 @@ ylabel('speed [px/frame]');
 image( X_traces , 'CDataMapping','scaled' ); axis image;
 
 
+%% blocked agents
+
+
+bl = zeros(duration);
+for t = 1:duration
+    a_stat = A_stat(:,:,t);
+    a_stat( :, a_stat(4,:)==0 ) = [];
+    bl(t) = sum( a_stat(1,:) < 5 );
+end
+
+plot(bl);
+
 %% density graph
 
 % dens = permute( A_stat(2, :, 1:loglen), [3,2,1] );
