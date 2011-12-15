@@ -6,7 +6,7 @@ clear global;
 
 parameters();
 load_map();
-global dt agent_number statistic agents_f p_gain; %X_goals;
+global dt agent_number statistic agents_f p_gain fetchtimes; %X_goals;
 %A=init_agents();
 
 if(video_on)
@@ -17,6 +17,7 @@ end
 %% STATISTICS
 
 n_through = 0;
+fetchtimes = [];
 cpu_a = 0;
 
 if (log_on)
@@ -92,22 +93,26 @@ for agentID = 1:size(A,2)
        %A(2, agentID) = randi(300,1,1);
        
        if ( A(6, agentID) == 1) % agent past kassa?
-           A = init_agents(agentID,A);
+           % pass-specific statistics are done here
+           fetchtimes = [fetchtimes [A(9, agentID); stepnumber]];
            n_through = n_through + 1;
+           
+           A = init_agents(agentID,A); % restart agent
        else
            A(6, agentID) = 1; % shoo him to the kassa!
        end
    end
    
    % Find Agents leaving the red init area
-   if ( A(8, agentID) == -1 && X_init(X,Y) == 0)
-        A(8, agentID) = stepnumber;
+   if ( A(9, agentID) == -1 && X_init(X,Y) == 0)
+        A(9, agentID) = stepnumber;
    end
 end
 
 
 % Draw the the agents
 
+% Statistics
 count_passes;
 
 fps = 1/(cputime - cpu_a);

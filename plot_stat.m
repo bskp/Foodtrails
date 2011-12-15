@@ -10,6 +10,7 @@
 
 loglen = nnz( sum( sum(A_stat, 2), 1) );
 
+global fetchtimes;
 
 % to improve: nur agenten, die den roten bereich verlassen haben, beachten!
 %% speed graph
@@ -44,4 +45,4 @@ ylabel('density [neighbours within 1m]');
 
 %% fetching time graph
 
-
+plot(fetchtimes(2,:), fetchtimes(2,:)-fetchtimes(1,:), 'ok');
