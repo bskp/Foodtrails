@@ -3525,7 +3525,7 @@ Map evolution process
 \begin_layout Standard
 
 \lang english
-While experimenting with different parameters, the walls were thickened
+While experimenting with different parameters, the walls had to be thickened
  several times.
  Otherwise, agents got pushed throught due to the high forces.
 \end_layout
@@ -3638,14 +3638,21 @@ After adapting some parameters (mostly
 meter
 \noun default
 ), the map needed some tweaking to avoid unrealistically high inflow of
- agents.
+ agents (figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tweaking-the-inflow"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
 
 \lang english
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -3682,6 +3689,12 @@ status open
 \begin_layout Plain Layout
 
 \lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tweaking-the-inflow"
+
+\end_inset
+
 Tweaking the inflow
 \end_layout
 
@@ -3704,20 +3717,43 @@ Comparing heuristics
 \begin_layout Standard
 
 \lang english
-With the found parameters 
-\begin_inset Note Note
-status open
+With the found parameters (see Appendix on p.
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
 
-\lang english
-verweis auf parameters im anhang
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sub:Parameters"
 
 \end_inset
 
-, a benchmark of our heuristic was done.
- 
+), a benchmark of our heuristic was done.
+ The first run included just the 
+\series bold
+bare social-force model
+\series default
+, the second run used our 
+\series bold
+
+\begin_inset Quotes eld
+\end_inset
+
+simple queueing
+\begin_inset Quotes erd
+\end_inset
+
+
+\series default
+ and the third featured 
+\series bold
+real-time fast marching 
+\series default
+as well as our 
+\series bold
+queueing
+\series default
+ extension (Shown from left to right in the following three plots).
 \end_layout
 
 \begin_layout Paragraph
@@ -3729,7 +3765,31 @@ Pass-through-time
 \begin_layout Standard
 
 \lang english
+In figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:arrival"
+
+\end_inset
+
+, an 
+\begin_inset Quotes eld
+\end_inset
+
+upper limit
+\begin_inset Quotes erd
+\end_inset
+
+ for the pass-through-time shows up in all three runs: thus, no one gets
+ stuck for too long.
+ The different heuristics however don't seem to impact the passing-through-time.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -3768,7 +3828,13 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-Comparing space usage
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:arrival"
+
+\end_inset
+
+Pass-through-time
 \end_layout
 
 \end_inset
@@ -3784,16 +3850,22 @@ Comparing space usage
 \begin_layout Paragraph
 
 \lang english
+\begin_inset Note Note
+status open
+
+\begin_layout Paragraph
+
+\lang english
 Stuck agents
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3829,7 +3901,18 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-Comparing space usage
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:stuck"
+
+\end_inset
+
+Stuck agents
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3846,6 +3929,22 @@ Comparing space usage
 
 \lang english
 Space usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the third comparison, the effort made finally pays of: By adding queuing
+ heuristics (left vs.
+ center image), we see how crowd just in front of the upper left service
+ sparses.
+ Queue aware agents rush less!
+\end_layout
+
+\begin_layout Standard
+By recalculating the fast-marching-paths (center vs.
+ right image), agents realise the crow in their way and longer, but quicker
+ way along other checkouts.
 \end_layout
 
 \begin_layout Standard
@@ -3911,9 +4010,10 @@ Discussion
 
 \begin_layout Standard
 Screencaptures:
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -3973,7 +4073,7 @@ Simulation after 300 Frames, from left to right.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -4033,7 +4133,7 @@ Simulation after 1800 Frames from left to right.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -4081,6 +4181,11 @@ Simulation after 3600 Frames, from left to right.
  with queues, with fast marching, 2.
  without queues, with fast marching 3.
  with queues, without fast marching 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4325,6 +4430,13 @@ lstinputlisting{../src/init_agents.m}
 
 \begin_layout Subsubsection
 Parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Parameters"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
