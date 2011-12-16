@@ -3859,7 +3859,7 @@ status open
 
 
 \backslash
-lstinputlisting{../src/test_agents_force.m
+lstinputlisting{../src/test_agents_force.m}
 \end_layout
 
 \end_inset
