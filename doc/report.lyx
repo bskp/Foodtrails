@@ -95,7 +95,7 @@ begin{center}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 includegraphics[width=5cm]{ETHlogo}
 \end_layout
@@ -1973,6 +1973,121 @@ reference "Formel e_alpha"
 Agent forces
 \end_layout
 
+\begin_layout Standard
+Our method for calculating the agent forces is a mix of cellular automaton
+ and agent based model.
+ Usually one had to calculate the forces from one agent to every other and
+ so on.
+ Meaning: The complexity for 
+\begin_inset Formula $n$
+\end_inset
+
+ Agents is 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+.
+ As the force from one agent decays exponentially with the distance we consider
+ only the agent inside the radius 
+\emph on
+sight.
+ 
+\emph default
+For our purposes 
+\emph on
+sight
+\emph default
+ is set to 1 meter.
+\end_layout
+
+\begin_layout Standard
+In Matlab is really easy to select only entries from a matrix that fulfill
+ a certain condition:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+close_agents = sqrt(sum(r_alphabeta_matrix.^2))<sight;
+\end_layout
+
+\begin_layout Plain Layout
+
+agent_others = A(:,close_agents);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This lowers the complexity to 
+\begin_inset Formula $n$
+\end_inset
+
+ as there is a maximum of agents inside a certain area.
+\end_layout
+
+\begin_layout Standard
+The final expression for calculating the forces from the current agent to
+ all others is not totally self explaining.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+F_tot = F_tot ...
+\end_layout
+
+\begin_layout Plain Layout
+
+                + A2*sum(...
+\end_layout
+
+\begin_layout Plain Layout
+
+                (ones(2,1)...
+\end_layout
+
+\begin_layout Plain Layout
+
+                *((2*(agent_others(6,:)==1)+1)...
+\end_layout
+
+\begin_layout Plain Layout
+
+                .*exp((2+(agent_alpha(6)==1))...
+\end_layout
+
+\begin_layout Plain Layout
+
+                *sigma*ones(1,agent_number_back-1)-sum(r_alphabeta_matrix.^2)/B2)
+)...
+\end_layout
+
+\begin_layout Plain Layout
+
+                ).*e_beta_matrix,2);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
 Etiquette training for ruthless agents (queueing heuristics)
 \end_layout
@@ -2541,6 +2656,13 @@ eider et al.
 
 In case we attempt to use Cellular Automata this paper would be useful.
  
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang british
+Writing Fast MATLAB Code (2004) -- Pascal Getreuer
 \end_layout
 
 \end_body
