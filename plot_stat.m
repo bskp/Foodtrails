@@ -35,7 +35,7 @@ image( X_traces , 'CDataMapping','scaled' ); axis image;
 
 imwrite(X_traces/10, colormap('jet'), 'dens.png');
 
-%% blocked agents
+%% stuck agents
 
 
 bl = zeros(duration);
@@ -46,6 +46,10 @@ for t = 1:duration
 end
 
 plot(bl);
+set(gca,'FontSize',16)
+xlabel('time [frames]');
+ylabel('stuck agents');
+
 
 %% density graph
 
@@ -100,6 +104,6 @@ subplot(2,1,2);
 
 set(gca,'FontSize',16)
 hist(dft, 30)
-ylabel('pass-through-time');
-xlabel('frequency');
+ylabel('frequency');
+xlabel('pass-through-time');
 
