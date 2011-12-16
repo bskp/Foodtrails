@@ -31,8 +31,8 @@ global ...
 
 % General
 
-agent_number = 300;
-dt = .1;
+agent_number = 50;
+dt = .05;
 noplot = false;
 video_on = true;
 log_on = true;
@@ -55,7 +55,7 @@ U_alphaB_0 = 5 * meter^2; % m^2/s^2, max. boundary potential
 
 % Agents
 v0_alphabeta = 2.1*meter^2 * 10; % m^2/s^2, max. agent potential
-sigma = 0.3*meter; % m 
+sigma = .3*meter; % m 
 v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
               % m/s equals v_alpha_0 in formula (2)
 tau_alpha = .3; % s, "relaxation time"
@@ -64,7 +64,7 @@ sqrt_theta = 0.26*meter; % m/s standard deviation of gaussian distributed v0_mea
 A1 = 0*meter;
 B1 = 0.2*meter;
 A2 = 3*meter; % m/s^2
-B2 = 0.2*meter; % m
+B2 = 10*0.2*meter; % m
 
 sight = 1.5*meter;
 tray_factor = 1;
