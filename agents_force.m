@@ -55,7 +55,7 @@ function [F_tot, agent_number_back] = agents_force(A,alpha)
     
     
     global sigma tau_alpha agent_number; % global constants defined in parameters.m
-    global A1 A2 B1 B2 e_alpha_x e_alpha_y v0_mean sight;
+    global A1 A2 B1 B2 e_alpha_x e_alpha_y v0_mean sight tray_factor;
     agent_alpha=A(:,alpha);
     
     % calculate all r_alphabeta vectors (distance between) and store in matrix
@@ -98,13 +98,13 @@ function [F_tot, agent_number_back] = agents_force(A,alpha)
     
     % Exclude the agents towards the first goal (aka cash point)
     % They should not queue as the cassa is not designed like it
-    if(size(closer_agents,2)>0&&agent_alpha(6)~=1) 
+    if((agent_alpha(2)>200)&&(size(closer_agents,2)>0)&&agent_alpha(6)~=1) 
         % Of these take the one that has the longest 
         % expected time as the new desired direction.
         [~,I] = max (closer_agents(3,:));
         closest_agent = closer_agents(1:2,I);
         % Mix the desired direction with the queueing direction
-        d_direction = d_direction*.3+0.7*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
+        d_direction = (closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
     end
    
     % Relaxion term
@@ -118,9 +118,9 @@ function [F_tot, agent_number_back] = agents_force(A,alpha)
     F_tot = F_tot ...
                 + A2*sum(...
                 (ones(2,1)...
-                *((2*(agent_others(6,:)==1)+1)...The agents towards the cashpoint have more power
-                .*exp((2+(agent_alpha(6)==1))...and because of the tray the have a double radius
-                *sigma*ones(1,agent_number_back-1)-sum(r_alphabeta_matrix.^2)/B2))...
+                *((0*(agent_others(6,:)==1)+1)...The agents towards the cashpoint have more power
+                .*exp((2+tray_factor*(agent_alpha(6)==1))...and because of the tray the have a double radius
+                *sigma*ones(1,agent_number_back-1)-sum(r_alphabeta_matrix.^2)/B2)+sigma*tray_factor*(agent_others(6,:)==1))...
                 ).*e_beta_matrix,2);
     
 end
