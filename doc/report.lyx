@@ -66,7 +66,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\listings_params "language=Matlab"
+\listings_params "breaklines=true,language=Matlab"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -536,6 +536,26 @@ LatexCommand tableofcontents
 
 \lang english
 Individual contributions
+\end_layout
+
+\begin_layout Standard
+The main idea of the queueing in the 
+\emph on
+Polymensa 
+\emph default
+was developed by us alltogether.
+ Our goal was from the beginning to use matrices and matrix operation wherever
+ possible.
+ Later on Matthias Roggo mostly fascinated how convert a bitmaps into vector
+ fields.
+ It was also who found the Fast Marching Algorithm to be useful for the
+ path finding of our agents.
+ Michael Aebli was the one who initially started the report and wrote most
+ of the general text.
+ He also tried to calculate the agent forces with totally confusing elipsis
+ potential which we had to simplify in the end.
+ Moritz Vifian created the simulation sequence and contributed a simplified
+ formula for the agent forces.
 \end_layout
 
 \begin_layout Section
@@ -2970,12 +2990,21 @@ status open
 
 \begin_layout Plain Layout
 
-exp(r-
+exp(((radius_alpha+radius_beta)-distance_alpha_beta))/B2)
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+For calculating the distances we sum up the squares of distance vectors
+ stored in 
+\family typewriter
+r_alphabeta_matrix
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3176,6 +3205,87 @@ Naive
 
 \lang english
 Queue sensing agents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The queuing agent is rather simple.
+ We use the estimated times (eighth entry of matrix A) until reaching a
+ certain goal produced by the Fast Marching Algorithm.
+ The agent alpha looks for all agents that are closer to the goal.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_
+others(6,:)==agent_alpha(6))));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+From these closer agents she/he choses the last in queue (maximal time of
+ the closer agents)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+[~,I] = max (closer_agents(3,:));
+\end_layout
+
+\begin_layout Plain Layout
+
+        closest_agent = closer_agents(1:2,I);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The new goal is now the agent next in line.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ d_direction = (closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1
+:2),2);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -3427,26 +3537,574 @@ primitive simulation with queues
 \begin_layout Standard
 
 \lang english
-\begin_inset ERT
-status open
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Parameterization for the mensa
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To simulate hungry people rushing through the mensa, we made a map based
+ on 
+\emph on
+rauminfo.ethz.ch
+\emph default
+
+\begin_inset Foot
+status collapsed
 
 \begin_layout Plain Layout
 
-
-\backslash
-pagebreak
+\lang english
+http://www.rauminfo.ethz.ch/Rauminfo/grundrissplan.gif?region=Z&areal=Z&gebaeude=MM&
+geschoss=B
 \end_layout
 
 \end_inset
 
-
-\begin_inset Note Note
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
 
 \lang english
-yeah geil
+\begin_inset Graphics
+	filename ../src/maps/grundrissplan.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../src/maps/grundrissplan3.png
+	height 5cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../src/maps/grundrissplan4.png
+	height 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Map evolution process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+While experimenting with different parameters, the walls had to be thickened
+ several times.
+ Otherwise, agents got pushed throught due to the high forces.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The following plots are based upon 4000 to 5000 steps.
+ Due to the slow simulation (5000 steps take about 15 minutes), the 
+\begin_inset Quotes eld
+\end_inset
+
+parameter-sweeping
+\begin_inset Quotes erd
+\end_inset
+
+ was done manually and very time consuming.
+ Two exemplary problems we ran into:
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+Literally pitfalls
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\lang english
+\begin_inset Graphics
+	filename imgs/remote-worker-plots/fetchtime1.eps
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:No-steady-state"
+
+\end_inset
+
+No steady-state
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With to few or slow checkouts, to many agents got stuck and no 
+\begin_inset Quotes eld
+\end_inset
+
+continuos flow of agents
+\begin_inset Quotes erd
+\end_inset
+
+ could be achieved.
+ This can be verified in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:No-steady-state"
+
+\end_inset
+
+ which shows (in the upper part) the agents' passing-through-time compared
+ to their arrival time: No upper limit seems to emerge.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+High inrush
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+After adapting some parameters (mostly 
+\noun on
+meter
+\noun default
+), the map needed some tweaking to avoid unrealistically high inflow of
+ agents (figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tweaking-the-inflow"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\lang english
+\begin_inset Graphics
+	filename imgs/density_ungebremst.png
+	height 7cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename imgs/gebremst.png
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tweaking-the-inflow"
+
+\end_inset
+
+Tweaking the inflow
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Comparing heuristics
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the found parameters (see Appendix on p.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sub:Parameters"
+
+\end_inset
+
+), a benchmark of our heuristic was done.
+ The first run included just the 
+\series bold
+bare social-force model
+\series default
+, the second run used our 
+\series bold
+
+\begin_inset Quotes eld
+\end_inset
+
+simple queueing
+\begin_inset Quotes erd
+\end_inset
+
+
+\series default
+ and the third featured 
+\series bold
+real-time fast marching 
+\series default
+as well as our 
+\series bold
+queueing
+\series default
+ extension (Shown from left to right in the following three plots).
+\end_layout
+
+\begin_layout Paragraph
+
+\lang english
+Pass-through-time
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:arrival"
+
+\end_inset
+
+, an 
+\begin_inset Quotes eld
+\end_inset
+
+upper limit
+\begin_inset Quotes erd
+\end_inset
+
+ for the pass-through-time shows up in all three runs: thus, no one gets
+ stuck for too long.
+ The different heuristics however don't seem to impact the passing-through-time.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename simulation/nofm_noque/arrival.eps
+	width 32text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/arrival.eps
+	width 32col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/fm_que/arrival.eps
+	width 32col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:arrival"
+
+\end_inset
+
+Pass-through-time
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\lang english
+\begin_inset Note Note
+status open
+
+\begin_layout Paragraph
+
+\lang english
+Stuck agents
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename simulation/nofm_noque/stuck.eps
+	width 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/stuck.eps
+	width 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/fm_que/stuck.eps
+	width 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:stuck"
+
+\end_inset
+
+Stuck agents
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\lang english
+Space usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the third comparison, the effort made finally pays of: By adding queuing
+ heuristics (left vs.
+ center image), we see how crowd just in front of the upper left service
+ sparses.
+ Queue aware agents rush less!
+\end_layout
+
+\begin_layout Standard
+By recalculating the fast-marching-paths (center vs.
+ right image), agents realise the crow in their way and longer, but quicker
+ way along other checkouts.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename simulation/nofm_noque/dens.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/dens.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/fm_que/dens.png
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Comparing space usage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3462,9 +4120,15 @@ Discussion
 
 \begin_layout Standard
 Screencaptures:
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
+\noindent
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -3524,7 +4188,7 @@ Simulation after 300 Frames, from left to right.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -3584,7 +4248,7 @@ Simulation after 1800 Frames from left to right.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -3644,7 +4308,17 @@ Simulation after 3600 Frames, from left to right.
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3802,12 +4476,13 @@ Source Code
 \end_layout
 
 \begin_layout Standard
-This is a short text.
- And there goes the hm...
+All the source code is stored in the directory 'src/'
 \end_layout
 
 \begin_layout Subsubsection
-Agents Forces
+Agents Forces 
+\family typewriter
+| agents_force.m
 \end_layout
 
 \begin_layout Standard
@@ -3829,7 +4504,10 @@ lstinputlisting{../src/agents_force.m}
 \begin_layout Subsubsection
 
 \lang english
-Count Passes
+Count Passes 
+\family typewriter
+\lang british
+| count_passes.m
 \end_layout
 
 \begin_layout Standard
@@ -3853,7 +4531,10 @@ lstinputlisting{../src/count_passes.m}
 \begin_layout Subsubsection
 
 \lang english
-Init Agents
+Init Agents 
+\family typewriter
+\lang british
+| init_agents.m
 \end_layout
 
 \begin_layout Standard
@@ -3876,6 +4557,13 @@ lstinputlisting{../src/init_agents.m}
 
 \begin_layout Subsubsection
 Parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Parameters"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3895,7 +4583,9 @@ lstinputlisting{../src/parameters.m}
 \end_layout
 
 \begin_layout Subsubsection
-Plot Stat
+Plot Stat 
+\family typewriter
+| plot_stat.m
 \end_layout
 
 \begin_layout Standard
@@ -3915,7 +4605,9 @@ lstinputlisting{../src/plot_stat.m}
 \end_layout
 
 \begin_layout Subsubsection
-Potential Force
+Potential Force 
+\family typewriter
+| potential_force.m
 \end_layout
 
 \begin_layout Standard
@@ -3935,7 +4627,9 @@ lstinputlisting{../src/potential_force.m}
 \end_layout
 
 \begin_layout Subsubsection
-Refresh Fields
+Refresh Fields 
+\family typewriter
+| refresh_fields.m
 \end_layout
 
 \begin_layout Standard
@@ -3955,7 +4649,9 @@ lstinputlisting{../src/refresh_fields.m}
 \end_layout
 
 \begin_layout Subsubsection
-Remote Worker
+Remote Worker 
+\family typewriter
+| remote_worker.m
 \end_layout
 
 \begin_layout Standard
@@ -3975,7 +4671,9 @@ lstinputlisting{../src/remote_worker.m}
 \end_layout
 
 \begin_layout Subsubsection
-Reset Simulation
+Reset Simulation 
+\family typewriter
+| reset_sim.m
 \end_layout
 
 \begin_layout Standard
@@ -3997,7 +4695,9 @@ lstinputlisting{../src/reset_sim.m}
 \end_layout
 
 \begin_layout Subsubsection
-Separate Areas
+Separate Areas 
+\family typewriter
+| seperateAreas.m
 \end_layout
 
 \begin_layout Standard
@@ -4017,7 +4717,9 @@ lstinputlisting{../src/seperateAreas.m}
 \end_layout
 
 \begin_layout Subsubsection
-Simulate
+Simulate 
+\family typewriter
+| simulate_v1.m
 \end_layout
 
 \begin_layout Standard
@@ -4037,7 +4739,9 @@ lstinputlisting{../src/simulate_v1.m}
 \end_layout
 
 \begin_layout Subsubsection
-Test Agents Force
+Test Agents Force 
+\family typewriter
+| test_agents_force.m
 \end_layout
 
 \begin_layout Standard
@@ -4057,7 +4761,9 @@ lstinputlisting{../src/test_agents_force.m}
 \end_layout
 
 \begin_layout Subsubsection
-Test Load Map
+Test Load Map 
+\family typewriter
+| test_load_map.m
 \end_layout
 
 \begin_layout Standard
