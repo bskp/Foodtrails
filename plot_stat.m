@@ -33,7 +33,7 @@ ylabel('speed [px/frame]');
 
 image( X_traces , 'CDataMapping','scaled' ); axis image;
 
-imwrite(X_traces/10, colormap('jet'), 'dens.png');
+imwrite(X_traces/20, colormap('jet'), 'dens.png');
 
 %% stuck agents
 
@@ -45,9 +45,9 @@ for t = 1:duration
     bl(t) = sum( a_stat(1,:) < 5 );
 end
 
-plot(bl(1:10:end,1:10:end));
+plot(bl(1:10:end, 1:10:end));
 set(gca,'FontSize',16)
-xlabel('time [frames]');
+xlabel('time [frames/10]');
 ylabel('stuck agents');
 
 
