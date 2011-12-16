@@ -66,7 +66,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\listings_params "language=Matlab"
+\listings_params "breaklines=true,language=Matlab"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -536,6 +536,26 @@ LatexCommand tableofcontents
 
 \lang english
 Individual contributions
+\end_layout
+
+\begin_layout Standard
+The main idea of the queueing in the 
+\emph on
+Polymensa 
+\emph default
+was developed by us alltogether.
+ Our goal was from the beginning to use matrices and matrix operation wherever
+ possible.
+ Later on Matthias Roggo mostly fascinated how convert a bitmaps into vector
+ fields.
+ It was also who found the Fast Marching Algorithm to be useful for the
+ path finding of our agents.
+ Michael Aebli was the one who initially started the report and wrote most
+ of the general text.
+ He also tried to calculate the agent forces with totally confusing elipsis
+ potential which we had to simplify in the end.
+ Moritz Vifian created the simulation sequence and contributed a simplified
+ formula for the agent forces.
 \end_layout
 
 \begin_layout Section
@@ -2970,12 +2990,21 @@ status open
 
 \begin_layout Plain Layout
 
-exp(r-
+exp(((radius_alpha+radius_beta)-distance_alpha_beta))/B2)
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+For calculating the distances we sum up the squares of distance vectors
+ stored in 
+\family typewriter
+r_alphabeta_matrix
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3176,6 +3205,87 @@ Naive
 
 \lang english
 Queue sensing agents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The queuing agent is rather simple.
+ We use the estimated times (eighth entry of matrix A) until reaching a
+ certain goal produced by the Fast Marching Algorithm.
+ The agent alpha looks for all agents that are closer to the goal.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_
+others(6,:)==agent_alpha(6))));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+From these closer agents she/he choses the last in queue (maximal time of
+ the closer agents)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+[~,I] = max (closer_agents(3,:));
+\end_layout
+
+\begin_layout Plain Layout
+
+        closest_agent = closer_agents(1:2,I);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The new goal is now the agent next in line.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ d_direction = (closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1
+:2),2);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -4023,11 +4133,6 @@ Discussion
 
 \begin_layout Standard
 Screencaptures:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4086,7 +4191,7 @@ Simulation after 300 Frames, from left to right.
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \noindent
 \begin_inset Float figure
 wide false
@@ -4146,7 +4251,7 @@ Simulation after 1800 Frames from left to right.
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \noindent
 \begin_inset Float figure
 wide false
@@ -4206,8 +4311,7 @@ Simulation after 3600 Frames, from left to right.
 
 \end_layout
 
-\end_inset
-
+\begin_layout Standard
 
 \end_layout
 
@@ -4365,12 +4469,13 @@ Source Code
 \end_layout
 
 \begin_layout Standard
-This is a short text.
- And there goes the hm...
+All the source code is stored in the directory 'src/'
 \end_layout
 
 \begin_layout Subsubsection
-Agents Forces
+Agents Forces 
+\family typewriter
+| agents_force.m
 \end_layout
 
 \begin_layout Standard
@@ -4392,7 +4497,10 @@ lstinputlisting{../src/agents_force.m}
 \begin_layout Subsubsection
 
 \lang english
-Count Passes
+Count Passes 
+\family typewriter
+\lang british
+| count_passes.m
 \end_layout
 
 \begin_layout Standard
@@ -4416,7 +4524,10 @@ lstinputlisting{../src/count_passes.m}
 \begin_layout Subsubsection
 
 \lang english
-Init Agents
+Init Agents 
+\family typewriter
+\lang british
+| init_agents.m
 \end_layout
 
 \begin_layout Standard
@@ -4465,7 +4576,9 @@ lstinputlisting{../src/parameters.m}
 \end_layout
 
 \begin_layout Subsubsection
-Plot Stat
+Plot Stat 
+\family typewriter
+| plot_stat.m
 \end_layout
 
 \begin_layout Standard
@@ -4485,7 +4598,9 @@ lstinputlisting{../src/plot_stat.m}
 \end_layout
 
 \begin_layout Subsubsection
-Potential Force
+Potential Force 
+\family typewriter
+| potential_force.m
 \end_layout
 
 \begin_layout Standard
@@ -4505,7 +4620,9 @@ lstinputlisting{../src/potential_force.m}
 \end_layout
 
 \begin_layout Subsubsection
-Refresh Fields
+Refresh Fields 
+\family typewriter
+| refresh_fields.m
 \end_layout
 
 \begin_layout Standard
@@ -4525,7 +4642,9 @@ lstinputlisting{../src/refresh_fields.m}
 \end_layout
 
 \begin_layout Subsubsection
-Remote Worker
+Remote Worker 
+\family typewriter
+| remote_worker.m
 \end_layout
 
 \begin_layout Standard
@@ -4545,7 +4664,9 @@ lstinputlisting{../src/remote_worker.m}
 \end_layout
 
 \begin_layout Subsubsection
-Reset Simulation
+Reset Simulation 
+\family typewriter
+| reset_sim.m
 \end_layout
 
 \begin_layout Standard
@@ -4567,7 +4688,9 @@ lstinputlisting{../src/reset_sim.m}
 \end_layout
 
 \begin_layout Subsubsection
-Separate Areas
+Separate Areas 
+\family typewriter
+| seperateAreas.m
 \end_layout
 
 \begin_layout Standard
@@ -4587,7 +4710,9 @@ lstinputlisting{../src/seperateAreas.m}
 \end_layout
 
 \begin_layout Subsubsection
-Simulate
+Simulate 
+\family typewriter
+| simulate_v1.m
 \end_layout
 
 \begin_layout Standard
@@ -4607,7 +4732,9 @@ lstinputlisting{../src/simulate_v1.m}
 \end_layout
 
 \begin_layout Subsubsection
-Test Agents Force
+Test Agents Force 
+\family typewriter
+| test_agents_force.m
 \end_layout
 
 \begin_layout Standard
@@ -4627,7 +4754,9 @@ lstinputlisting{../src/test_agents_force.m}
 \end_layout
 
 \begin_layout Subsubsection
-Test Load Map
+Test Load Map 
+\family typewriter
+| test_load_map.m
 \end_layout
 
 \begin_layout Standard
