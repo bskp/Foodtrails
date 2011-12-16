@@ -4111,6 +4111,7 @@ By recalculating the fast-marching-paths (center vs.
 
 \lang english
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -4160,10 +4161,15 @@ Comparing space usage
 \end_inset
 
 
+\lang british
+In the following screencaptures -- and way better in the videos -- we can
+ see how the agents on their way to the checkout move more flexible with
+ the real-time-fast-marching.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -4224,6 +4230,7 @@ Simulation after 300 Frames, from left to right.
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -4284,6 +4291,7 @@ Simulation after 1800 Frames from left to right.
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -4341,6 +4349,7 @@ Simulation after 3600 Frames, from left to right.
 
 \end_layout
 
+<<<<<<< HEAD
 \begin_layout Standard
 Figures 11- 13 show screencaptures of the videos which were made whilst
  collecting the data presented in Section 5.3.
@@ -4349,6 +4358,8 @@ Figures 11- 13 show screencaptures of the videos which were made whilst
  with the real-time-fast-marching.
 \end_layout
 
+=======
+>>>>>>> cda7db85c404cb2516fd965da3f53e9173754aec
 \begin_layout Section
 
 \lang english
