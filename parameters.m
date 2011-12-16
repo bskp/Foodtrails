@@ -33,9 +33,9 @@ global ...
 agent_number = 300;
 dt = .1;
 noplot = false;
-video_on = false;
+video_on = true;
 log_on = true;
-duration = 5000; % frames
+duration = 4000; % frames
 
 % Map
 meter = 10; % px/m, according to:
