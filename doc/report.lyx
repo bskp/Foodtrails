@@ -546,8 +546,8 @@ Polymensa
 was developed by us alltogether.
  Our goal was from the beginning to use matrices and matrix operation wherever
  possible.
- Later on Matthias Roggo mostly fascinated how convert a bitmaps into vector
- fields.
+ Later on Matthias Roggo was mostly fascinated how to convert a bitmaps
+ into vector fields.
  It was also him who found the Fast Marching Algorithm to be useful for
  the path finding of our agents.
  In the end he added the support for logging and statitics.
@@ -990,7 +990,7 @@ c & \text{otherwise}
 \begin_layout Standard
 
 \lang english
-An improved approach to this problem is proposed by 
+An simplified approach to this problem is proposed by 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1220,7 +1220,7 @@ Queueing
 
 \lang english
 In case of many agents having the same goal, the social force model itself
- just produces a crowd of agents all pushing in same direction.
+ just produces a crowd of agents all pushing in the same direction.
  Our goal is to learn the agents to queue.
  If a person in real life wants to walk toward a specific place, she or
  her looks around to check whether there are other people headed in the
@@ -1437,7 +1437,14 @@ Global Parameter values
 
 \lang english
 The values of global parameters (directly related to the social force model)
- which were used are listed in the following table.
+ which were used are listed in the 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "tab:Parameter-Table"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -2605,6 +2612,12 @@ Self-organized crowd dynamics Helbing
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Parameter-Table"
+
+\end_inset
+
 Parameter Table
 \end_layout
 
@@ -2645,7 +2658,7 @@ load_map.m
  function (see Section 2) and the black areas of the map which represent
  walls.
  The convolution was calculated as a multiplication in the frequency domain
- via matlab's fast Fourier transformation.
+ via matlab's Fast Fourier Transformation.
 \end_layout
 
 \begin_layout Standard
@@ -3218,7 +3231,7 @@ Queue sensing agents
 \begin_layout Standard
 
 \lang english
-The queuing agent is rather simple.
+The queuing behaviour of an agent is rather simple.
  We use the estimated times (eighth entry of matrix A) until reaching a
  certain goal produced by the Fast Marching Algorithm.
  The agent alpha looks for all agents that are closer to the goal.
@@ -4385,7 +4398,7 @@ From the current results it is not yet possible to draw a conclusion concerning
  In order to this, empirical data would have to be collected.
  This information could then be compared to simulated data.
  In a further step empirical data could be collected from various mensas
- which would could also be simulated.
+ which could also be simulated.
  If these prove to be realistic with only little modification of the model,
  then the simulation could be used as an aid in the architectural design
  of mensas.
