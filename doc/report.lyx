@@ -4120,16 +4120,6 @@ Discussion
 
 \begin_layout Standard
 Screencaptures:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\noindent
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -4188,7 +4178,7 @@ Simulation after 300 Frames, from left to right.
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \noindent
 \begin_inset Float figure
 wide false
@@ -4248,7 +4238,7 @@ Simulation after 1800 Frames from left to right.
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \noindent
 \begin_inset Float figure
 wide false
@@ -4308,17 +4298,7 @@ Simulation after 3600 Frames, from left to right.
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
