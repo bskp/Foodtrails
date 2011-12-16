@@ -33,6 +33,19 @@ ylabel('speed [px/frame]');
 
 image( X_traces , 'CDataMapping','scaled' ); axis image;
 
+imwrite(X_traces/10, colormap('jet'), 'dens.png');
+
+%% blocked agents
+
+
+bl = zeros(duration);
+for t = 1:duration
+    a_stat = A_stat(:,:,t);
+    a_stat( :, a_stat(4,:)==0 ) = [];
+    bl(t) = sum( a_stat(1,:) < 5 );
+end
+
+plot(bl);
 
 %% density graph
 

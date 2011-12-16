@@ -104,7 +104,7 @@ function [F_tot, agent_number_back] = agents_force(A,alpha)
         [~,I] = max (closer_agents(3,:));
         closest_agent = closer_agents(1:2,I);
         % Mix the desired direction with the queueing direction
-        d_direction = d_direction*.2+0.8*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
+        d_direction = d_direction*.3+0.7*(closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1:2),2);
     end
    
     % Relaxion term
@@ -118,8 +118,8 @@ function [F_tot, agent_number_back] = agents_force(A,alpha)
     F_tot = F_tot ...
                 + A2*sum(...
                 (ones(2,1)...
-                *((3*(agent_others(6,:)==1)+1)...The agents towards the cashpoint have more power
-                .*exp((2+2*(agent_alpha(6)==1))...and because of the tray the have a double radius
+                *((2*(agent_others(6,:)==1)+1)...The agents towards the cashpoint have more power
+                .*exp((2+(agent_alpha(6)==1))...and because of the tray the have a double radius
                 *sigma*ones(1,agent_number_back-1)-sum(r_alphabeta_matrix.^2)/B2))...
                 ).*e_beta_matrix,2);
     

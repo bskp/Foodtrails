@@ -7,7 +7,7 @@ clear global;
 parameters();
 load_map();
 global dt agent_number statistic agents_f p_gain fetchtimes; %X_goals;
-%A=init_agents();
+A=init_agents();
 
 if(video_on)
 vidObj= VideoWriter(['videos/foodtrail ' datestr(now) '.avi']);
@@ -165,12 +165,6 @@ annotation(figure(1),'textbox',...
     [0 0 0.1 0.5],...
     'String', statistic ,...
     'FitBoxToText','off');
-   
-
-if (mod(stepnumber, 20) == 0)
-    refresh_fields;
-    X_traces = X_traces + X_people_conv;
-end
 
 pause(0.01);
 
@@ -180,6 +174,11 @@ writeVideo(vidObj,currentFrame);
 end  
 
 end %noplot
+
+if (mod(stepnumber, 20) == 0)
+    refresh_fields;
+    X_traces = X_traces + X_people_conv;
+end
 
 end
 
