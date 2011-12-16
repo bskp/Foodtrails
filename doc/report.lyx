@@ -7,6 +7,7 @@
 
 \usepackage[numbers]{mcode} %matlab-code-highlightning
 %\usepackage{microtype} %yeah blocksatz
+\usepackage{textcomp} 
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
