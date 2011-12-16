@@ -7,7 +7,7 @@ clear global;
 parameters();
 load_map();
 global dt agent_number statistic agents_f p_gain fetchtimes; %X_goals;
-A=init_agents();
+%A=init_agents();
 
 if(video_on)
 vidObj= VideoWriter(['videos/foodtrail ' datestr(now) '.avi']);

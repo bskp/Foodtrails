@@ -39,7 +39,7 @@ log_on = true;
 duration = 4000; % frames
 
 % Map
-meter = 10; % px/m, according to:
+meter = 15; % px/m, according to:
 map_file = 'grundrissplan2.png'; % Bitmap file for goals and walls
 
 % Map colors  % Value / Tolerance
