@@ -3511,6 +3511,50 @@ primitive simulation with queues
 \end_layout
 
 \begin_layout Subsubsection
+Primitive Simulation with and without fast marching algorithm
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simulation/fastmarchdemo/fm.eps
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simulation/fastmarchdemo/nofm.eps
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Top is with Fast marching algorithm, bottom image without it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 
 \lang english
 Parameterization for the mensa
