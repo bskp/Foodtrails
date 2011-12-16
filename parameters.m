@@ -31,7 +31,7 @@ global ...
 
 % General
 
-agent_number = 200;
+agent_number = 150;
 dt = .1;
 noplot = false;
 video_on = true;

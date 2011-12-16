@@ -175,7 +175,7 @@ end
 
 end %noplot
 
-if (mod(stepnumber, 20) == 0)
+if (mod(stepnumber, 10) == 0)
     refresh_fields;
     X_traces = X_traces + X_people_conv;
 end
