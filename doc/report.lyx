@@ -3480,6 +3480,194 @@ yeah geil
 Discussion
 \end_layout
 
+\begin_layout Standard
+Screencaptures:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simulation/fm_que/snapshots/10s.png
+	width 30text%
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_noque/snapshots/10s.png
+	width 30text%
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/snapshots/10s.png
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Simulation after 300 Frames, from left to right.
+ 1.
+ with queues, with fast marching, 2.
+ without queues, with fast marching 3.
+ with queues, without fast marching 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simulation/fm_que/snapshots/1m.png
+	width 30text%
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_noque/snapshots/1m.png
+	width 30text%
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/snapshots/1m.png
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Simulation after 1800 Frames from left to right.
+ 1.
+ with queues, with fast marching, 2.
+ without queues, with fast marching 3.
+ with queues, without fast marching 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simulation/fm_que/snapshots/2m.png
+	width 30text%
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_noque/snapshots/2m.png
+	width 30text%
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/snapshots/2m.png
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Simulation after 3600 Frames, from left to right.
+ 1.
+ with queues, with fast marching, 2.
+ without queues, with fast marching 3.
+ with queues, without fast marching 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Section
 
 \lang english
