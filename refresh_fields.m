@@ -15,21 +15,21 @@ for i = 1
 
     X_people_conv = conv2(X_people, g_people, 'same');
 
-%     X_fm(:,:,i) = 2*X_fm(:,:,i) - X_people_conv;
-% 
-% %%
-%     addpath fm/;
-%     [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
-% 
-%     [T(:,:,i), Y] = msfm(X_fm(:,:,i), [t_x t_y]'); % Do the fast marching thing
-% 
-%     [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T(:,:,i));
-%     r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
-%     
-%     r( r==0 ) = inf;
-%     
-%     e_alpha_x(:,:,i) = e_alpha_x(:,:,i)./r;
-%     e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
+    X_fm(:,:,i) = 2*X_fm(:,:,i) - X_people_conv;
+
+%%
+    addpath fm/;
+    [t_x, t_y] = find(X_goals(:,:,i) == 1); % Create list of target-pxs
+
+    [T(:,:,i), Y] = msfm(X_fm(:,:,i), [t_x t_y]'); % Do the fast marching thing
+
+    [e_alpha_x(:,:,i), e_alpha_y(:,:,i)] = gradient(-T(:,:,i));
+    r = sqrt( e_alpha_x(:,:,i).^2 + e_alpha_y(:,:,i).^2 );
+    
+    r( r==0 ) = inf;
+    
+    e_alpha_x(:,:,i) = e_alpha_x(:,:,i)./r;
+    e_alpha_y(:,:,i) = e_alpha_y(:,:,i)./r;
 %     % Now we've got the fields for the desired direction, e_alpha.
 %     
 %     %fields_x(:,:,i) =  field_walls_x(:,:,i);% + f*e_alpha_x(:,:,i);

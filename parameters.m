@@ -34,7 +34,7 @@ global ...
 agent_number = 300;
 dt = .1;
 noplot = false;
-video_on = true;
+video_on = false;
 log_on = true;
 duration = 4000; % frames
 
@@ -55,7 +55,7 @@ U_alphaB_0 = 5 * meter^2; % m^2/s^2, max. boundary potential
 
 % Agents
 v0_alphabeta = 2.1*meter^2 * 10; % m^2/s^2, max. agent potential
-sigma = 0.3*meter; % m 
+sigma = 0.5*meter; % m 
 v0_mean = 1.34 * meter; % this is the mean of the desired speed of an agent
               % m/s equals v_alpha_0 in formula (2)
 tau_alpha = .3; % s, "relaxation time"
