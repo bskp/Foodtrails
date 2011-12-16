@@ -91,7 +91,7 @@ function Anew=init_agents(agentID,A)
     Menus = [ 1 2 2 2 2 3 3 4 5 5 ]; 
     Anew(7,:) = 0;
     for i = 1:a_num
-        bla = randi(size(Menus,2))
+        bla = randi(size(Menus,2));
         Anew(6,i)= Menus(bla)+1;
     end
     Anew(9,:) = -1;

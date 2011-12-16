@@ -67,4 +67,4 @@ A2 = 3*meter; % m/s^2
 B2 = 0.2*meter; % m
 
 sight = 1.5*meter;
-tray_factor = 0.2;
+tray_factor = 1;
