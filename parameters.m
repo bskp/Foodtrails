@@ -31,16 +31,16 @@ global ...
 
 % General
 
-agent_number = 300;
+agent_number = 200;
 dt = .1;
 noplot = false;
 video_on = false;
 log_on = true;
-duration = 4000; % frames
+duration = 3000; % frames
 
 % Map
 meter = 15; % px/m, according to:
-map_file = 'grundrissplan2.png'; % Bitmap file for goals and walls
+map_file = 'grundrissplan4.png'; % Bitmap file for goals and walls
 
 % Map colors  % Value / Tolerance
 hue_goal = [0.3 0.1]; % green
@@ -63,7 +63,7 @@ sqrt_theta = 0.26*meter; % m/s standard deviation of gaussian distributed v0_mea
 
 A1 = 0*meter;
 B1 = 0.2*meter;
-A2 = 3*meter; % m/s^2
+A2 = 3*meter  *10; % m/s^2  % cheat!
 B2 = 0.2*meter; % m
 
 sight = 1.5*meter;
