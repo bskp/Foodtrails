@@ -66,7 +66,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\listings_params "language=Matlab"
+\listings_params "breaklines=true,language=Matlab"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -2990,12 +2990,21 @@ status open
 
 \begin_layout Plain Layout
 
-exp(r-
+exp(((radius_alpha+radius_beta)-distance_alpha_beta))/B2)
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+For calculating the distances we sum up the squares of distance vectors
+ stored in 
+\family typewriter
+r_alphabeta_matrix
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3196,6 +3205,87 @@ Naive
 
 \lang english
 Queue sensing agents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The queuing agent is rather simple.
+ We use the estimated times (eighth entry of matrix A) until reaching a
+ certain goal produced by the Fast Marching Algorithm.
+ The agent alpha looks for all agents that are closer to the goal.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+closer_agents = agent_others([1 2 8],((agent_others(8,:)<agent_alpha(8))&(agent_
+others(6,:)==agent_alpha(6))));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+From these closer agents she/he choses the last in queue (maximal time of
+ the closer agents)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+[~,I] = max (closer_agents(3,:));
+\end_layout
+
+\begin_layout Plain Layout
+
+        closest_agent = closer_agents(1:2,I);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The new goal is now the agent next in line.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ d_direction = (closest_agent-agent_alpha(1:2))/norm(closest_agent-agent_alpha(1
+:2),2);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -3486,6 +3576,11 @@ Screencaptures:
 
 \begin_layout Standard
 \noindent
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
@@ -3544,7 +3639,7 @@ Simulation after 300 Frames, from left to right.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -3604,7 +3699,7 @@ Simulation after 1800 Frames from left to right.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset Float figure
 wide false
@@ -3664,7 +3759,12 @@ Simulation after 3600 Frames, from left to right.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
