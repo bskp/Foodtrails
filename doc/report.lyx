@@ -5,12 +5,12 @@
 \textclass article
 \begin_preamble
 
-\usepackage{mcode} %matlab-code-highlightning
+\usepackage[numbers]{mcode} %matlab-code-highlightning
 %\usepackage{microtype} %yeah blocksatz
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language british
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -76,6 +76,8 @@
 \begin_body
 
 \begin_layout Standard
+
+\lang english
 \begin_inset ERT
 status open
 
@@ -95,7 +97,7 @@ begin{center}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 includegraphics[width=5cm]{ETHlogo}
 \end_layout
@@ -346,6 +348,8 @@ end{center}
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset ERT
 status open
 
@@ -362,10 +366,14 @@ pagebreak
 \end_layout
 
 \begin_layout Section*
+
+\lang english
 Agreement for free-download
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 We hereby agree to make our source code of this project freely available
  for download from the web pages of the SOMS chair.
  Furthermore, we assure that all source code is written by ourselves and
@@ -373,6 +381,8 @@ We hereby agree to make our source code of this project freely available
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset space \qquad{}
 \end_inset
 
@@ -380,6 +390,8 @@ We hereby agree to make our source code of this project freely available
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Moritz Vifian 
 \begin_inset space \qquad{}
 \end_inset
@@ -408,6 +420,8 @@ Matthias Roggo
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset space \qquad{}
 \end_inset
 
@@ -415,6 +429,8 @@ Matthias Roggo
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -453,6 +469,8 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset ERT
 status open
 
@@ -469,6 +487,8 @@ pagebreak
 \end_layout
 
 \begin_layout Abstract
+
+\lang english
 This report aims to simulate crowd behaviour in the ETHZ polymensa.
  Being able to realistically simulate crowd behaviour could serve as a useful
  tool in architectural design in general.
@@ -483,6 +503,8 @@ This report aims to simulate crowd behaviour in the ETHZ polymensa.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset ERT
 status open
 
@@ -499,6 +521,8 @@ pagebreak
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -508,20 +532,24 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
+
+\lang english
 Individual contributions
 \end_layout
 
 \begin_layout Section
+
+\lang english
 Introduction and Motivation
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 General Introduction
 \end_layout
 
 \begin_layout Standard
-
-\lang british
 It has been noted by many people that the architectural design of the Polymensa
  is sub-par.
  The queue formation seems chaotic in nature and not predetermined.
@@ -540,143 +568,101 @@ It has been noted by many people that the architectural design of the Polymensa
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang british
 Fundamental Questions
 \end_layout
 
 \begin_layout Enumerate
-
-\lang british
 How do pedestrian groups with different destinations interact with one another?
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang british
 How does one group of pedestrians with one destination behave? 
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 How do two groups of pedestrians with separate destinations interact? (Fig
  1, top)
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 How do two groups of pedestrians with separate destinations interact when
  there are obstacles? 
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 How do two groups of pedestrians with separate destinations interact closely
  in a room 2D room resembling a birds-eye-view of the Polymensa?
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 What happens when there are three groups or more? (Fig 1, middle)
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 Is queue formation accurately modelled? (Fig 1, bottom) What changes/additions
  need to be made if this is not the case?
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang british
 How do pedestrian groups with different destinations interact when all pedestria
 ns return to the same checkout point (cash register) once they have reached
  their respective destination?
 \end_layout
 
 \begin_layout Enumerate
-
-\lang british
 How accurately are pedestrian-dynamics models able to depict the empirically
  collected crowd behaviour of the Mensa queue area? 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang british
 Are queues formed at the same locations? 
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 Are similar distributions observed? 
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 Are densely occupied areas in the same location? 
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 Are certain areas never occupied? 
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 What geometrical changes could be made to the Mensa to increase the flow
  of pedestrians per unit time?
 \end_layout
 
 \end_deeper
 \begin_layout Subsection
-
-\lang british
 Variables of Interest
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 The time it takes for all pedestrians to reach their destinations -- measured
  by logging simulation
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 The number of times pedestrians cannot move because their path is blocked
  by another pedestrian -- measured by logging simulation
 \end_layout
 
 \begin_layout Itemize
-
-\lang british
 The location of the queues (are they realistic?) -- measured by analysing
  simulation snapshots
 \end_layout
 
 \begin_layout Subsection
-
-\lang british
 Expected Results
 \end_layout
 
 \begin_layout Standard
-
-\lang british
 Results which resemble the crowd behaviour observed at the Polymensa are
  expected.
  This means queue formation at similar localities and similar flow of pedestrian
@@ -687,10 +673,14 @@ s per unit of time.
 \end_layout
 
 \begin_layout Section
+
+\lang english
 Description of Model
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 This section aims to describe the social force model.
  The social force model aims to reduce pedestrian dynamics to force fields.
  Force fields act upon agents.
@@ -708,16 +698,22 @@ Social Force model for pedestrian dynamics
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Agents 
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Agents are objects with the local parameters
 \series bold
  :
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 actual velocity 
 \begin_inset Formula $\vec{v}_{\alpha}(t)$
 \end_inset
@@ -726,6 +722,8 @@ actual velocity
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 current actual position
 \series bold
  
@@ -738,6 +736,8 @@ current actual position
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 desired speed 
 \begin_inset Formula $v_{\alpha}^{0}(t)$
 \end_inset
@@ -747,6 +747,8 @@ desired speed
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang english
 This is a speed which is initiated at the beginning of the simulation and
  remains constant throughout the simulation.
  The speeds are randomly Gaussian distributed 
@@ -758,10 +760,14 @@ This is a speed which is initiated at the beginning of the simulation and
 
 \end_deeper
 \begin_layout Standard
+
+\lang english
 And the global parameters :
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 relaxation time: 
 \begin_inset Formula $\tau_{0}$
 \end_inset
@@ -770,6 +776,8 @@ relaxation time:
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 step size: 
 \begin_inset Formula $\Delta s$
 \end_inset
@@ -778,10 +786,14 @@ step size:
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Force Fields 
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 All objects recognizable by an agent have a potential field.
  Using the potential field of a repulsive or attractive object the force
  at a certain location and time may be determined.
@@ -793,10 +805,14 @@ ls, (4) objects of attraction.
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Destination
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The destination attracts an agent.
  More specifically, the closest point, 
 \family roman
@@ -863,6 +879,8 @@ The destination attracts an agent.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \vec{e}_{\alpha}(t):= & \frac{\vec{r}_{\alpha}^{k}-\vec{r}_{\alpha}(t)}{||\vec{r}_{\alpha}^{k}-\vec{r}_{\alpha}(t)||}\\
@@ -882,10 +900,14 @@ name "Formel e_alpha"
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Other Pedestrians/Agents
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 An agent attempts to avoid other agents.
  Therefore other agents have a repulsive nature.
  This repulsive nature is described by a monotonically decreasing potential
@@ -903,6 +925,8 @@ An agent attempts to avoid other agents.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \text{Potential :}V_{\alpha\beta}\left[b\vec{r}_{\alpha\beta}\right]= & V_{\alpha\beta}^{0}e^{-b/\sigma}\\
@@ -916,6 +940,8 @@ An agent attempts to avoid other agents.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Lastly one must take into consideration that the field of vision of an agent
  has an influence on the forces.
  An other agent which is standing behind agent alpha will have a considerably
@@ -923,6 +949,8 @@ Lastly one must take into consideration that the field of vision of an agent
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
@@ -938,6 +966,8 @@ c & \text{otherwise}
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 An improved approach to this problem is proposed by 
 \begin_inset Quotes eld
 \end_inset
@@ -952,6 +982,8 @@ Self organized pedestrian crowd dynamics
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \vec{F}_{\alpha\beta}(t)= & A_{\alpha}^{1}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{1}\right]\vec{n}_{\alpha\beta}\cdot\left(\lambda_{\alpha}+(1-\lambda_{\alpha})\frac{1+\cos(\varphi_{\alpha\beta})}{2}\right)\\
@@ -964,6 +996,8 @@ Self organized pedestrian crowd dynamics
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 This agent force does not have elliptic equipotential lines as the gradient
  is equal for all points in equal distance away from an agent.
  The values for the constants 
@@ -992,16 +1026,22 @@ suggested by by Helbing et al.
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Boarders/ Buildings/ Walls
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Boarders, buildings and walls repulse agents.
  They induce monotonically decreasing potential fields.
  
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \text{boundry Repulsion Force }\vec{F}_{\alpha B}= & -\nabla_{\vec{r_{\alpha B}}}U_{\alpha B}(||\vec{r}_{\alpha B}||)\\
@@ -1014,16 +1054,22 @@ U_{\alpha B}(||\vec{r}_{\alpha B}||)= & U_{^{0}\alpha B}e^{-||\vec{r}_{\alpha B}
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Objects of Attraction
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Objects of attraction draw agents towards themselves.
  They are similar to destination forces.
  This force is a function of time as it decays over time.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \text{attractive Force }\vec{f_{\alpha i}}(||\vec{r}_{\alpha i}||,t)= & -\nabla_{\vec{r}_{\alpha i}}\cdot W_{\alpha i}(||\vec{r}_{\alpha i}||,t)
@@ -1035,11 +1081,15 @@ Objects of attraction draw agents towards themselves.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 As with other agents attractive objects must be weighed according to the
  field of vision of the agent.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta}):= & w(\vec{e}_{\alpha},-\vec{f}_{\alpha\beta}(\vec{r}_{\alpha}-\vec{r}_{\beta}))\vec{f}_{\alpha i}(\vec{r}_{\alpha}-\vec{r}_{\beta})\\
@@ -1055,15 +1105,21 @@ c & \text{otherwise}
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Total Force
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The total force is the superposition of the above mentioned forces.
  
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \[
 \vec{F}_{\alpha}(t)=\vec{F_{\alpha}^{0}}(\vec{v}_{\alpha}\vec{v}_{\alpha}^{0}\vec{e}_{\alpha})+\sum_{\beta}\vec{F}_{\alpha\beta}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{\beta})+\sum_{B}\vec{F}_{\alpha B}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{B}^{\alpha})+\sum_{i}\vec{F}_{\alpha i}(\vec{e}_{\alpha},\vec{r}_{\alpha}-\vec{r}_{i},t)
@@ -1075,16 +1131,22 @@ The total force is the superposition of the above mentioned forces.
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Social Force Model
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The movement of the agents must now be derived from the total force acting
  on them at a specific time.
  This can be written as:
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \frac{d\vec{w_{\alpha}}}{dt}:= & \vec{F}_{\alpha}(t)+fluctuations
@@ -1096,6 +1158,8 @@ The movement of the agents must now be derived from the total force acting
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The actual velocity must not be greater then the agent's desired velocity
  
 \begin_inset Formula $v_{0}^{\alpha}$
@@ -1106,6 +1170,8 @@ defined during the initialization of an agent.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Formula 
 \begin{align*}
 \text{Actual velocity }\vec{v}_{\alpha} & =\vec{w}_{\alpha}\cdot g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right)\\
@@ -1121,12 +1187,16 @@ g\left(\frac{v_{0}^{\alpha}}{||\vec{w}_{\alpha}||}\right) & =\begin{cases}
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Simple 
 \lang british
 Queueing
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 In case of many agents having the same goal, the social force model itself
  just produces a crowd of agents all pushing in same direction.
  Our goal is to learn the agents to queue.
@@ -1138,23 +1208,33 @@ In case of many agents having the same goal, the social force model itself
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 Look towards the goal.
  Is there anyone else in front of me headed the same way?
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 Who in front of me is last in queue?
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 Join him or her
 \end_layout
 
 \begin_layout Section
+
+\lang english
 Implementation
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The social force model, as described in the previous section, was implemented
  as described in this section.
  The simulation input consists of a .png image file and a list of global
@@ -1168,16 +1248,22 @@ The social force model, as described in the previous section, was implemented
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Pseudo-code
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The following is a pseudo code of the implementation of the social force
  model.
  It gives an overview of the chronology of the matlab program.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset listings
 lstparams "language=HTML"
 inline false
@@ -1314,14 +1400,20 @@ end simulation loop
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Initialization
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Global Parameter values
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The values of global parameters (directly related to the social force model)
  which were used are listed in the following table.
  They suggested by Dirk Helbing et al.
@@ -1330,6 +1422,8 @@ The values of global parameters (directly related to the social force model)
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
 <features tabularvalignment="middle">
@@ -1344,6 +1438,7 @@ The values of global parameters (directly related to the social force model)
 \begin_layout Plain Layout
 
 \series bold
+\lang english
 matlab code
 \end_layout
 
@@ -1355,6 +1450,7 @@ matlab code
 \begin_layout Plain Layout
 
 \series bold
+\lang english
 symbolic
 \end_layout
 
@@ -1366,6 +1462,7 @@ symbolic
 \begin_layout Plain Layout
 
 \series bold
+\lang english
 Value [
 \begin_inset Formula $Units$
 \end_inset
@@ -1381,6 +1478,7 @@ Value [
 \begin_layout Plain Layout
 
 \series bold
+\lang english
 Parameter description
 \end_layout
 
@@ -1392,6 +1490,8 @@ Parameter description
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 dt
 \end_layout
 
@@ -1401,6 +1501,8 @@ dt
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $dt$
 \end_inset
 
@@ -1413,6 +1515,8 @@ dt
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 1 [
 \begin_inset Formula $s$
 \end_inset
@@ -1426,6 +1530,8 @@ dt
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 time unit step
 \end_layout
 
@@ -1437,6 +1543,8 @@ time unit step
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 meter
 \end_layout
 
@@ -1446,6 +1554,8 @@ meter
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $meter$
 \end_inset
 
@@ -1458,6 +1568,8 @@ meter
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 40 [
 \begin_inset Formula $px/m$
 \end_inset
@@ -1471,6 +1583,8 @@ meter
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 pixel to meter conversion factor
 \end_layout
 
@@ -1482,6 +1596,8 @@ pixel to meter conversion factor
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 R
 \end_layout
 
@@ -1491,6 +1607,8 @@ R
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $R$
 \end_inset
 
@@ -1503,6 +1621,8 @@ R
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 0.2 [
 \begin_inset Formula $m$
 \end_inset
@@ -1516,6 +1636,8 @@ R
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 parameter of boundary potential
 \end_layout
 
@@ -1527,6 +1649,8 @@ parameter of boundary potential
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 U_alphaB_0
 \end_layout
 
@@ -1536,6 +1660,8 @@ U_alphaB_0
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $U_{\alpha B}^{0}$
 \end_inset
 
@@ -1548,6 +1674,8 @@ U_alphaB_0
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 10 [
 \begin_inset Formula $m^{2}/s^{2}$
 \end_inset
@@ -1561,6 +1689,8 @@ U_alphaB_0
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 Parameter of boundary potential
 \end_layout
 
@@ -1572,6 +1702,8 @@ Parameter of boundary potential
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 v0_mean 
 \end_layout
 
@@ -1581,6 +1713,8 @@ v0_mean
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $<v_{0}>$
 \end_inset
 
@@ -1593,6 +1727,8 @@ v0_mean
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 1.34 [
 \begin_inset Formula $m/s$
 \end_inset
@@ -1606,6 +1742,8 @@ v0_mean
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 desired agent velocity
 \end_layout
 
@@ -1617,6 +1755,8 @@ desired agent velocity
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 tau_alpha
 \end_layout
 
@@ -1626,6 +1766,8 @@ tau_alpha
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $\tau_{\alpha}$
 \end_inset
 
@@ -1638,6 +1780,8 @@ tau_alpha
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 0.5 [
 \begin_inset Formula $s$
 \end_inset
@@ -1651,6 +1795,8 @@ tau_alpha
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 relaxation time
 \end_layout
 
@@ -1662,6 +1808,8 @@ relaxation time
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 sqrt_theta
 \end_layout
 
@@ -1671,6 +1819,8 @@ sqrt_theta
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $\sqrt{\theta}$
 \end_inset
 
@@ -1683,6 +1833,8 @@ sqrt_theta
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 0.26 [
 \begin_inset Formula $m/s$
 \end_inset
@@ -1696,6 +1848,8 @@ sqrt_theta
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 standard deviation of v0_mean
 \end_layout
 
@@ -1707,6 +1861,8 @@ standard deviation of v0_mean
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 sigma
 \end_layout
 
@@ -1716,6 +1872,8 @@ sigma
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -1728,6 +1886,8 @@ sigma
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 0.3 [
 \begin_inset Formula $m$
 \end_inset
@@ -1741,6 +1901,8 @@ sigma
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 Parameter of agent potential
 \end_layout
 
@@ -1756,6 +1918,8 @@ Parameter of agent potential
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 Die Tabelle chönte me no schöner darstelle, isch öber vo euch en tabelle
  guru?
 \end_layout
@@ -1766,10 +1930,14 @@ Die Tabelle chönte me no schöner darstelle, isch öber vo euch en tabelle
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Image input / map of environment
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 An input image (PNG) was used to initialize the destination, starting and
  boundary positions.
  The image was color coded.
@@ -1792,6 +1960,8 @@ load_map.m
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Graphics
 	filename imgs/potential_new.eps
 
@@ -1801,21 +1971,29 @@ load_map.m
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Social Force model algorithm
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 In order to speed up our simulations, we separated the effective forces
  on our agents in two groups, being either constant on a given place or
  depending on all other agents positions.
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Environmental forces 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 matthias
 \end_layout
 
@@ -1825,6 +2003,8 @@ matthias
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The forcefields related to the 
 \family roman
 \series medium
@@ -1893,10 +2073,14 @@ load_map.m
 \end_layout
 
 \begin_layout Paragraph
+
+\lang english
 Fast marching algorithm
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 To prevent the agents getting stuck on more complex floor plans, we employ
  the 
 \emph on
@@ -1907,6 +2091,8 @@ accurate fast marching algorithm
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 http://www.mathworks.com/matlabcentral/fileexchange/24531
 \end_layout
 
@@ -1916,6 +2102,8 @@ http://www.mathworks.com/matlabcentral/fileexchange/24531
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Based on a 
 \begin_inset Quotes eld
 \end_inset
@@ -1970,10 +2158,14 @@ reference "Formel e_alpha"
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Agent forces
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Our method for calculating the agent forces is a mix of cellular automaton
  and agent based model.
  Usually one had to calculate the forces from one agent to every other and
@@ -2001,11 +2193,15 @@ sight
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 In Matlab is really easy to select only entries from a matrix that fulfill
  a certain condition:
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset listings
 inline false
 status open
@@ -2026,6 +2222,8 @@ agent_others = A(:,close_agents);
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 This lowers the complexity to 
 \begin_inset Formula $n$
 \end_inset
@@ -2034,11 +2232,15 @@ This lowers the complexity to
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The final expression for calculating the forces from the current agent to
  all others is not totally self explaining.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset listings
 inline false
 status open
@@ -2086,13 +2288,37 @@ F_tot = F_tot ...
 
 \begin_layout Standard
 
+\lang english
+The first step is calculating the exponential for all distances from alpha
+ to beta minus their own radius.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+exp(r-
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Etiquette training for ruthless agents (queueing heuristics)
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 We made different attempts to improve the agent-flow through the mensa.
  Since the agents don't take the crowd into account for their route-planing
  , even simple corrections far from queueing reduce the hungry agents' passing
@@ -2100,10 +2326,14 @@ We made different attempts to improve the agent-flow through the mensa.
 \end_layout
 
 \begin_layout Paragraph
+
+\lang english
 Emerging and vanishing walls
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Wrap figure
 lines 0
 placement o
@@ -2112,6 +2342,8 @@ width "50col%"
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Graphics
 	filename imgs/come_and_go.png
 	rotateAngle 90
@@ -2122,9 +2354,13 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Quotes eld
 \end_inset
 
@@ -2157,10 +2393,14 @@ waiting-area
 \end_layout
 
 \begin_layout Paragraph
+
+\lang english
 Real-time fast marching 
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 So far, the FM (fast marching)-algorithm did not take into account wheter
  an area was crowded or not: The agents are forced by 
 \begin_inset Formula $\vec{e}_{\alpha}$
@@ -2209,12 +2449,16 @@ s.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Graphics
 	filename imgs/comp_e-field.eps
 	width 100col%
@@ -2225,9 +2469,13 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Naive-vs.-crowd-aware"
@@ -2257,14 +2505,20 @@ Naive
 \end_layout
 
 \begin_layout Paragraph
+
+\lang english
 Queue sensing agents
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 moritz chaschu hie häretue widu die schlange chasch mache?
 \end_layout
 
@@ -2274,18 +2528,26 @@ moritz chaschu hie häretue widu die schlange chasch mache?
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Visualization / Plotting birds eye view
 \end_layout
 
 \begin_layout Section
+
+\lang english
 Simulation and Discussion
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
 Simulation
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 In order to run a simulation the 
 \noun on
 parameters.m
@@ -2300,6 +2562,8 @@ simulation_v1.m
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 chli komisch dass das med _v1 endet ...
  vellecht no ändere
 \end_layout
@@ -2313,10 +2577,14 @@ chli komisch dass das med _v1 endet ...
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Primitive Simulation with and without queues
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 One of the preliminary goals was to analyze crowd behavior for two groups
  with two goals.
  This is presented in the following section.
@@ -2329,6 +2597,8 @@ One of the preliminary goals was to analyze crowd behavior for two groups
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The code for the queuing can be found in the following snippet.
  Firstly, only the agents near by are looked at.
  Secondly, of the close by agents, the agent which is closest to the destination
@@ -2338,6 +2608,8 @@ The code for the queuing can be found in the following snippet.
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 formatierig vom code isch no ned soooo schön aber akzeptabel
 \end_layout
 
@@ -2347,6 +2619,8 @@ formatierig vom code isch no ned soooo schön aber akzeptabel
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset listings
 inline false
 status open
@@ -2398,12 +2672,16 @@ end
 
 \begin_layout Standard
 \noindent
+
+\lang english
 \begin_inset Float figure
 wide false
 sideways false
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Graphics
 	filename imgs/noque.eps
 	width 105col%
@@ -2415,9 +2693,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang english
 primitive simulation without queues 
 \end_layout
 
@@ -2433,6 +2715,8 @@ primitive simulation without queues
 
 \begin_layout Standard
 \noindent
+
+\lang english
 \begin_inset Float figure
 wide false
 sideways false
@@ -2440,6 +2724,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
+
+\lang english
 \begin_inset Graphics
 	filename imgs/que.eps
 	width 100col%
@@ -2450,9 +2736,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang english
 primitive simulation with queues
 \end_layout
 
@@ -2467,6 +2757,8 @@ primitive simulation with queues
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset ERT
 status open
 
@@ -2484,6 +2776,8 @@ pagebreak
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 yeah geil
 \end_layout
 
@@ -2492,35 +2786,21 @@ yeah geil
 
 \end_layout
 
-\begin_layout Subsubsection
-Mensa Simulations
-\end_layout
-
-\begin_layout Paragraph
-Simulation using bare Social Force model (no extensions)
-\end_layout
-
-\begin_layout Paragraph
-Simulation using queuing
-\end_layout
-
-\begin_layout Paragraph
-Simulation using realtime fast marching
-\end_layout
-
-\begin_layout Paragraph
-Simulation using all extensions
-\end_layout
-
 \begin_layout Subsection
+
+\lang english
 Discussion
 \end_layout
 
 \begin_layout Section
+
+\lang english
 Summary and Outlook
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Building mainly on the concepts published by the 
 \begin_inset Quotes eld
 \end_inset
@@ -2549,6 +2829,8 @@ Self-organized Pedestrian Crowd Dynamics
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The simulations showed characteristics which group members have observed
  to exist (see Section 5.2).
  From the current results it is not yet possible to draw a conclusion concerning
@@ -2566,15 +2848,12 @@ The simulations showed characteristics which group members have observed
 \end_layout
 
 \begin_layout Subsection
-
-\lang british
 References
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-\lang british
 Social Force Model for Pedestrian dynamics (1995) -- Dirk Helbing et al.
  
 \emph default
@@ -2588,7 +2867,6 @@ Describes model we are considering to build on (Social Force Model)
 \begin_layout Itemize
 
 \emph on
-\lang british
 Self-organized Pedestrian Crowd Dynamics (2005) -- Helbing et al.
  
 \emph default
@@ -2602,7 +2880,6 @@ Uses model we are considering to build on (Social Force Model)
 \begin_layout Itemize
 
 \emph on
-\lang british
 Pedestrian Dynamics Airplane Evacuation Simulation -- Author(s): P.
  Heer, L.
  Bühler 
@@ -2617,7 +2894,6 @@ Model we are considering to build on (Social Force Model)
 \begin_layout Itemize
 
 \emph on
-\lang british
 Response to intrusion into waiting lines.
  (2010) By Milgram, Stanley et al.
 \emph default
@@ -2626,8 +2902,6 @@ Response to intrusion into waiting lines.
 status open
 
 \begin_layout Plain Layout
-
-\lang british
 http://psycnet.apa.org/index.cfm?fa=buy.optionToBuy&id=1987-04011-001 
 \end_layout
 
@@ -2645,7 +2919,6 @@ A possible extension to queue modeling.
 \begin_layout Itemize
 
 \emph on
-\lang british
 Approach to Collective Phenomena in Pedestrian Dynamics (2002) Andreas Schadschn
 eider et al.
  
@@ -2661,8 +2934,290 @@ In case we attempt to use Cellular Automata this paper would be useful.
 \begin_layout Itemize
 
 \emph on
-\lang british
 Writing Fast MATLAB Code (2004) -- Pascal Getreuer
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+Source Code
+\end_layout
+
+\begin_layout Standard
+This is a short text.
+ And there goes the hm...
+\end_layout
+
+\begin_layout Subsubsection
+Agents Forces
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/agents_force.m} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Count Passes
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/count_passes.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Init Agents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/init_agents.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Parameters
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/parameters.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Plot Stat
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/plot_stat.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Potential Force
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/potential_force.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Refresh Fields
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/refresh_fields.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Remote Worker
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/remote_worker.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Reset Simulation
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/reset_sim.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Separate Areas
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/seperateAreas.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Simulate
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/simulate_v1.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Test Agents Force
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/test_agents_force.m
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Test Load Map
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{../src/test_load_map.m}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
