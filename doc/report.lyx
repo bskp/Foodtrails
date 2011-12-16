@@ -3427,17 +3427,21 @@ primitive simulation with queues
 \begin_layout Standard
 
 \lang english
-\begin_inset ERT
-status open
+\begin_inset Newpage pagebreak
+\end_inset
 
 
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Parameterization for the mensa
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 To simulate hungry people rushing through the mensa, we made a map based
  on 
 \emph on
@@ -3448,6 +3452,8 @@ rauminfo.ethz.ch
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 http://www.rauminfo.ethz.ch/Rauminfo/grundrissplan.gif?region=Z&areal=Z&gebaeude=MM&
 geschoss=B
 \end_layout
@@ -3459,11 +3465,13 @@ geschoss=B
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Graphics
-	filename /Users/maroggo/Documents/ETHz/Modelling Social Systems/Gruppenarbeit/Foodtrails/maps/grundrissplan.png
+	filename ../src/maps/grundrissplan.png
 	height 5cm
 
 \end_inset
@@ -3474,7 +3482,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename /Users/maroggo/Documents/ETHz/Modelling Social Systems/Gruppenarbeit/Foodtrails/maps/grundrissplan3.png
+	filename ../src/maps/grundrissplan3.png
 	height 5cm
 
 \end_inset
@@ -3485,7 +3493,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename /Users/maroggo/Documents/ETHz/Modelling Social Systems/Gruppenarbeit/Foodtrails/maps/grundrissplan4.png
+	filename ../src/maps/grundrissplan4.png
 	height 5cm
 
 \end_inset
@@ -3494,9 +3502,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang english
 Map evolution process
 \end_layout
 
@@ -3505,22 +3517,22 @@ Map evolution process
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 While experimenting with different parameters, the walls were thickened
  several times.
  Otherwise, agents got pushed throught due to the high forces.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 The following plots are based upon 4000 to 5000 steps.
  Due to the slow simulation (5000 steps take about 15 minutes), the 
 \begin_inset Quotes eld
@@ -3535,10 +3547,14 @@ parameter-sweeping
 \end_layout
 
 \begin_layout Paragraph*
+
+\lang english
 Literally pitfalls
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Float figure
 wide false
 sideways false
@@ -3546,6 +3562,8 @@ status open
 
 \begin_layout Plain Layout
 \align center
+
+\lang english
 \begin_inset Graphics
 	filename imgs/remote-worker-plots/fetchtime1.eps
 	width 8cm
@@ -3556,9 +3574,13 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:No-steady-state"
@@ -3579,6 +3601,8 @@ No steady-state
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 With to few or slow checkouts, to many agents got stuck and no 
 \begin_inset Quotes eld
 \end_inset
@@ -3601,10 +3625,14 @@ reference "fig:No-steady-state"
 \end_layout
 
 \begin_layout Paragraph*
+
+\lang english
 High inrush
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 After adapting some parameters (mostly 
 \noun on
 meter
@@ -3614,14 +3642,18 @@ meter
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Float figure
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
+
+\lang english
 \begin_inset Graphics
 	filename imgs/density_ungebremst.png
 	height 7cm
@@ -3643,9 +3675,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang english
 Tweaking the inflow
 \end_layout
 
@@ -3660,16 +3696,221 @@ Tweaking the inflow
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
 Comparing heuristics
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 With the found parameters 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 verweis auf parameters im anhang
+\end_layout
+
+\end_inset
+
+, a benchmark of our heuristic was done.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\lang english
+Pass-through-time
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename simulation/nofm_noque/arrival.eps
+	width 32text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/arrival.eps
+	width 32col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/fm_que/arrival.eps
+	width 32col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Comparing space usage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\lang english
+Stuck agents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename simulation/nofm_noque/stuck.eps
+	width 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/stuck.eps
+	width 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/fm_que/stuck.eps
+	width 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Comparing space usage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\lang english
+Space usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename simulation/nofm_noque/dens.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/nofm_que/dens.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simulation/fm_que/dens.png
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Comparing space usage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Discussion
+\end_layout
+
+\begin_layout Standard
+Screencaptures:
 \end_layout
 
 \begin_layout Standard
@@ -3711,41 +3952,15 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename simulation/nofm_noque/arrival.eps
-	width 32text%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename simulation/nofm_que/arrival.eps
-	width 32col%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename simulation/fm_que/arrival.eps
-	width 32col%
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Comparing space usage
+Simulation after 300 Frames, from left to right.
+ 1.
+ with queues, with fast marching, 2.
+ without queues, with fast marching 3.
+ with queues, without fast marching 
 \end_layout
 
 \end_inset
@@ -3756,112 +3971,6 @@ Comparing space usage
 \end_inset
 
 
-\end_layout
-
-\begin_layout Paragraph
-Stuck agents
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename simulation/nofm_noque/stuck.eps
-	width 4cm
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename simulation/nofm_que/stuck.eps
-	width 4cm
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename simulation/fm_que/stuck.eps
-	width 4cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Comparing space usage
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Space usage
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename simulation/nofm_noque/dens.png
-	height 4cm
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename simulation/nofm_que/dens.png
-	height 4cm
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename simulation/fm_que/dens.png
-	height 4cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Comparing space usage
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Discussion
 \end_layout
 
 \begin_layout Standard
