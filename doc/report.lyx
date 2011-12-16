@@ -490,17 +490,18 @@ pagebreak
 \begin_layout Abstract
 
 \lang english
-This report aims to simulate crowd behaviour in the ETHZ polymensa.
+The aim of this report to simulate crowd behaviour in the ETHZ polymensa.
  Being able to realistically simulate crowd behaviour could serve as a useful
  tool in architectural design in general.
  Thus the core goal of this report is to find the degree of realism with
  which crowd behaviour may be simulated.
  In order to answer this question the Social Force Model was implemented
  in form of a matlab program.
+ This model was extended with queueing heuristics and a real time fast marching
+ algorithm.
  The results of the simulation show patterns in the crowd dynamics which
  resemble empirical observations.
- The report concludes that simulations could aid room design by reducing
- crossing paths of agents and areas of high crowd concentration.
+ Inorder to justify these claims emperical data would need to be collected.
 \end_layout
 
 \begin_layout Standard
@@ -543,18 +544,19 @@ The main idea of the queueing in the
 \emph on
 Polymensa 
 \emph default
-was developed by us alltogether.
- Our goal was from the beginning to use matrices and matrix operation wherever
+was developed as a group.
+ From the beginning our goal was to use matrices and matrix operation wherever
  possible.
- Later on Matthias Roggo was mostly fascinated how to convert a bitmaps
- into vector fields.
+ Later on Matthias Roggo was mostly occupied with the task of converting
+ bitmaps into vector fields.
  It was also him who found the Fast Marching Algorithm to be useful for
  the path finding of our agents.
  In the end he added the support for logging and statitics.
  Michael Aebli was the one who initially started the report and wrote most
  of the general text.
- He also tried to calculate the agent forces with totally confusing ellipsis
- potential which we had to simplify in the end.
+ He also tried to calculate the agent forces.
+ In his attempt he used ellipsical potential which were confusing which
+ needed to simplified in the end.
  Moritz Vifian created the simulation sequence and the basic drawing and
  contributed a simplified formula for the agent forces.
 \end_layout
@@ -817,7 +819,7 @@ Force Fields
 
 \lang english
 All objects recognizable by an agent have a potential field.
- Using the potential field of a repulsive or attractive object the force
+ Using the potential field of a repulsive or attractive object, the force
  at a certain location and time may be determined.
  The final force acting on an agent is the superposition of all forces.
  These forces are: (1) Destination, (2) other agents, (3) boarders/buildings/wal
@@ -990,7 +992,7 @@ c & \text{otherwise}
 \begin_layout Standard
 
 \lang english
-An simplified approach to this problem is proposed by 
+A simplified approach to this problem is proposed by 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1020,8 +1022,8 @@ Self organized pedestrian crowd dynamics
 \begin_layout Standard
 
 \lang english
-This agent force does not have elliptic equipotential lines as the gradient
- is equal for all points in equal distance away from an agent.
+In this approach the agent force does not have elliptic equipotential lines
+ as the gradient is equal for all points in equal distance from an agent.
  The values for the constants 
 \family roman
 \series medium
@@ -1219,14 +1221,15 @@ Queueing
 \begin_layout Standard
 
 \lang english
-In case of many agents having the same goal, the social force model itself
- just produces a crowd of agents all pushing in the same direction.
- Our goal is to learn the agents to queue.
- If a person in real life wants to walk toward a specific place, she or
- her looks around to check whether there are other people headed in the
+When many agents have the same destination, the social force model simpy
+ produces a circular shaped crowd of agents all moving in the same direction.
+ These agents do not naturally form queues.
+ Agents need to be taught to form queues.
+ If a person in real life wants to walk towards a specific location, she
+ or her looks around to check whether there are other people headed in the
  same direction.
  If so, she or he joins the crowd and this leads to a queue.
- What one basically does is
+ The thought process in que formation can be summarised as:
 \end_layout
 
 \begin_layout Itemize
@@ -1246,6 +1249,13 @@ Who in front of me is last in queue?
 
 \lang english
 Join him or her
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This simple queueing model was the fundament of the queuing heuristics explained
+ in the next Section, 4.Implementation.
 \end_layout
 
 \begin_layout Section
@@ -1445,7 +1455,7 @@ reference "tab:Parameter-Table"
 \end_inset
 
 .
- 
+ Unless specifically stated otherwise the following parameters were used.
 \end_layout
 
 \begin_layout Standard
@@ -2226,7 +2236,7 @@ sigma
 \begin_layout Plain Layout
 
 \lang english
-Parameter of agent potential
+parameter of agent potential
 \end_layout
 
 \end_inset
@@ -2509,7 +2519,7 @@ sight
 \begin_inset Text
 
 \begin_layout Plain Layout
-Radius within which other agents have influence
+fadius within which other agents have influence
 \end_layout
 
 \end_inset
@@ -2755,7 +2765,8 @@ destination (
 \begin_inset Formula $\vec{F}_{\alpha i}$
 \end_inset
 
-) are independent of the agents positions, thus can be calculated in advance.
+) are independent of the agents positions, and can thus be calculated in
+ advance.
  This is done by 
 \family default
 \series default
@@ -2783,7 +2794,7 @@ Fast marching algorithm
 \begin_layout Standard
 
 \lang english
-To prevent the agents getting stuck on more complex floor plans, we employ
+To prevent agents from getting stuck on more complex floor plans, we employ
  the 
 \emph on
 accurate fast marching algorithm
@@ -2870,7 +2881,7 @@ Agent forces
 \lang english
 Our method for calculating the agent forces is a mix of cellular automaton
  and agent based model.
- Usually one had to calculate the forces from one agent to every other and
+ Usually one must calculate the forces from one agent to every other and
  so on.
  Meaning: The complexity for 
 \begin_inset Formula $n$
@@ -2897,8 +2908,8 @@ sight
 \begin_layout Standard
 
 \lang english
-In Matlab is really easy to select only entries from a matrix that fulfill
- a certain condition:
+In Matlab it selecting entries hat fulfill a certain condition from a matrix
+ is very simple:
 \end_layout
 
 \begin_layout Standard
@@ -2937,7 +2948,7 @@ This lowers the complexity to
 
 \lang english
 The final expression for calculating the forces from the current agent to
- all others is not totally self explaining.
+ all others is not totally self explanatory.
 \end_layout
 
 \begin_layout Standard
@@ -2992,7 +3003,7 @@ F_tot = F_tot ...
 
 \lang english
 The first step is calculating the exponential for all distances from alpha
- to beta minus their own radius.
+ to beta, minus their own radius.
 \end_layout
 
 \begin_layout Standard
@@ -3037,10 +3048,10 @@ Etiquette training for ruthless agents (queueing heuristics)
 \begin_layout Standard
 
 \lang english
-We made different attempts to improve the agent-flow through the menus.
+Different attempts were made to improve the agent-flow through the menus.
  Since the agents don't take the crowd into account for their route-planing
- , even simple corrections far from queueing reduce the hungry agents' passing
- through time.
+ , even simple corrections (far from queuing) reduce the time it takes for
+ hungry agents' to pass through the mensa.
 \end_layout
 
 \begin_layout Paragraph
@@ -3097,8 +3108,10 @@ Subjective
 \end_inset
 
 Instead of only drawing target areas on the map (green), we implemented
- support for target-specific walls (dark green) that impact only agents
- targeting the adjacent goals.
+ support for target-specific walls (dark green).
+ These destination sorrounding walls only impact agents targeting them.
+ Agents targeting other destinations or leaving said destination remain
+ unaffected by these additional walls.
  These additional wall potentials force waiting people into a 
 \begin_inset Quotes eld
 \end_inset
@@ -3120,11 +3133,11 @@ Real-time fast marching
 
 \lang english
 So far, the FM (fast marching)-algorithm did not take into account whether
- an area was crowded or not: The agents are forced by 
+ an area was crowded or not: The agents are forced (by 
 \begin_inset Formula $\vec{e}_{\alpha}$
 \end_inset
 
- towards 
+ ) towards 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3133,37 +3146,32 @@ their
 \end_inset
 
  check-out, even when another (free) one would be way quicker.
- So we ended up having a huge crowd waiting in front of check-out 1.
+ This cause a huge crowd waiting in front of the first checkout (first when
+ entering the room).
  Real-time FM can solve this problem, but since it takes 250
 \begin_inset space \thinspace{}
 \end_inset
 
 ms to calculate the FM-fields for all the five layers (each one corresponding
- to a target) we decided to neglect small changes and but do this every
- 20 frames.
- Now, 
+ to a target) we decided to neglect small changes.
+ As a result FM-fields are updated every 20 frames rather than every frame.
+ Furthermore, 
 \noun on
 refresh_fields.m 
 \noun default
-draws the agents' location into an additional map, convolutes it with an
- exponential peak and gives now hand to 
-\begin_inset Quotes eld
-\end_inset
-
-beat the traffic
-\begin_inset Quotes erd
-\end_inset
-
-.
- Check figure 
+draws the agents' location into an additional map and convolutes it with
+ an exponential peak.
+ The resulting force field aids the agents in avoiding large clusters of
+ other agents.
+ See figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Naive-vs.-crowd-aware"
 
 \end_inset
 
- to see the difference in the fields that draw the agents to the other check-out
-s.
+ to see the difference between the forcefields that are drawn for agents
+ headed for check-outs.
 \end_layout
 
 \begin_layout Standard
@@ -3231,10 +3239,12 @@ Queue sensing agents
 \begin_layout Standard
 
 \lang english
-The queuing behaviour of an agent is rather simple.
- We use the estimated times (eighth entry of matrix A) until reaching a
- certain goal produced by the Fast Marching Algorithm.
- The agent alpha looks for all agents that are closer to the goal.
+The queuing behaviour of an agent is simple.
+ The estimated times until an agent reaches its destination are stored in
+ the eighth entry of matrix A.
+ These estimations are produced by the Fast Marching Algorithm.
+ Agent alpha looks for all agents that are closer to the goal then its current
+ position.
  
 \end_layout
 
@@ -3257,10 +3267,8 @@ others(6,:)==agent_alpha(6))));
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-From these closer agents she/he choses the last in queue (maximal time of
- the closer agents)
+Of these closer agents, agent alpha then selects the agent which is closest
+ to its location.
 \end_layout
 
 \begin_layout Standard
@@ -3323,26 +3331,13 @@ parameters.m
 \noun on
 simulation_v1.m
 \noun default
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-chli komisch dass das med _v1 endet ...
- vellecht no ändere
-\end_layout
-
-\end_inset
-
  must be launched.
- The implemented social force model was simulated with various parameters
- in an attempt to answer the questions which were initially posed.
+ The implemented model was simulated with various parameters in an attempt
+ to answer the questions which were initially posed.
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 
 \lang english
 Primitive Simulation with and without queues
@@ -3443,7 +3438,7 @@ end
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3486,7 +3481,7 @@ primitive simulation without queues
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -3531,8 +3526,18 @@ primitive simulation with queues
 
 \end_layout
 
-\begin_layout Subsubsection
-Primitive Simulation with and without fast marching algorithm
+\begin_layout Subsection
+Primitive Simulation with and without real time fast marching algorithm
+\end_layout
+
+\begin_layout Standard
+In Figure 5.
+ the difference between agents using the real time fast marching algorithm
+ are demonstrated.
+ The differences are very apperant.
+ Without real time FM agents are realtively closely packe.
+ On the other hand, simulations using FM show agents more spread out taking
+ the mass of the crowd into account.
 \end_layout
 
 \begin_layout Standard
@@ -3575,7 +3580,7 @@ Top is with Fast marching algorithm, bottom image without it.
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 
 \lang english
 Parameterization for the Mensa
@@ -3584,8 +3589,7 @@ Parameterization for the Mensa
 \begin_layout Standard
 
 \lang english
-To simulate hungry people rushing through the Mensa, we made a map based
- on 
+To simulate hungry people rushing through the Mensa, a map based on 
 \emph on
 rauminfo.ethz.ch
 \emph default
@@ -3602,7 +3606,7 @@ geschoss=B
 
 \end_inset
 
-.
+ was constructed.
  The distribution of the agents to the different 
 \begin_inset Quotes eld
 \end_inset
@@ -3611,7 +3615,8 @@ menus
 \begin_inset Quotes erd
 \end_inset
 
- was done by rough estimation -- we estimate about 10% for the 
+ was done by rough estimation.
+ It was estimate that about 10% of mensa-goers decide to buy the 
 \emph on
 bio-menü
 \emph default
@@ -3682,7 +3687,7 @@ Map evolution process
 \lang english
 While experimenting with different parameters, the walls had to be thickened
  several times.
- Otherwise, agents got pushed through due to the high forces.
+ Otherwise, agents were pushed through alls due to the high forces.
 \end_layout
 
 \begin_layout Standard
@@ -3758,7 +3763,7 @@ No steady-state
 \begin_layout Standard
 
 \lang english
-With to few or slow checkouts, to many agents got stuck and no 
+With too few or slow checkouts, too many agents were trapped and no 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3935,9 +3940,9 @@ upper limit
 \begin_inset Quotes erd
 \end_inset
 
- for the pass-through-time shows up in all three runs: thus, no one gets
- stuck for too long.
- The different heuristics however don't seem to impact the passing-through-time.
+ for the pass-through-time shows up in all three runs: thus, no agents got
+ stuck for very long periods of time.
+ The different heuristics however do not seem to impact the passing-through-time.
 \end_layout
 
 \begin_layout Standard
@@ -4020,7 +4025,7 @@ Stuck agents
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4091,14 +4096,14 @@ Space usage
 \lang english
 In the third comparison, the effort made finally pays of: By adding queuing
  heuristics (left vs.
- center image), we see how crowd just in front of the upper left service
- sparses.
- Queue aware agents rush less!
+ center image), it can be seen how the crowd just in front of the upper
+ left service sparses.
+ It can be concluded that queue aware agents rush less.
 \end_layout
 
 \begin_layout Standard
 By recalculating the fast-marching-paths (center vs.
- right image), agents realise the crow in their way and longer, but quicker
+ right image), agents realise the crowd in their way and longer, but quicker
  way along other checkouts.
 \end_layout
 
@@ -4158,7 +4163,6 @@ Comparing space usage
 \end_layout
 
 \begin_layout Standard
-Screencaptures:
 \begin_inset Float figure
 wide false
 sideways false
@@ -4338,9 +4342,11 @@ Simulation after 3600 Frames, from left to right.
 \end_layout
 
 \begin_layout Standard
-In these screencaptures -- and way better in the videos -- we can see how
- the agents on their way to the checkout move more flexible with the real-time-f
-ast-marching.
+Figures 11- 13 show screencaptures of the videos which were made whilst
+ collecting the data presented in Section 5.3.
+ In these screencaptures -- which are available as videos on github -- it
+ can be see how the agents on their way to the checkout move more flexible
+ with the real-time-fast-marching.
 \end_layout
 
 \begin_layout Section
