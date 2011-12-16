@@ -45,7 +45,7 @@ for t = 1:duration
     bl(t) = sum( a_stat(1,:) < 5 );
 end
 
-plot(bl);
+plot(bl(1:10:end,1:10:end));
 set(gca,'FontSize',16)
 xlabel('time [frames]');
 ylabel('stuck agents');
@@ -73,7 +73,7 @@ for t = 1:duration
     avg(t) = sum( a_stat(2,:) )/ size(a_stat, 2);
 end
 
-plot(avg);
+plot(avg(1:50:end, 1:50:end));
 
 
 %% walkingtime-dependend
