@@ -3284,43 +3284,10 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-moritz chaschu hie häretue widu die schlange chasch mache?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-
-\lang english
-Visualization / Plotting birds eye view
-\end_layout
-
 \begin_layout Section
 
 \lang english
 Simulation and Discussion
-\end_layout
-
-\begin_layout Subsection
-
-\lang english
-Simulation
 \end_layout
 
 \begin_layout Standard
@@ -4083,21 +4050,21 @@ status open
 \lang english
 \begin_inset Graphics
 	filename simulation/nofm_noque/dens.png
-	height 4cm
+	height 5.5cm
 
 \end_inset
 
-
+ 
 \begin_inset Graphics
 	filename simulation/nofm_que/dens.png
-	height 4cm
+	height 5.5cm
 
 \end_inset
 
-
+ 
 \begin_inset Graphics
 	filename simulation/fm_que/dens.png
-	height 4cm
+	height 5.5cm
 
 \end_inset
 
@@ -4123,12 +4090,6 @@ Comparing space usage
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-
-\lang english
-Discussion
 \end_layout
 
 \begin_layout Standard
@@ -4312,7 +4273,9 @@ Simulation after 3600 Frames, from left to right.
 \end_layout
 
 \begin_layout Standard
-
+In these screencaptures -- and way better in the videos -- we can see how
+ the agents on their way to the checkout move more flexible with the real-time-f
+ast-marching.
 \end_layout
 
 \begin_layout Section
@@ -4355,8 +4318,16 @@ Self-organized Pedestrian Crowd Dynamics
 
 \lang english
 The simulations showed characteristics which group members have observed
- to exist (see Section 5.2).
- From the current results it is not yet possible to draw a conclusion concerning
+ to exist (see Section 5.2), but the reproduction of a realistic queue turned
+ out to be much more demanding than expected.
+ Further improvements, such as agents who estimate their neighbours' speed
+ and include this in their path planning, urge to be implemented.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+From the current results it is not yet possible to draw a conclusion concerning
  the degree of realism of the simulation.
  In order to this, empirical data would have to be collected.
  This information could then be compared to simulated data.
