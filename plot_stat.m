@@ -33,7 +33,7 @@ ylabel('speed [px/frame]');
 
 image( X_traces , 'CDataMapping','scaled' ); axis image;
 
-imwrite(X_traces/10, colormap('jet'), 'dens.png');
+imwrite(X_traces/2, colormap('jet'), 'dens.png');
 
 %% stuck agents
 

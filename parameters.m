@@ -31,8 +31,8 @@ global ...
 
 % General
 
-agent_number = 50;
-dt = .05;
+agent_number = 120;
+dt = .1;
 noplot = false;
 video_on = true;
 log_on = true;
@@ -40,7 +40,7 @@ duration = 4000; % frames
 
 % Map
 meter = 15; % px/m, according to:
-map_file = 'grundrissplan2.png'; % Bitmap file for goals and walls
+map_file = 'grundrissplan4.png'; % Bitmap file for goals and walls
 
 % Map colors  % Value / Tolerance
 hue_goal = [0.3 0.1]; % green
