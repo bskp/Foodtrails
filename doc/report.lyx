@@ -3461,6 +3461,19 @@ geschoss=B
 \end_inset
 
 .
+ The distribution of the agents to the different 
+\begin_inset Quotes eld
+\end_inset
+
+menus
+\begin_inset Quotes erd
+\end_inset
+
+ was done by rough estimation -- we estimate about 10% for the 
+\emph on
+bio-menü
+\emph default
+.
  
 \begin_inset Float figure
 wide false
@@ -4198,10 +4211,6 @@ Simulation after 3600 Frames, from left to right.
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 
 \lang english
@@ -4245,7 +4254,7 @@ The simulations showed characteristics which group members have observed
  to exist (see Section 5.2).
  From the current results it is not yet possible to draw a conclusion concerning
  the degree of realism of the simulation.
- In order to this empirical data would have to be collected.
+ In order to this, empirical data would have to be collected.
  This information could then be compared to simulated data.
  In a further step empirical data could be collected from various mensas
  which would could also be simulated.
