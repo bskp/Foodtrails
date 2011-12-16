@@ -1,2 +1,19 @@
 README
 ---------
+
+Folder Hierarchy:
+-----------------
+src:	contains source code
+doc:	contains report
+
+
+Simulation instructions
+-----------------------
+1. clone src/ folder
+3. change parameters in parameters.m
+2. start simulate_v1 with matlab
+3. finished*
+
+*note: if you finish early (Ctr+C) the video object must be closed to make a video using close(vidObj).
+
+
