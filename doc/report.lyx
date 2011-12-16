@@ -548,14 +548,15 @@ was developed by us alltogether.
  possible.
  Later on Matthias Roggo mostly fascinated how convert a bitmaps into vector
  fields.
- It was also who found the Fast Marching Algorithm to be useful for the
- path finding of our agents.
+ It was also him who found the Fast Marching Algorithm to be useful for
+ the path finding of our agents.
+ In the end he added the support for logging and statitics.
  Michael Aebli was the one who initially started the report and wrote most
  of the general text.
- He also tried to calculate the agent forces with totally confusing elipsis
+ He also tried to calculate the agent forces with totally confusing ellipsis
  potential which we had to simplify in the end.
- Moritz Vifian created the simulation sequence and contributed a simplified
- formula for the agent forces.
+ Moritz Vifian created the simulation sequence and the basic drawing and
+ contributed a simplified formula for the agent forces.
 \end_layout
 
 \begin_layout Section
@@ -2644,7 +2645,7 @@ load_map.m
  function (see Section 2) and the black areas of the map which represent
  walls.
  The convolution was calculated as a multiplication in the frequency domain
- via matlab's fast fourier transformation.
+ via matlab's fast Fourier transformation.
 \end_layout
 
 \begin_layout Standard
@@ -3016,7 +3017,7 @@ Etiquette training for ruthless agents (queueing heuristics)
 \begin_layout Standard
 
 \lang english
-We made different attempts to improve the agent-flow through the mensa.
+We made different attempts to improve the agent-flow through the menus.
  Since the agents don't take the crowd into account for their route-planing
  , even simple corrections far from queueing reduce the hungry agents' passing
  through time.
@@ -3098,7 +3099,7 @@ Real-time fast marching
 \begin_layout Standard
 
 \lang english
-So far, the FM (fast marching)-algorithm did not take into account wheter
+So far, the FM (fast marching)-algorithm did not take into account whether
  an area was crowded or not: The agents are forced by 
 \begin_inset Formula $\vec{e}_{\alpha}$
 \end_inset
@@ -3546,13 +3547,13 @@ primitive simulation with queues
 \begin_layout Subsubsection
 
 \lang english
-Parameterization for the mensa
+Parameterization for the Mensa
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-To simulate hungry people rushing through the mensa, we made a map based
+To simulate hungry people rushing through the Mensa, we made a map based
  on 
 \emph on
 rauminfo.ethz.ch
@@ -3637,7 +3638,7 @@ Map evolution process
 \lang english
 While experimenting with different parameters, the walls had to be thickened
  several times.
- Otherwise, agents got pushed throught due to the high forces.
+ Otherwise, agents got pushed through due to the high forces.
 \end_layout
 
 \begin_layout Standard
