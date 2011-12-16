@@ -15,7 +15,7 @@ for i = 1
 
     X_people_conv = conv2(X_people, g_people, 'same');
 
-    X_fm(:,:,i) = 2*X_fm(:,:,i) - X_people_conv;
+    X_fm(:,:,i) = 5*X_fm(:,:,i) - X_people_conv;
 
 %%
     addpath fm/;
