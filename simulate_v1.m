@@ -157,8 +157,8 @@ imagesc( map_pretty );        %Hintergrundbild laden
 colormap('bone');
 hold on;
  draw_field = 1;
-plot(A(1,A(6,:)==1),A(2,A(6,:)==1),'o','MarkerSize',sigma,'MarkerEdgeColor','r','MarkerFaceColor','r'); %Punkte zeichnen
-plot(A(1,A(6,:)~=1),A(2,A(6,:)~=1),'o','MarkerSize',sigma,'MarkerFaceColor','b'); %Punkte zeichnen
+plot(A(1,A(6,:)==1),A(2,A(6,:)==1),'o','MarkerSize',sigma/2,'MarkerEdgeColor','r','MarkerFaceColor','r'); %Punkte zeichnen
+plot(A(1,A(6,:)~=1),A(2,A(6,:)~=1),'o','MarkerSize',sigma/2,'MarkerFaceColor','b'); %Punkte zeichnen
 axis image;
 
 annotation(figure(1),'textbox',...
