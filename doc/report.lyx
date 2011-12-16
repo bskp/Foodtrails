@@ -1229,20 +1229,20 @@ In case of many agents having the same goal, the social force model itself
  What one basically does is
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \lang english
 Look towards the goal.
  Is there anyone else in front of me headed the same way?
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \lang english
-Who in front of me is last in queue?
+If there are more than one: Which is the latest in the queue?
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \lang english
 Join him or her
@@ -2640,12 +2640,14 @@ Image input / map of environment
 \begin_layout Standard
 
 \lang english
-An input image (PNG) was used to initialize the destination, starting and
- boundary positions.
+An input image was used to initialize the destination, starting and boundary
+ positions.
  The image was color coded.
  Red pixels were defined as starting positions, green pixels as destinations
  and black pixels as boundaries.
  
+\noun on
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -2653,6 +2655,8 @@ load_map.m
 \begin_inset Quotes erd
 \end_inset
 
+
+\noun default
  is responsible for importing an image and making it usable.
  The potential field is generated through the convolution of a 2d potential
  function (see Section 2) and the black areas of the map which represent
@@ -3342,7 +3346,7 @@ chli komisch dass das med _v1 endet ...
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 
 \lang english
 Primitive Simulation with and without queues
@@ -3531,8 +3535,13 @@ primitive simulation with queues
 
 \end_layout
 
-\begin_layout Subsubsection
-Primitive Simulation with and without fast marching algorithm
+\begin_layout Subsection
+Primitive Simulation with and without real-time fast marching algorithm
+\end_layout
+
+\begin_layout Standard
+In figure 5, we see how real-time fast-marching enables the agents to avoid
+ crowds.
 \end_layout
 
 \begin_layout Standard
@@ -3575,7 +3584,7 @@ Top is with Fast marching algorithm, bottom image without it.
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 
 \lang english
 Parameterization for the Mensa
@@ -3758,7 +3767,7 @@ No steady-state
 \begin_layout Standard
 
 \lang english
-With to few or slow checkouts, to many agents got stuck and no 
+With too few or slow checkouts, too many agents got stuck and no 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3800,7 +3809,7 @@ reference "fig:Tweaking-the-inflow"
 
 \end_inset
 
-).
+) which ultimately floods the mensa with people.
 \end_layout
 
 \begin_layout Standard
@@ -3863,7 +3872,7 @@ Tweaking the inflow
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 
 \lang english
 Comparing heuristics
@@ -4098,8 +4107,8 @@ In the third comparison, the effort made finally pays of: By adding queuing
 
 \begin_layout Standard
 By recalculating the fast-marching-paths (center vs.
- right image), agents realise the crow in their way and longer, but quicker
- way along other checkouts.
+ right image), agents realise the crow in their way and take longer, but
+ quicker ways to other checkouts.
 \end_layout
 
 \begin_layout Standard
