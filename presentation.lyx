@@ -1184,7 +1184,7 @@ Moritz Section
 \end_layout
 
 \begin_layout BeginFrame
-Structure
+Structure of our Program
 \end_layout
 
 \begin_layout Itemize
@@ -1192,32 +1192,146 @@ All agents stored inside one matrix
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+% | Agent 1 | Agent 2 | Agent 3 %-----------------------------------------------
+ 
+\begin_inset Newline newline
+\end_inset
+
+% 1 position x | 
+\begin_inset Newline newline
+\end_inset
+
+% 2 position y | 
+\begin_inset Newline newline
+\end_inset
+
+% 3 speed x | 
+\begin_inset Newline newline
+\end_inset
+
+% 4 speed y | 
+\begin_inset Newline newline
+\end_inset
+
+% 5 desired speed v0| 
+\begin_inset Newline newline
+\end_inset
+
+% 6 goal | 
+\begin_inset Newline newline
+\end_inset
+
+% 7 last counter 
+\begin_inset Newline newline
+\end_inset
+
+% 8 ETR from FM 
+\begin_inset Newline newline
+\end_inset
+
+% 9 Red Carpet...
+ 
+\end_layout
+
+\begin_layout Itemize
 No objects
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Objects need loops
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Rather scripts than functions
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Functions: pass by value
+\end_layout
+
+\begin_layout Itemize
+Global Variables: pass by 
+\begin_inset Quotes eld
+\end_inset
+
+reference
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout BeginFrame
-Euler Method
+Simulation: Euler Method
 \end_layout
 
 \begin_layout Itemize
 Calculate forces
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Velocities
+
+\family typewriter
+agents_f(:,agentID) = agents_force(A,agentID);
+\begin_inset Newline newline
+\end_inset
+
+agents_p(:,agentID) = potential_force(round(A(1,agentID)),round(A(2,agentID)),A(
+6,agentID)); 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
+Resulting Velocities
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+A(3:4,agentID) = (agents_p(:,agentID)...
+\begin_inset Newline newline
+\end_inset
+
+*agents_f(:,agentID)...
+\begin_inset Newline newline
+\end_inset
+
++10 *[(rand(1)-.5);(rand(1)-.5)])...
+\begin_inset Newline newline
+\end_inset
+
+*timestep; 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+New positions: 
 \begin_inset Formula $\vec{x_{n+1}}=\vec{x_{n}}+\vec{v}\cdot\Delta t$
 \end_inset
 
 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+deltaPos=A(3:4,:)*timestep;
+\begin_inset Newline newline
+\end_inset
+
+A(1:2,:)=A(1:2,:)+deltaPos; 
+\end_layout
+
+\end_deeper
 \begin_layout BeginFrame
 Agent Forces
 \end_layout
@@ -1238,10 +1352,93 @@ distances=A(1:2,:)-A(1:2,alpha)*ones(1,size(A,2))
 Neglect agents outside 1 meter
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+close_agents = sqrt(sum(r_alphabeta_matrix.^2))<sight;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+agent_others = A(:,close_agents);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Calculate resulting interaction forces
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+F_agents = A2*sum(...
+\begin_inset Newline newline
+\end_inset
+
+(ones(2,1)...
+\begin_inset Newline newline
+\end_inset
+
+*exp((2+tray_factor*(agent_alpha(6)==1)...
+\begin_inset Newline newline
+\end_inset
+
+*sigma*ones(1,agent_number_back-1)-sum(r_alphabeta_matrix.^2)
+\begin_inset Newline newline
+\end_inset
+
++sigma*tray_factor*(agent_others(6,:)==1))/B2)...
+\begin_inset Newline newline
+\end_inset
+
+).*e_beta_matrix,2); 
+\end_layout
+
+\end_deeper
 \begin_layout BeginFrame
 Simple Queueing
 \end_layout
 
+\begin_layout Itemize
+Algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Look around.
+ Who is headed towards the same goal?
+\end_layout
+
+\begin_layout Itemize
+Who ist last in line?
+\end_layout
+
+\begin_layout Itemize
+Join him/her
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Implementation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fast Marching offers the expected time until reaching a certain goal
+\end_layout
+
+\begin_layout Itemize
+Take those closer to the goal than you (less time expected)
+\end_layout
+
+\begin_layout Itemize
+Of those take the last (max time)
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Simulation and Discussion
 \begin_inset Note Note
