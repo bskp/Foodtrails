@@ -1473,12 +1473,43 @@ additional real-time-Path-planning
 Basic Social Force Model
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/imgs/noque.pdf
+	lyxscale 40
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout BeginFrame
 Queuing
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/imgs/que.pdf
+	lyxscale 40
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout BeginFrame
 Real-time Path Planning
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/simulation/fastmarchdemo/nofm.pdf
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1569,6 +1600,14 @@ Measuring The Balance
 \begin_layout Standard
 \begin_inset Graphics
 	filename doc/imgs/remote-worker-plots/fetchtime1.eps
+	lyxscale 50
+	width 5cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename doc/simulation/fm_que/arrival.pdf
 	lyxscale 50
 	width 5cm
 
