@@ -122,11 +122,8 @@ In principle, this file can be redistributed and/or modified under the terms
 \end_layout
 
 \begin_layout Title
-Modelling Crowd Behaviour in the Polymensa
-\end_layout
-
-\begin_layout Title
-Using the Social Force Model 
+Modelling Crowd Behaviour in the Polymensa using the Social Force Model
+ 
 \end_layout
 
 \begin_layout Author
@@ -410,7 +407,7 @@ Mensa seems suboptimal.
 
 \end_deeper
 \begin_layout Itemize
-General motivation: mensa dynamics predctiable?
+General motivation: mensa dynamics predictable?
 \end_layout
 
 \begin_deeper
@@ -430,7 +427,7 @@ Matlab simulation
 
 \end_deeper
 \begin_layout Itemize
-Goal: Simulation with close resemblence to actual observed crowd behaviour.
+Goal: Simulation with close resemblance to actual observed crowd behaviour.
 \end_layout
 
 \begin_layout Subsection
@@ -443,7 +440,7 @@ Fundamental Questions.
 \end_layout
 
 \begin_layout Itemize
-How do pedestrian groups with different destinations ineract with one another?
+How do pedestrian groups with different destinations interact with one another?
 \end_layout
 
 \begin_deeper
@@ -464,7 +461,7 @@ How do pedestrian groups interact when all pedestrians return to a cash
 
 \end_deeper
 \begin_layout Itemize
-How accurately are pedestrian-dynamic models able to depict the emperically
+How accurately are pedestrian-dynamic models able to depict the empirically
  collected data?
 \end_layout
 
@@ -739,7 +736,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Potentail of an agent
+Potential of an agent
 \end_layout
 
 \end_inset
@@ -799,7 +796,7 @@ status open
 
 \begin_layout Plain Layout
 With this formula the semi minor axis of a velocity dependent ellipse caused
- by an agent is callculated.
+ by an agent is calculated.
  the greater the velocity, the greater the distortion of the ellipse.
  
 \end_layout
@@ -872,7 +869,7 @@ status open
 \begin_layout Plain Layout
 The force field is calculated by taking the negative gradient from the potential
  of an agent.
- Furthmore the line of sight is taken into consideration.
+ Furthermore the line of sight is taken into consideration.
  If another agent is not within an angle of phi from the direction agent
  alpha is looking the weigh is less than c, less than one.
  This is to take into account that agents which are not visible are not
@@ -931,7 +928,7 @@ status collapsed
 \begin{align*}
 \vec{F}_{\alpha\beta}(t)= & A_{\alpha}^{1}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{1}\right]\vec{n}_{\alpha\beta}\\
  & \cdot\left(\lambda_{\alpha}+(1-\lambda_{\alpha})\frac{1+\cos(\varphi_{\alpha\beta})}{2}\right)\\
- & +A_{\alpha}^{2}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{2}\right]\vec{n}_{\alpha B}
+ & +A_{\alpha}^{2}\exp\left[(r_{\alpha\beta}-d_{\alpha\beta})/B_{\alpha}^{2}\right]\vec{n}_{\alpha\beta}
 \end{align*}
 
 \end_inset
@@ -940,6 +937,88 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout ExampleBlock
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This approach does not introduce an elliptical potential.
+ The first term is not of great importance and can be neglected which also
+ reduces the required calculation times.
+ The second term is the exponentially decaying force field equation.
+ The constants of which must be appropriately chosen.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Boundary Forces
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Boundary Forces:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\text{boundry Repulsion Force }\vec{F}_{\alpha B}=-\nabla_{\vec{r_{\alpha B}}}U_{^{0}\alpha B}e^{-||\vec{r}_{\alpha B}||/R}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Very similar to other agent forces.
+ The boarder point of boarder B closest to the agent causes this force.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout BeginFrame
 Total Forces
 \end_layout
@@ -1009,6 +1088,87 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout BeginFrame
+Dynamics from the Social Forces
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Superposition of all Forces:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\frac{d\vec{w_{\alpha}}}{dt}:=\vec{F}_{\alpha}(t)+fluctuations$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Differential equation from which agent velocities are calculated.
+ Fluctuations add a random factor to reduce agents getting stuck.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{Actual velocity }\vec{v}_{\alpha}=\vec{w}_{\alpha}\cdot\begin{cases}
+1 & ,\text{ if }||\vec{w}_{\alpha}||<v_{0}^{\alpha}\\
+\frac{v_{o}^{\alpha}}{||\vec{w}_{\alpha}||} & ,\text{ otherwise}
+\end{cases}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In a last step the velocity is limited to a velocity it can not surpass.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Implementation
 \begin_inset Note Note
@@ -1046,7 +1206,7 @@ Basic social force model
 \end_layout
 
 \begin_layout Itemize
-additional Queueing
+additional Queuing
 \end_layout
 
 \begin_layout Itemize
