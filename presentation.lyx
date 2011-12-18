@@ -536,7 +536,7 @@ Shown on all slides.
 \end_deeper
 \begin_layout ExampleBlock
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -730,6 +730,65 @@ Moritz Section
 \end_inset
 
 
+\end_layout
+
+\begin_layout BeginFrame
+Structure
+\end_layout
+
+\begin_layout Itemize
+All agents stored inside one matrix
+\end_layout
+
+\begin_layout Itemize
+No objects
+\end_layout
+
+\begin_layout Itemize
+Rather scripts than functions
+\end_layout
+
+\begin_layout BeginFrame
+Euler Method
+\end_layout
+
+\begin_layout Itemize
+Calculate forces
+\end_layout
+
+\begin_layout Itemize
+Velocities
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vec{x_{n+1}}=\vec{x_{n}}+\vec{v}\cdot\Delta t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Agent Forces
+\end_layout
+
+\begin_layout Itemize
+Distances to other Agents: A single matrix multiplication
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+distances=A(1:2,:)-A(1:2,alpha)*ones(1,size(A,2))
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Neglect agents outside 1 meter
+\end_layout
+
+\begin_layout BeginFrame
+Simple Queueing
 \end_layout
 
 \begin_layout Section
