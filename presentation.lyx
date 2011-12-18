@@ -827,6 +827,91 @@ Path planning takes 250
 ms
 \end_layout
 
+\begin_layout BeginFrame
+The Real Mensa
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename src/maps/grundrissplan.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename src/maps/grundrissplan3.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename src/maps/grundrissplan4.png
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Finding The Balance
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename doc/imgs/density_ungebremst.png
+	height 7cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename doc/imgs/gebremst.png
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Measuring The Balance
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/imgs/remote-worker-plots/fetchtime1.eps
+	lyxscale 50
+	width 5cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename doc/simulation/fm_que/arrival.pdf
+	lyxscale 50
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Summary and Outlook
 \begin_inset Note Note
