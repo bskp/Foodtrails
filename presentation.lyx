@@ -4,7 +4,8 @@
 \begin_header
 \textclass beamer
 \begin_preamble
-\usetheme{Warsaw}
+\usetheme{default}
+\usecolortheme{crane}
 % or ...
 
 \setbeamercovered{transparent}
@@ -17,7 +18,7 @@
 \inputencoding auto
 \fontencoding global
 \font_roman times
-\font_sans default
+\font_sans helvet
 \font_typewriter default
 \font_default_family default
 \use_non_tex_fonts false
@@ -35,7 +36,7 @@
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 2
 \use_esint 0
 \use_mhchem 1
@@ -594,7 +595,7 @@ status collapsed
 
 Unit Vector towards destination:
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -631,7 +632,7 @@ r_alpha^k = closest point on destination polygon
 
 \begin_layout ExampleBlock
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -972,6 +973,171 @@ status open
 \begin_layout Plain Layout
 Matthias Section
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Testing Heuristics
+\end_layout
+
+\begin_layout Itemize
+Basic social force model
+\end_layout
+
+\begin_layout Itemize
+additional Queueing
+\end_layout
+
+\begin_layout Itemize
+additional real-time-Path-planning
+\end_layout
+
+\begin_layout BeginFrame
+Basic Social Force Model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/imgs/noque.pdf
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Queuing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/imgs/que.pdf
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Real-time Path Planning
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/simulation/fastmarchdemo/nofm.pdf
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/simulation/fastmarchdemo/fm.eps
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Path planning takes 250
+\begin_inset space ~
+\end_inset
+
+ms
+\end_layout
+
+\begin_layout BeginFrame
+The Real Mensa
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename src/maps/grundrissplan.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename src/maps/grundrissplan3.png
+	height 4cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename src/maps/grundrissplan4.png
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Finding The Balance
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename doc/imgs/density_ungebremst.png
+	height 7cm
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename doc/imgs/gebremst.png
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Measuring The Balance
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/imgs/remote-worker-plots/fetchtime1.eps
+	lyxscale 50
+	width 5cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename doc/simulation/fm_que/arrival.pdf
+	lyxscale 50
+	width 5cm
 
 \end_inset
 
