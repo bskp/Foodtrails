@@ -1244,6 +1244,10 @@ No objects
 Objects need loops
 \end_layout
 
+\begin_layout Itemize
+Matrices are faster (usually)
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 Rather scripts than functions
