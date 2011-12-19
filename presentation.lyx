@@ -563,10 +563,27 @@ All pedestrian interactions reduced to forces.
 \end_layout
 
 \begin_layout Itemize
-Destination, Other Agents, Boarders, Objects of Attraction cause total Force.
- 
+Forces
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+Destination
+\end_layout
+
+\begin_layout Enumerate
+Other Agents
+\end_layout
+
+\begin_layout Enumerate
+Boarders
+\end_layout
+
+\begin_layout Enumerate
+Objects of Attraction
+\end_layout
+
+\end_deeper
 \begin_layout BeginFrame
 Destination Force
 \end_layout
@@ -692,7 +709,7 @@ Other Agents Force
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename forceagent.svg
+	filename forceagent.pdf
 	width 100text%
 	clip
 
