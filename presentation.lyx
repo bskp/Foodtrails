@@ -1007,9 +1007,24 @@ Structure of our Program
 \end_layout
 
 \begin_layout Itemize
+No objects
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Objects need loops
+\end_layout
+
+\begin_layout Itemize
+Matrices are faster (usually)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 All agents stored inside one matrix
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 
 \family typewriter
@@ -1052,15 +1067,6 @@ All agents stored inside one matrix
 
 % 9 Red Carpet...
  
-\end_layout
-
-\begin_layout Itemize
-No objects
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Objects need loops
 \end_layout
 
 \end_deeper
@@ -1151,6 +1157,20 @@ A(1:2,:)=A(1:2,:)+deltaPos;
 \end_layout
 
 \end_deeper
+\begin_layout BeginFrame
+Desired Direction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/imgs/comp_e-field.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout BeginFrame
 Agent Forces
 \end_layout
@@ -1300,6 +1320,7 @@ status open
 \begin_inset Graphics
 	filename doc/imgs/noque.pdf
 	lyxscale 40
+	width 100text%
 
 \end_inset
 
@@ -1323,6 +1344,7 @@ status open
 \begin_inset Graphics
 	filename doc/imgs/que.pdf
 	lyxscale 40
+	width 100text%
 
 \end_inset
 
@@ -1379,6 +1401,16 @@ ms
 
 \begin_layout BeginFrame
 The Real Mensa
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename doc/evolution.jpg
+	height 4cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1471,6 +1503,104 @@ status open
 
 \end_layout
 
+\begin_layout BeginFrame
+Comparison In The Mensa
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename doc/simulation/nofm_noque/dens.png
+	height 5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename doc/simulation/nofm_que/dens.png
+	height 5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename doc/simulation/fm_que/dens.png
+	height 5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Basic Model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++ Queueing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++ Q., + real-time FM
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Some Behaviours
+\end_layout
+
 \begin_layout Section
 Summary and Outlook
 \begin_inset Note Note
@@ -1486,82 +1616,33 @@ Matthias Section
 \end_layout
 
 \begin_layout BeginFrame
-Summary
+Summary and Outlook
 \end_layout
 
 \begin_layout Itemize
-The
+
 \color none
- 
-\color red
-first main message
-\color none
- of your talk in one or two lines.
+Fetching food is way more than bare queueing
 \end_layout
 
-\begin_layout Itemize
-The
-\color none
- 
-\color red
-second main message
-\color none
- of your talk in one or two lines.
-\end_layout
-
-\begin_layout Itemize
-Perhaps a
-\color none
- 
-\color red
-third message
-\color none
-, but not more than that.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-An outlook is always optional.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vskip0pt plus.5fill
-\end_layout
-
-\end_inset
-
+\begin_layout Pause
 
 \end_layout
 
 \begin_layout Itemize
-Outlook
+
+\color none
+We were able to reproduce some characteristics of the polymensa-Crowd
 \end_layout
 
-\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
-What we have not done yet.
+Simulating 2 Frames/second is tedious
 \end_layout
 
-\begin_layout Itemize
-Even more stuff.
-\end_layout
-
-\end_deeper
 \begin_layout EndFrame
 
 \end_layout
