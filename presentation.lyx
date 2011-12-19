@@ -1539,6 +1539,16 @@ The Real Mensa
 
 \begin_layout Standard
 \begin_inset Graphics
+	filename doc/evolution.jpg
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
 	filename src/maps/grundrissplan.png
 	height 4cm
 
@@ -1731,7 +1741,7 @@ Matthias Section
 \end_layout
 
 \begin_layout BeginFrame
-Summary
+Summary and Outlook
 \end_layout
 
 \begin_layout Itemize
@@ -1756,37 +1766,6 @@ We were able to reproduce some characteristics of the polymensa-Crowd
 
 \begin_layout Itemize
 Simulating 2 Frames/second is tedious
-\end_layout
-
-\begin_layout BeginFrame
-Outlook
-\end_layout
-
-\begin_layout Itemize
-Match against real world measurements
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Crowd-Predicting
-\begin_inset Quotes erd
-\end_inset
-
- agents
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Automated parameter sweeping on remote Workstations
 \end_layout
 
 \begin_layout EndFrame
