@@ -1468,24 +1468,15 @@ Measuring The Balance
 \begin_inset Graphics
 	filename doc/imgs/remote-worker-plots/fetchtime1.eps
 	lyxscale 50
-	width 5cm
+	width 5.4cm
 
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename doc/simulation/fm_que/arrival.pdf
 	lyxscale 50
-	width 5cm
-
-\end_inset
-
-
-\end_layout
+	width 5.4cm
 
 \end_inset
 
@@ -1587,21 +1578,19 @@ Basic Model
 \end_layout
 
 \begin_layout BeginFrame
-Some Behaviours
+Video demo
+\end_layout
+
+\begin_layout Itemize
+Struggling to get through waiting lines
+\end_layout
+
+\begin_layout Itemize
+No waiting at the serving counters and checkouts
 \end_layout
 
 \begin_layout Section
 Summary and Outlook
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Matthias Section
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout BeginFrame
