@@ -1313,19 +1313,10 @@ Basic Social Force Model
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename doc/imgs/noque.pdf
 	lyxscale 40
 	width 100text%
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -1337,19 +1328,10 @@ Queuing
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename doc/imgs/que.pdf
 	lyxscale 40
 	width 100text%
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -1361,19 +1343,10 @@ Real-time Path Planning
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename doc/simulation/fastmarchdemo/nofm.pdf
 	lyxscale 30
 	width 100text%
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
