@@ -927,6 +927,18 @@ status collapsed
 Using the force
 \end_layout
 
+\begin_layout Standard
+\align right
+\begin_inset Graphics
+	filename useforce.jpg
+	lyxscale 30
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout ExampleBlock
 \begin_inset ERT
 status open
